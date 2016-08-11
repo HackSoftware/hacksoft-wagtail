@@ -62,3 +62,4 @@ hacksoft/media/
 # Hitch directory
 tests/.hitch
 
+.cache

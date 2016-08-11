@@ -45,7 +45,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # custom users app
     'hacksoft.users.apps.UsersConfig',
-    # Your stuff: custom apps go here
+    'hacksoft.website.apps.WebsiteConfig',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
