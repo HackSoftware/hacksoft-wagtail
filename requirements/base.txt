@@ -49,3 +49,6 @@ redis>=2.10.0
 
 
 # Your custom requirements go here
+
+# Wagtati
+wagtail==1.6
