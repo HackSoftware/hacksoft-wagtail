@@ -7,3 +7,15 @@ from wagtail.wagtailcore.models import Page
 
 class HomePage(Page):
     pass
+
+
+class HowWeWorkPage(Page):
+    pass
+
+
+class TechnologiesWeUsePage(Page):
+    pass
+
+
+class OurTeamPage(Page):
+    pass

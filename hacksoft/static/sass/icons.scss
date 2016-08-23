@@ -1,0 +1,52 @@
+// CSS for the social media icons
+
+$size: 50px;
+
+.social-buttons {
+    height: $size;
+    margin: auto;
+    font-size: 0;
+    text-align: center;
+    color: #fff;
+}
+
+.social-button {    
+    display: inline-block;
+    background-color: transparent;
+    color: #fff;
+    width: $size;
+    height: $size;
+    line-height: $size;
+    margin: 0 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    //overflow bug fix
+    opacity: .99;
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,.05);
+    border: 1px solid #fff;
+
+    -webkit-transition: all 0.4s ease;
+       -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+         -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+
+    .fa {
+        font-size: 38px;
+        vertical-align: middle;
+        transform: scale(.8);
+    }
+    
+    &:hover {
+        color: #505050;
+        background-color: #ffffff;
+    -webkit-transition: all 0.4s ease;
+       -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+         -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+   }    
+} 
