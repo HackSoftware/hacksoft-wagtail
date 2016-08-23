@@ -3,17 +3,9 @@
 Production Configurations
 
 - Use djangosecure
-- Use Amazon's S3 for storing static files and uploaded media
-- Use mailgun to send emails
-- Use Redis on Heroku
-
 
 """
 from __future__ import absolute_import, unicode_literals
-
-from boto.s3.connection import OrdinaryCallingFormat
-from django.utils import six
-
 
 from .common import *  # noqa
 
@@ -56,10 +48,6 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['hacksoft.io'])
 
 INSTALLED_APPS += ('gunicorn', )
 
-# Static Assets
-# ------------------------
-
-INSTALLED_APPS = ('collectfast', ) + INSTALLED_APPS
 
 # EMAIL
 # ------------------------------------------------------------------------------
@@ -77,22 +65,6 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 # ------------------------------------------------------------------------------
 # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
 DATABASES['default'] = env.db('DATABASE_URL')
-
-# CACHING
-# ------------------------------------------------------------------------------
-# Heroku URL does not pass the DB number, so we parse it in
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '{0}/{1}'.format(env('REDIS_URL', default='redis://127.0.0.1:6379'), 0),
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            'IGNORE_EXCEPTIONS': True,  # mimics memcache behavior.
-                                        # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
-        }
-    }
-}
-
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
