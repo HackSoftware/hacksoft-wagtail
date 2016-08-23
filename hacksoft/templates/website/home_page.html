@@ -1,1 +1,346 @@
-dadsa
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}HackSoft{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    {% block css %}
+    <!-- Latest compiled and minified Bootstrap 4 Alpha 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+    <!-- Your stuff: Third-party CSS libraries go here -->
+
+    <!-- This file stores project-specific CSS -->
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/icons.css' %}" rel="stylesheet">
+
+    {% endblock %}
+
+  </head>
+  <body>
+
+    <div class="new homepage-header dimmed-image">
+      <div class="new header-image-background dimmed-image-background">
+        <div class="new overlay"></div>
+      </div>
+      <div class="new header-image-frame">
+        <div class="new header-main-text">
+    	  <h1>HackSoft is your trusted provider </h1>
+          <h1>of high quality software</h1>
+        </div>
+        <div class="new header-info-text">
+          <div class="new info-text">
+    	    <p>We are not just outsourcers, but partners with our clients</p>
+          </div>
+        </div>
+      </div>
+      <div class="new scroll-down-arrow scroll-down-landpage">
+        <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+      </div>
+    </div>
+
+    <div class="new header-overlay-background">
+
+    </div>
+
+</div>
+
+<div class="page-wrapper">
+  <div class="header">
+    <div class="header-container float-container">
+      <div class="logo">
+        <a href="/">
+          <img src="{% static 'images/logo.png' %}" alt="HackSoft logo">
+        </a>
+      </div>
+      <nav class="nav-menu float-container">
+        <label for="drop" class="toggle"><i class="fa fa-bars" aria-hidden="true"></i>
+        </label>
+        <input type="checkbox" id="drop" />
+        <ul class="menu-main menu">
+          <li class="child selected">
+	    <a href="/">Home</a>
+          </li>
+          <li class="child sibling">
+	    <a href="/how-we-work/">How we work</a>
+          </li>
+          <li class="child sibling">
+	    <a href="/technologies-we-use/">Technologies we use</a>
+          </li>
+          <li class="child sibling">
+	    <a href="/our-team/">Our Team</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="content-wrapper" >
+    <div class="section home-page-lead">
+      <h1 class="lead-text">We make end-to-end software solutions</h1>
+      <h3 class="lead-subtext">from desigin &amp; architecture,</h3>
+      <h3 class="lead-subtext">to project management and development testing &amp; support</h3>
+      <div class="doodle align-center">
+    	<img class="filer_image " alt="doodle_laptop.png" src="{% static 'images/header/doodle_laptop.png' %}" />
+      </div>
+    </div>
+
+    <div class="section section">
+      <div class="section-heading">
+        <div>
+    	  <p>How We Work?</p>
+        </div>
+      </div>
+      <div class="section-content-row align-center our-team-text">
+    	<div>We rely on open and honest communication with our clients.</div>
+      </div>
+
+      <div class="section-content">
+        <div class="section-content-row underlined float-container">
+          <div class="new left-side">
+    	    <h2>What we do</h2>
+            <div>
+              <ul>
+	        <li>
+	          <h3>Projects from scratch</h3>
+	        </li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+	        <li>
+	          <h3>Start-up’s kit</h3>
+	        </li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+	        <li>
+	          <h3>Exciting existing projects</h3>
+	        </li>
+              </ul>
+            </div>
+            <div class="view-more">View more ...</div>
+          </div>
+
+          <div class="new right-side">
+
+    	    <h2>The process</h2>
+            <div>
+              <h3>We follow a specific process that involves splitting the work into 7 general phases.</h3>
+            </div>
+            <div class="view-more">Learn more ...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section technologies-we-use">
+      <div class="section-heading">
+        <div>
+    	  <p>The Technologies We Use</p>
+        </div>
+      </div>
+      <div class="section-content-row">
+        <div class="section-content-row align-center panda-pic">
+          <img class="filer_image" alt="panda bulbblink" src="{% static 'images/header/panda_bulbblink.gif'%}" />
+        </div>
+        <div class="section-content-row align-center primary-focus-text technologies-text">
+    	  <div>Our primary focus is in the following technologies:</div>
+        </div>
+        <div class="section-content-row align-center technologies-logos">
+    	  <img class="filer_image " alt="django.png" src="{% static 'images/header/django.png' %}" />
+          <img class="filer_image " alt="django.png" src="{% static 'images/header/django.png' %}" />
+          <img class="filer_image " alt="django.png" src="{% static 'images/header/django.png' %}" />
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="section our-team">
+      <div class="section-heading">
+        <div>
+          <p>Our Team</p>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="section-content-row align-center our-team-text">
+          <p>The core team consists of senior developers both in backend and frontend land.</p>
+        </div>
+        <div class="section-content-row align-center our-team-images float-container">
+          <div class="team-member">
+            <img class="filer_image " alt="aneta stoicheva" src="{% static 'images/kamen_web.png'%}" />
+            <div class="name">
+              <p>Ивко</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img class="filer_image " alt="aneta stoicheva" src="{% static 'images/kamen_web.png'%}" />
+            <div class="name">
+              <p>Ивко</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img class="filer_image " alt="aneta stoicheva" src="{% static 'images/radi_web.png'%}" />
+            <div class="name">
+              <p>Ивко</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img class="filer_image " alt="aneta stoicheva" src="{% static 'images/radi_web.png'%}" />
+            <div class="name">
+              <p>Ивко</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img class="filer_image " alt="aneta stoicheva" src="{% static 'images/radi_web.png'%}" />
+            <div class="name">
+              <p>Ивко</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section">
+      <div class="section-heading">
+        <div>
+    	  <p>Portfolio</p>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="section-content-row align-center">
+    	  <img class="filer_image " alt="panda_balancing.gif" src="{% static 'images/header/panda_balancing.gif' %}" />
+        </div>
+        <div class="section-content-row align-center our-team-text">
+    	  <div>
+            The core team consists of senior developers
+            both in backend and frontend land.
+          </div>
+        </div>
+        <div class="section-content-row underlined float-container  portfolio-landing">
+    	  <img class="filer_image " alt="leuropeo_picture.png" src="{% static 'images/header/leuropeo_picture.png' %}" />
+          <div class="new portfolio-overlay">
+          </div>
+          <div class="larger-part">
+    	    <div>
+              <h3>L'Europeo</h3>
+              <p>Description for Leuropeo.....Description for Leuropeo</p>
+              <p>.....Description for Leuropeo.....</p></div>
+          </div>
+          <div class="smaller-part">
+    	    <img class="filer_image " alt="L&#39;Europeo.png" src="{% static 'images/header/leuropeo.png' %}" />
+          </div>
+        </div>
+        <div class="section-content-row underlined float-container  portfolio-landing">
+    	  <img class="filer_image " alt="co2cards_picture.png" src="{% static 'images/header/co2cards_picture.png' %}" />
+          <div class="new portfolio-overlay">
+          </div>
+          <div class="smaller-part">
+    	    <img class="filer_image " alt="co2cards.png" src="{% static 'images/header/co2cards.png' %}" />
+          </div>
+          <div class="larger-part">
+    	    <div>
+              <h3>CO2Cards</h3>
+              Description for CO2Cards.....Description for CO2Cards.....Description for CO2Cards.....</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer background">
+    <div class="section book-a-meeting">
+      <a class="book-a-meeting-button">Book a meeting</a>
+    </div>
+    <div class="footer-text">
+      <div class="text-box">
+        Some text here............
+      </div>
+    </div>
+    <div class="social-buttons">
+      <a href="#" class="social-button facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a href="#" class="social-button github">
+        <i class="fa fa-github"></i>
+      </a>
+      <a href="#" class="social-button twitter">
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a href="#" class="social-button linkedin">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      
+    </div>
+  </div>
+</div>
+<div id="popup1" class="popup-overlay">
+  <div class="popup">
+    <h2>Book a meeting</h2>
+    <a class="close">&times;</a>
+    <div class="content">
+      <form class="book-a-meeting-popup" action="/hacksoft/book-a-meeting/" method='post'>
+        <input type='hidden' name='csrfmiddlewaretoken' value='5IogseILlH56pJ5pr2ZstVmORWlfWtuJ' />
+        <img src="/static//images/panda_doodle_popup.png" alt="Popup panda image">
+        <div class="popup-input">
+          <input id="id_subject" maxlength="50" name="subject" type="text" placeholder="Subject" />
+        </div>
+        <div class="popup-input">
+          <input id="id_company" maxlength="50" name="company" type="text" placeholder="Company" />
+        </div>
+        <div class="popup-input">
+          <input id="id_phone_number" name="phone_number" type="number" placeholder="Phone number" />
+        </div>
+        <div class="popup-input">
+          <input id="id_email" maxlength="254" name="email" type="email" placeholder="Email" />
+        </div>
+        <div class="message popup-input">
+          <textarea cols="40" id="id_message" name="message" rows="10"  placeholder="Message"></textarea>
+        </div>
+
+        <div class="popup-footer">
+          <input class="send-button" type="submit" value="SEND">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="success" class="popup-overlay">
+  <div class="popup success-popup">
+    <h2>Success</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+      <h3>You successfully send your message to HackSoft team.</h3>
+    </div>
+  </div>
+</div>
+
+{% block javascript %}
+<!-- Required by Bootstrap v4 Alpha 3 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+
+<!-- Your stuff: Third-party javascript libraries go here -->
+
+<!-- place project specific Javascript in this file -->
+
+<script src="{% static 'js/project.js' %}"></script>
+
+
+{% endblock javascript %}
+</body>
+</html>
