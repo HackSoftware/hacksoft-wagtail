@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles i18n wagtailimages_tags %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
   <div class="new homepage-header dimmed-image">
@@ -53,6 +53,7 @@
       <div class="section-content-row underlined float-container">
         <div class="new left-side">
           {{ page.how_we_work_left|richtext }}
+        </div>
         <div class="new right-side">
           {{ page.how_we_work_right|richtext }}
         </div>
@@ -63,21 +64,21 @@
   <div class="section technologies-we-use">
     <div class="section-heading">
       <div>
-  	  <p>The Technologies We Use</p>
+  	  <p>{{page.technologies_we_use_title}}</p>
       </div>
     </div>
     <div class="section-content-row">
       <div class="section-content-row align-center panda-pic">
-        <img class="filer_image" alt="panda bulbblink" src="{% static 'images/header/panda_bulbblink.gif'%}" />
+        {% image page.technologies_we_use_image max-200x200%}
       </div>
       <div class="section-content-row align-center primary-focus-text technologies-text">
-  	  <div>Our primary focus is in the following technologies:</div>
+  	  <div>{{ page.technologies_we_use_center|richtext }}</div>
       </div>
       <div class="section-content-row align-center technologies-logos">
-  	  <img class="filer_image " alt="django.png" src="{% static 'images/header/django.png' %}" />
-        <img class="filer_image " alt="django.png" src="{% static 'images/header/django.png' %}" />
-        <img class="filer_image " alt="django.png" src="{% static 'images/header/django.png' %}" />
-
+        {% for relation in page.technologies_placement.all %}
+        {% image relation.technology.logo fill-200x200 as tech_logo %}
+        <img src="{{tech_logo.url}}" class="filter_image" />
+        {% endfor %}
       </div>
     </div>
   </div>

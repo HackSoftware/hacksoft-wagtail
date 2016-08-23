@@ -8,7 +8,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from wagtail.wagtailsnippets.models import register_snippet
 
 from modelcluster.fields import ParentalKey
@@ -30,6 +30,16 @@ class HomePage(Page):
     how_we_work_left = RichTextField()
     how_we_work_right = RichTextField()
 
+    technologies_we_use_title = models.CharField(max_length=255)
+    technologies_we_use_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    technologies_we_use_center = RichTextField()
+
     content_panels = Page.content_panels + [
         FieldPanel('intro_h1'),
         FieldPanel('intro_h2'),
@@ -40,8 +50,12 @@ class HomePage(Page):
         FieldPanel('how_we_work_left'),
         FieldPanel('how_we_work_right'),
 
+        FieldPanel('technologies_we_use_title'),
+        ImageChooserPanel('technologies_we_use_image'),
+        FieldPanel('technologies_we_use_center'),
+        InlinePanel('technologies_placement', label="Technologies"),
 
-        InlinePanel('teammate_placement', label="TeamMate"),
+        InlinePanel('teammate_placement', label="Teammates"),
 
     ]
 
@@ -49,7 +63,6 @@ class HomePage(Page):
 class HowWeWorkPage(Page):
     # STREAM FIELD
     pass
-
 
 
 class TechnologiesWeUsePage(Page):
@@ -98,3 +111,37 @@ class TeammatePlacement(Orderable, models.Model):
 
     def __str__(self):
         return "{} -> {}".format(self.page.title, self.teammate.name)
+
+
+@register_snippet
+class Technology(models.Model):
+    name = models.CharField(max_length=255)
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    description = RichTextField()
+
+    panels = [
+        FieldPanel('name'),
+        ImageChooserPanel('logo'),
+        FieldPanel('description')
+    ]
+
+    def __str__(self):
+        return self.name
+
+
+class TechnologiesPlacement(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='technologies_placement')
+    technology = models.ForeignKey('website.Technology', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('technology'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.technology.name)
