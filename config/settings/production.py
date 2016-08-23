@@ -16,10 +16,6 @@ from .common import *  # noqa
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 
-# This ensures that Django will be able to detect a secure connection
-# properly on Heroku.
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 # SECURITY CONFIGURATION
 # ------------------------------------------------------------------------------
 # See https://docs.djangoproject.com/en/1.9/ref/middleware/#module-django.middleware.security
@@ -35,9 +31,6 @@ SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT', default=True)
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
-X_FRAME_OPTIONS = 'DENY'
 
 # SITE CONFIGURATION
 # ------------------------------------------------------------------------------
