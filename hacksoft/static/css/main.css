@@ -52,7 +52,9 @@ a {
     cursor: pointer; }
 
 .technologies-we-use-heading .dimmed-image {
-  height: 50vh; }
+  height: 50vh;
+  background-size: cover;
+  background-position-y: 25%; }
 .technologies-we-use-heading .scroll-down-arrow {
   bottom: 54vh; }
 .technologies-we-use-heading .heading {
@@ -518,7 +520,8 @@ a {
     color: #666;
     max-width: 90vw; }
   .content-wrapper h1.top-heading {
-    padding-top: 45px; }
+    padding-top: 45px;
+    margin-bottom: 0px; }
   .content-wrapper .doodle img {
     max-width: 250px;
     max-height: 250px; }

@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
 from django.db import models
 
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
@@ -80,8 +81,47 @@ class HomePage(Page):
 
 
 class HowWeWorkPage(Page):
-    # STREAM FIELD
-    pass
+    header_text = models.CharField(max_length=255)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    how_we_work_intro = RichTextField()
+    what_we_do_title = models.CharField(max_length=255)
+    what_we_do_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    what_we_do_content = StreamField([
+        ('what_we_do_content', blocks.StreamBlock([
+            ('title', blocks.RichTextBlock()),
+            ('description', blocks.RichTextBlock())
+        ]))
+    ])
+
+    the_process_title = RichTextField()
+    the_process_content = StreamField([
+        ('process_content', blocks.StreamBlock([
+            ('title', blocks.RichTextBlock()),
+            ('description', blocks.RichTextBlock())
+        ]))
+    ])
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image'),
+        FieldPanel('how_we_work_intro'),
+        FieldPanel('what_we_do_title'),
+        ImageChooserPanel('what_we_do_image'),
+        StreamFieldPanel('what_we_do_content'),
+        FieldPanel('the_process_title'),
+        StreamFieldPanel('the_process_content'),
+    ]
 
 
 class TechnologiesWeUsePage(Page):

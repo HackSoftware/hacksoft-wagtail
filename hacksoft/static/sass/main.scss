@@ -73,6 +73,8 @@ a {
 .technologies-we-use-heading{
     .dimmed-image{
         height: 50vh;
+        background-size: cover;
+        background-position-y: 25%;
     }
     .scroll-down-arrow{
         bottom: 54vh;
@@ -715,6 +717,7 @@ a {
 
     h1.top-heading{
         padding-top: 45px;
+        margin-bottom: 0px;
     }
 
     .doodle {
