@@ -125,7 +125,21 @@ class HowWeWorkPage(Page):
 
 
 class TechnologiesWeUsePage(Page):
-    pass
+    header_text = models.CharField(max_length=255)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    technologies_intro = RichTextField()
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image'),
+        FieldPanel('technologies_intro'),
+        InlinePanel('technologies_placement', label="Technologies"),
+    ]
 
 
 class OurTeamPage(Page):
@@ -196,6 +210,18 @@ class Technology(models.Model):
 
 class TechnologiesPlacement(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='technologies_placement')
+    technology = models.ForeignKey('website.Technology', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('technology'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.technology.name)
+
+
+class TechnologiesPagePlacement(Orderable, models.Model):
+    page = ParentalKey('website.TechnologiesWeUsePage', related_name='technologies_placement')
     technology = models.ForeignKey('website.Technology', related_name='+')
 
     panels = [
