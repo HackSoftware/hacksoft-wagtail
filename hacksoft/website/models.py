@@ -40,6 +40,19 @@ class HomePage(Page):
     )
     technologies_we_use_center = RichTextField()
 
+    our_team_title = models.CharField(max_length=255)
+    our_team_center = RichTextField()
+
+    portfolio_title = models.CharField(max_length=255)
+    portfolio_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    portfolio_center = RichTextField()
+
     content_panels = Page.content_panels + [
         FieldPanel('intro_h1'),
         FieldPanel('intro_h2'),
@@ -55,8 +68,14 @@ class HomePage(Page):
         FieldPanel('technologies_we_use_center'),
         InlinePanel('technologies_placement', label="Technologies"),
 
+        FieldPanel('our_team_title'),
+        FieldPanel('our_team_center'),
         InlinePanel('teammate_placement', label="Teammates"),
 
+        FieldPanel('portfolio_title'),
+        ImageChooserPanel('portfolio_image'),
+        FieldPanel('portfolio_center'),
+        InlinePanel('projects_placement', label="Projects")
     ]
 
 
@@ -145,3 +164,45 @@ class TechnologiesPlacement(Orderable, models.Model):
 
     def __str__(self):
         return "{} -> {}".format(self.page.title, self.technology.name)
+
+
+@register_snippet
+class Project(models.Model):
+    name = models.CharField(max_length=255)
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    description = RichTextField()
+
+    panels = [
+        FieldPanel('name'),
+        ImageChooserPanel('background_image'),
+        ImageChooserPanel('logo'),
+        FieldPanel('description')
+    ]
+
+    def __str__(self):
+        return self.name
+
+
+class ProjectsPlacement(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='projects_placement')
+    project = models.ForeignKey('website.Project', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('project'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.project.name)

@@ -2,27 +2,27 @@
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-  <div class="new homepage-header dimmed-image">
-    <div class="new header-image-background dimmed-image-background">
-      <div class="new overlay"></div>
+<div class="new homepage-header dimmed-image">
+  <div class="new header-image-background dimmed-image-background">
+    <div class="new overlay"></div>
+  </div>
+  <div class="new header-image-frame">
+    <div class="new header-main-text">
+      <h1>HackSoft is your trusted provider of high quality software</h1>
     </div>
-    <div class="new header-image-frame">
-      <div class="new header-main-text">
-        <h1>HackSoft is your trusted provider of high quality software</h1>
+    <div class="new header-info-text">
+      <div class="new info-text">
+        <p>We are not just outsourcers, but partners with our clients</p>
       </div>
-      <div class="new header-info-text">
-        <div class="new info-text">
-          <p>We are not just outsourcers, but partners with our clients</p>
-        </div>
-      </div>
-    </div>
-    <div class="new scroll-down-arrow scroll-down-landpage">
-      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
     </div>
   </div>
+  <div class="new scroll-down-arrow scroll-down-landpage">
+    <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+  </div>
+</div>
 
-  <div class="new header-overlay-background">
-  </div>
+<div class="new header-overlay-background">
+</div>
 
 
 
@@ -46,15 +46,15 @@
     </div>
 
     <div class="section-content-row align-center our-team-text">
-      <div>{{ page.how_we_work_center|richtext }}</div>
+      {{ page.how_we_work_center|richtext }}
     </div>
 
     <div class="section-content">
-      <div class="section-content-row underlined float-container">
-        <div class="new left-side">
+      <div class="section-content-row responsive-underlined float-container">
+        <div class="left-side">
           {{ page.how_we_work_left|richtext }}
         </div>
-        <div class="new right-side">
+        <div class="right-side">
           {{ page.how_we_work_right|richtext }}
         </div>
       </div>
@@ -64,7 +64,7 @@
   <div class="section technologies-we-use">
     <div class="section-heading">
       <div>
-  	  <p>{{page.technologies_we_use_title}}</p>
+  	<p>{{ page.technologies_we_use_title }}</p>
       </div>
     </div>
     <div class="section-content-row">
@@ -72,7 +72,7 @@
         {% image page.technologies_we_use_image max-200x200%}
       </div>
       <div class="section-content-row align-center primary-focus-text technologies-text">
-  	  <div>{{ page.technologies_we_use_center|richtext }}</div>
+        {{ page.technologies_we_use_center|richtext }}
       </div>
       <div class="section-content-row align-center technologies-logos">
         {% for relation in page.technologies_placement.all %}
@@ -86,18 +86,18 @@
   <div class="section our-team">
     <div class="section-heading">
       <div>
-        <p>Our Team</p>
+        <p>{{ page.our_team_title }}</p>
       </div>
     </div>
     <div class="section-content">
       <div class="section-content-row align-center our-team-text">
-        <p>The core team consists of senior developers both in backend and frontend land.</p>
+        {{ page.our_team_center|richtext }}
       </div>
       <div class="section-content-row align-center our-team-images float-container">
 
         {% for relation in page.teammate_placement.all %}
         <div class="team-member">
-          {% image relation.teammate.initial_photo max-170x170 class="filer_image" %}
+          {% image relation.teammate.initial_photo fill-170x170 class="filer_image" %}
           <div class="name">
             <p>{{ relation.teammate.name }}</p>
           </div>
@@ -108,49 +108,35 @@
     </div>
   </div>
 
-  <div class="section section">
+  <div class="section">
     <div class="section-heading">
       <div>
-  	  <p>Portfolio</p>
+  	<p>{{ page.portfolio_title }}</p>
       </div>
     </div>
     <div class="section-content">
       <div class="section-content-row align-center">
-  	  <img class="filer_image " alt="panda_balancing.gif" src="{% static 'images/header/panda_balancing.gif' %}" />
+        {% image page.portfolio_image max-200x200 class="filter_image" %}
       </div>
       <div class="section-content-row align-center our-team-text">
-  	  <div>
-          The core team consists of senior developers
-          both in backend and frontend land.
+  	<div>
+          {{ page.portfolio_center|richtext }}
         </div>
       </div>
-      <div class="section-content-row underlined float-container  portfolio-landing">
-  	  <img class="filer_image " alt="leuropeo_picture.png" src="{% static 'images/header/leuropeo_picture.png' %}" />
-        <div class="new portfolio-overlay">
-        </div>
+
+      {% for relation in page.projects_placement.all %}
+        {% image relation.project.background_image fill-1090x301 as bg_image %}
+      <div style="background-image: url({{bg_image.url}})" class="section-content-row  float-container  portfolio-landing">
+        <div class="new portfolio-overlay"></div>
         <div class="larger-part">
-  	    <div>
-            <h3>L'Europeo</h3>
-            <p>Description for Leuropeo.....Description for Leuropeo</p>
-            <p>.....Description for Leuropeo.....</p></div>
+          {{ relation.project.description|richtext }}
         </div>
         <div class="smaller-part">
-  	    <img class="filer_image " alt="L&#39;Europeo.png" src="{% static 'images/header/leuropeo.png' %}" />
+          {% image relation.project.logo height-200 as project_logo %}
+          <img src="{{ project_logo.url }}" class="filter_image" />
         </div>
       </div>
-      <div class="section-content-row underlined float-container  portfolio-landing">
-  	  <img class="filer_image " alt="co2cards_picture.png" src="{% static 'images/header/co2cards_picture.png' %}" />
-        <div class="new portfolio-overlay">
-        </div>
-        <div class="smaller-part">
-  	    <img class="filer_image " alt="co2cards.png" src="{% static 'images/header/co2cards.png' %}" />
-        </div>
-        <div class="larger-part">
-  	    <div>
-            <h3>CO2Cards</h3>
-            Description for CO2Cards.....Description for CO2Cards.....Description for CO2Cards.....</div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
