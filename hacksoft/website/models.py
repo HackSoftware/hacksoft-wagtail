@@ -143,12 +143,25 @@ class TechnologiesWeUsePage(Page):
 
 
 class OurTeamPage(Page):
-    pass
+    header_text = models.CharField(max_length=255)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image'),
+        InlinePanel('teammate_placement', label="Teammates"),
+    ]
 
 
 @register_snippet
 class Teammate(models.Model):
     name = models.CharField(max_length=255)
+    description = RichTextField()
     initial_photo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -168,22 +181,11 @@ class Teammate(models.Model):
         FieldPanel('name'),
         ImageChooserPanel('initial_photo'),
         ImageChooserPanel('secondary_photo'),
+        FieldPanel('description')
     ]
 
     def __str__(self):
         return self.name
-
-
-class TeammatePlacement(Orderable, models.Model):
-    page = ParentalKey('website.HomePage', related_name='teammate_placement')
-    teammate = models.ForeignKey('website.Teammate', related_name='+')
-
-    panels = [
-        SnippetChooserPanel('teammate'),
-    ]
-
-    def __str__(self):
-        return "{} -> {}".format(self.page.title, self.teammate.name)
 
 
 @register_snippet
@@ -206,6 +208,30 @@ class Technology(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class TeammatePlacement(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='teammate_placement')
+    teammate = models.ForeignKey('website.Teammate', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('teammate'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.teammate.name)
+
+
+class TeammatePagePlacement(Orderable, models.Model):
+    page = ParentalKey('website.OurTeamPage', related_name='teammate_placement')
+    teammate = models.ForeignKey('website.Teammate', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('teammate'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.teammate.name)
 
 
 class TechnologiesPlacement(Orderable, models.Model):
