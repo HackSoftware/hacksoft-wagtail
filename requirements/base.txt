@@ -52,3 +52,6 @@ redis>=2.10.0
 
 # Wagtati
 wagtail==1.6
+
+# Wand
+Wand==0.4.3
