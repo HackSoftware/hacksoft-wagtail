@@ -45,7 +45,7 @@ a {
         background: url(/static/images/home-page-header.jpg) center no-repeat;
         background-size: cover;        
 
-        object {
+        #ytplayer {
             visibility: visible;
             position: absolute;
             width: 100vw;
@@ -66,7 +66,10 @@ a {
         position:absolute;
         bottom:4vh;
         width:100%;
-        cursor:pointer;
+        img {
+            cursor: pointer; 
+        }
+
     }
 }
 
@@ -75,6 +78,7 @@ a {
         height: 50vh;
         background-size: cover;
         background-position-y: 25%;
+        background-position-x: 50%
     }
     .scroll-down-arrow{
         bottom: 54vh;
@@ -105,7 +109,6 @@ a {
 }
 .universal-header {
     .header-image-background {
-        z-index:-2;
         position:fixed;
         .overlay {
             z-index:-1;
@@ -120,13 +123,12 @@ a {
         top:50%;
         margin-left:-33vw;
         margin-top:-45vh;
-        z-index:-1;
 
         .header-main-text {
             text-align: center;
             color: #eee;
             margin-top: 20vh;
-            font-size: 25px;
+            font-size: 4vmin;
             @media screen and (max-width: 450px){
                 font-size: 16px;
             }
@@ -367,10 +369,16 @@ a {
     margin-bottom: 50px !important;
 }
 
+.page-content {
+    background-color: white;
+    position: relative;
+}
+
 .content-wrapper {
     max-width:1100px;
     margin:auto;
     position:relative;
+    padding-bottom: 50px;
     @media screen and (max-width: 1100px) {
         max-width: 90vw;
         margin-left: 5vw;
@@ -567,10 +575,9 @@ a {
                         height: 270px;
                         max-width: 90vw;
                         img{
-                            max-width: 80%;
+                            max-height: 100%;
                             position: absolute;
                             left: 0;
-                            height: 255px;
                             &:hover{
                                 opacity: 0;
                                 transition: opacity .4s ease-out;
@@ -744,8 +751,8 @@ a {
 .our-team-images {
     .team-member {
         width:220px;
-        float:left;
         margin-bottom: 20px;
+        display: inline-block;
         @media screen and (max-width: 425px) {
             width: 50%;
         }
@@ -770,6 +777,9 @@ a {
 .footer {
     min-height: 270px;
     background-color: #505050;
+    position: relative;
+    overflow: hidden;
+    
     .book-a-meeting {
         padding-top:30px;
         text-align: center;
@@ -790,6 +800,7 @@ a {
         width: 100%;
         margin: 20px 0;
         position: relative;
+        
         .text-box{
             color: #fff;
             width: 30%;
