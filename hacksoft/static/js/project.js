@@ -29,7 +29,7 @@ $('.homepage-header').find('.scroll-down-landpage img').click(function () {
 });
 
 $('.static-header').find('.scroll-down-arrow img').click(function () {
-  var header = $('.header-image-background').height();
+  var header = $('.static-header').height();
   $('html, body').animate({
     scrollTop: header
   }, 900);
