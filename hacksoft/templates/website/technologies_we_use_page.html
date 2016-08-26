@@ -1,217 +1,39 @@
-{% load staticfiles i18n %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}HackSoft{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-    {% block css %}
-    <!-- Latest compiled and minified Bootstrap 4 Alpha 3 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
-    <!-- Your stuff: Third-party CSS libraries go here -->
-
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    <link href="{% static 'css/icons.css' %}" rel="stylesheet">
-
-    {% endblock %}
-
-  </head>
-  <body>
-    <div class="website-background"></div>
-    <div class="new technologies-we-use-heading">
-      <div class="new static-header dimmed-image">
-        <div class="new heading">
-    	  <p>THE TECHNOLOGIES WE USE</p>
-        </div>
-        <div class="new header-image-background dimmed-image-background">
-          <div class="new overlay">
-          </div>
-        </div>
-        <div class="new scroll-down-arrow">
-    	  <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
-        </div>
-      </div>
-      <div class="new header-overlay-background">
-    	<img class="filer_image " alt="" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG" />
-      </div>
+{% extends 'base.html' %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% block content %}
+<div class="new technologies-we-use-heading">
+  {% image page.header_image max-1366x1366 as header_image %}
+  <div class="new static-header dimmed-image" style="background-image: url({{header_image.url}})">
+    <div class="new heading">
+      <p>{{page.header_text|richtext}}</p>
     </div>
-    <div class="page-wrapper">
-      <div class="header">
-        <div class="header-container float-container">
-          <div class="logo">
-            <a href="/">
-              <img src="{% static 'images/logo.png' %}" alt="HackSoft logo">
-            </a>
-          </div>
-          <nav class="nav-menu float-container">
-            <label for="drop" class="toggle"><i class="fa fa-bars" aria-hidden="true"></i>
-            </label>
-            <input type="checkbox" id="drop" />
-            <ul class="menu-main menu">
-              <li class="child sibling">
-	        <a href="/">Home</a>
-              </li>
-              <li class="child sibling">
-	        <a href="/how-we-work/">How we work</a>
-              </li>
-              <li class="child selected">
-	        <a href="/technologies-we-use/">Technologies we use</a>
-              </li>
-              <li class="child sibling">
-	        <a href="/our-team/">Our Team</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="content-wrapper" >
-        <section class="section technologies">
-          <div class="section-content">
-            <div class="new section-content-row underlined">
-    	      <h1>HackSoft builds powerful and scalable software solutions, which stimulate the business growth.</h1>
-            </div>
-            <div class="new technologies-content">
-              <div class="new image-box">
-    	        <img class="filer_image " alt="" src="{% static 'images/header/django.png' %}" />
-              </div>
-              <div class="new text-box">
-                <div class="new heading">
-    	          <h4><strong>PYTHON</strong></h4>
-                </div>
-    	        <p>We are expert Python developers &amp; love that language.</p>
-              </div>
-            </div>
-            <div class="new technologies-content">
-              <div class="new image-box">
-    	        <img class="filer_image " alt="" src="{% static 'images/header/django.png' %}" />
-              </div>
-              <div class="new text-box">
-                <div class="new heading">
-    	          <h4><strong>JAVASCRIPT</strong></h4>
-                </div>
-    	        <p>Both frontend and backend JavaScript, we try to be the best with that language and keep an eye on the new technologies and libraries that are born every day. We also have good background in WebGl and JavaScript visualization libraries.</p>
-              </div>
-            </div>
-            <div class="new technologies-content">
-              <div class="new image-box">
-    	        <img class="filer_image " alt="" src="{% static 'images/header/django.png' %}" />
-              </div>
-              <div class="new text-box">
-                <div class="new heading">
-    	          <h4><strong>REACT JS</strong></h4>
-                </div>
-    	        <p>We offer native multi platform development and migration/integratuib of ixciting services towards the world leading mobile platform</p>
-              </div>
-            </div>
-            <div class="new technologies-content">
-              <div class="new image-box">
-    	        <img class="filer_image " alt="" src="{% static 'images/header/django.png' %}" />
-              </div>
-              <div class="new text-box">
-                <div class="new heading">
-    	          <h4><strong>REACT JS</strong></h4>
-                </div>
-    	        <p>We offer native multi platform development and migration/integratuib of ixciting services towards the world leading mobile platform</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="footer background">
-        <div class="section book-a-meeting">
-          <a class="book-a-meeting-button" href="#popup1">Book a meeting</a>
-        </div>
-        <div class="footer-text">
-          <div class="text-box">
-            Some text here............
-          </div>
-        </div>
-        <div class="social-buttons">
-          <a href="#" class="social-button facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a href="#" class="social-button github">
-            <i class="fa fa-github"></i>
-          </a>
-          <a href="#" class="social-button twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="#" class="social-button linkedin">
-            <i class="fa fa-linkedin"></i>
-          </a>
-          
-        </div>
-      </div>
+    <div class="new scroll-down-arrow">
+      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
     </div>
-    
-    <div id="popup1" class="popup-overlay">
-      <div class="popup">
-        <h2>Book a meeting</h2>
-        <a class="close">&times;</a>
-        <div class="content">
-          <form class="book-a-meeting-popup" action="/hacksoft/book-a-meeting/" method='post'>
-            <input type='hidden' name='csrfmiddlewaretoken' value='5IogseILlH56pJ5pr2ZstVmORWlfWtuJ' />
-            <img src="/static//images/panda_doodle_popup.png" alt="Popup panda image">
-            <div class="popup-input">
-              <input id="id_subject" maxlength="50" name="subject" type="text" placeholder="Subject" />
-            </div>
-            <div class="popup-input">
-              <input id="id_company" maxlength="50" name="company" type="text" placeholder="Company" />
-            </div>
-            <div class="popup-input">
-              <input id="id_phone_number" name="phone_number" type="number" placeholder="Phone number" />
-            </div>
-            <div class="popup-input">
-              <input id="id_email" maxlength="254" name="email" type="email" placeholder="Email" />
-            </div>
-            <div class="message popup-input">
-              <textarea cols="40" id="id_message" name="message" rows="10"  placeholder="Message"></textarea>
-            </div>
+  </div>
+</div>
+<div class="content-wrapper" >
+  <section class="section technologies">
+    <div class="section-content">
+      <div class="new section-content-row underlined">
+    	<h1>{{ page.technologies_intro|richtext }}</h1>
+      </div>
 
-            <div class="popup-footer">
-              <input class="send-button" type="submit" value="SEND">
-            </div>
-          </form>
+      {% for relation in page.technologies_placement.all %}
+      <div class="new technologies-content">
+        <div class="new image-box">
+          {% image relation.technology.logo max-200x200 as tech_logo %}
+    	  <img class="filer_image " alt="" src="{{ tech_logo.url }}" />
+        </div>
+        <div class="new text-box">
+          <div class="new heading">
+    	    <h4><strong>{{ relation.technology.name }}</strong></h4>
+          </div>
+          {{ relation.technology.description|richtext }}
         </div>
       </div>
+      {% endfor %}
     </div>
-    <div id="success" class="popup-overlay">
-      <div class="popup success-popup">
-        <h2>Success</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-          <h3>You successfully send your message to HackSoft team.</h3>
-        </div>
-      </div>
-    </div>
-    
-    {% block javascript %}
-    <!-- Required by Bootstrap v4 Alpha 3 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
-
-    <!-- Your stuff: Third-party javascript libraries go here -->
-
-    <!-- place project specific Javascript in this file -->
-
-    <script src="{% static 'js/project.js' %}"></script>
-
-
-    {% endblock javascript %}
-  </body>
-</html>
+  </section>
+</div>
+{% endblock content %}

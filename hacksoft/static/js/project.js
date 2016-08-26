@@ -1,13 +1,6 @@
 /* Project specific Javascript goes here. */
 
 // here is the header picture, we have uploaded from django-cms
-var headerImage = $('.header-overlay-background img').first()
-
-if (headerImage.length !== 0) {
-  headerImage.hide();
-  // attach the picture url to the header background (uses the same css) 
-  var backgroundImage = $('.dimmed-image-background').css('background-image', "url(" + headerImage.attr('src') + ")")
-}
 
 var url = window.location.href, idx = url.indexOf("#")
 var hash = idx != -1 ? url.substring(idx + 1) : "";
@@ -36,7 +29,7 @@ $('.homepage-header').find('.scroll-down-landpage img').click(function () {
 });
 
 $('.static-header').find('.scroll-down-arrow img').click(function () {
-  var header = $('.header-image-background').height();
+  var header = $('.static-header').height();
   $('html, body').animate({
     scrollTop: header
   }, 900);

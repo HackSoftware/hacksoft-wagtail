@@ -1,224 +1,55 @@
-{% load staticfiles i18n %}
-<!doctype html>
-<html>
-  <head>
-    <title>{% block title %}HackSoft How we work{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    {% block css %}
-    <!-- Latest compiled and minified Bootstrap 4 Alpha 3 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-    <!-- Your stuff: Third-party CSS libraries go here -->
-
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    <link href="{% static 'css/icons.css' %}" rel="stylesheet">
-
-    {% endblock %}
-    
-  </head>
-  <body>
-    <div class="website-background"></div>
-    <div class="new technologies-we-use-heading">
-      <div class="new static-header dimmed-image">
-        <div class="new heading">
-    	  <p>HOW WE WORK</p>
-        </div>
-        <div class="new header-image-background dimmed-image-background">
-          <div class="new overlay">
-          </div>
-        </div>
-        <div class="new scroll-down-arrow">
-    	  <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
-        </div>
-      </div>
-      <div class="new header-overlay-background">
-    	<img class="filer_image " alt="" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG" />
+{% extends 'base.html' %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% block content %}
+<div class="new technologies-we-use-heading">
+  {% image page.header_image max-1366x1366 as header_image %}
+  <div class="new static-header dimmed-image" style="background-image: url({{header_image.url}})">
+    <div class="new heading">
+      <p>{{page.header_text}}</p>
+    </div>
+    <div class="new scroll-down-arrow">
+      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+    </div>
+  </div>
+</div>
+<div class="content-wrapper" >
+  <div class="section how-we-work">
+    <div class="section-content">
+      <div class="section-content-row">
+    	<h1 class="top-heading">{{ page.how_we_work_intro|richtext }}</h1>
       </div>
     </div>
-    <div class="page-wrapper">
-      <div class="header">
-        <div class="header-container float-container">
-          <div class="logo">
-            <a href="/">
-              <img src="{% static  'images/logo.png'%}" alt="HackSoft logo">
-            </a>
-          </div>
-          <nav class="nav-menu float-container">
-            <label for="drop" class="toggle"><i class="fa fa-bars" aria-hidden="true"></i>
-            </label>
-            <input type="checkbox" id="drop" />
-            <ul class="menu-main menu">
-              <li class="child sibling">
-	        <a href="/">Home</a>
-              </li>
-              <li class="child selected">
-	        <a href="/how-we-work/">How we work</a>
-              </li>
-              <li class="child sibling">
-	        <a href="/technologies-we-use/">Technologies we use</a>
-              </li>
-              <li class="child sibling">
-	        <a href="/our-team/">Our Team</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="content-wrapper" >
-        <div class="section how-we-work">
-          <div class="section-content">
-            <div class="section-content-row underlined">
-    	      <h1 class="top-heading">We help our clients to create and provide better added value services</h1>
-            </div>
-          </div>
-        </div>
-        <div class="section how-we-work">
-          <div class="section-heading">
-    	    <div>What we do</div>
-          </div>
-          <div class="section-content pb100">
-            <div class="doodle align-center">
-
-    	      <img class="filer_image" alt="panda_process.gif" src="{% static  'images/panda_process.gif' %}" />
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Projects from scratch</b></p>
-    	      <p style="text-align: center;">We provide an end-to-end solutions for your business.<br>
-                To achieve best results, to ensure maximum flexibility for your project and to deliver new features for You we use the Scrum software development methodology which gives us the opportunity to focus on 10-day sprints and keep your project agile.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Start-up’s kit</b></p>
-    	      <p style="text-align: center;">Most of the time Start-ups are on a tight schedule and they experience the need outsourers to create prototypes as fast as possible.<br>
-                We recognize that need and keep a close communication with our clients and make daily priority updates of the project’s progress.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Exciting existing projects</b></p>
-    	      <p style="text-align: center;">Your software needs new features or bug fixing? We are here to help!<br>
-                We provide an expert advisory, support and enhacing services for your existing projects.<br>
-                We rely on the Kanban Method to ensure the just-in-time delivery of the results you persue.</p>
-            </div>
-          </div>
-        </div>
-        <div class="section how-we-work">
-          <div class="section-heading">
-    	    <div>The Process</div>
-          </div>
-          <div class="section-content pb100">
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Book a meeting</b></p>
-    	      <p style="text-align: center;">A member of your company fills up our form with information about your company and your project.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Discussion</b></p>
-
-    	      <p style="text-align: center;">We meet to discuss your company’s needs (in person or via skype).<br>
-                We consult you on your project and provide some advices and suggestions on why some things may work and why others may not work.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Planning</b></p>
-    	      <p style="text-align: center;">We develop a strategy and plan for your project.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Development</b></p>
-    	      <p style="text-align: center;">Our developers follow the plan and ensure their work fits the needs and goals of your project.<br>
-                The thechonologies we use for the development process you can find here.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Test and Fix</b></p>
-    	      <p style="text-align: center;">The phase where we test the product and fix the bugs to ensure you receive the best results.</p>
-            </div>
-            <div class="section-content-row text">
-    	      <p style="text-align: center;"><b>Deployment</b></p>
-    	      <p style="text-align: center;">When we receive the final approval from you we deploy our work and bring the project online.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer background">
-        <div class="section book-a-meeting">
-          <a class="book-a-meeting-button" href="#popup1">Book a meeting</a>
-        </div>
-        <div class="footer-text">
-          <div class="text-box">
-            Some text here............
-          </div>
-        </div>
-        <div class="social-buttons">
-          <a href="#" class="social-button facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a href="#" class="social-button github">
-            <i class="fa fa-github"></i>
-          </a>
-          <a href="#" class="social-button twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="#" class="social-button linkedin">
-            <i class="fa fa-linkedin"></i>
-          </a>
-          
-        </div>
-      </div>
+  </div>
+  <div class="section how-we-work">
+    <div class="section-heading">
+      <div>{{page.what_we_do_title }}</div>
     </div>
     
-    <div id="popup1" class="popup-overlay">
-      <div class="popup">
-        <h2>Book a meeting</h2>
-        <a class="close">&times;</a>
-        <div class="content">
-          <form class="book-a-meeting-popup" action="/hacksoft/book-a-meeting/" method='post'>
-            <input type='hidden' name='csrfmiddlewaretoken' value='5IogseILlH56pJ5pr2ZstVmORWlfWtuJ' />
-            <img src="/static//images/panda_doodle_popup.png" alt="Popup panda image">
-            <div class="popup-input">
-              <input id="id_subject" maxlength="50" name="subject" type="text" placeholder="Subject" />
-            </div>
-            <div class="popup-input">
-              <input id="id_company" maxlength="50" name="company" type="text" placeholder="Company" />
-            </div>
-            <div class="popup-input">
-              <input id="id_phone_number" name="phone_number" type="number" placeholder="Phone number" />
-            </div>
-            <div class="popup-input">
-              <input id="id_email" maxlength="254" name="email" type="email" placeholder="Email" />
-            </div>
-            <div class="message popup-input">
-              <textarea cols="40" id="id_message" name="message" rows="10"  placeholder="Message"></textarea>
-            </div>
-
-            <div class="popup-footer">
-              <input class="send-button" type="submit" value="SEND">
-            </div>
-          </form>
-        </div>
+    <div class="section-content">
+      <div class="doodle align-center">
+        {% image page.what_we_do_image max-250x250 as doodle_image %}
+    	<img class="filer_image mb50" alt="panda_process.gif" src="{{doodle_image.url}}" />
       </div>
-    </div>
-    <div id="success" class="popup-overlay">
-      <div class="popup success-popup">
-        <h2>Success</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-          <h3>You successfully send your message to HackSoft team.</h3>
-        </div>
+      
+      {% for block in page.what_we_do_content %}
+      <div class="section-content-row text align-center">
+        {% include_block block %}
       </div>
+      {% endfor %}
     </div>
-    
-    {% block javascript %}
-    <!-- Required by Bootstrap v4 Alpha 3 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+  </div>
 
-    <!-- Your stuff: Third-party javascript libraries go here -->
-
-    <!-- place project specific Javascript in this file -->
-
-    <script src="{% static 'js/project.js' %}"></script>
-
-
-    {% endblock javascript %}
-  </body>
-</html>
+  <div class="section how-we-work">
+    <div class="section-heading">
+      <div>{{page.the_process_title|richtext}}</div>
+    </div>
+    <div class="section-content">
+      {% for block in page.the_process_content %}
+      <div class="section-content-row text align-center">
+        {% include_block block %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
