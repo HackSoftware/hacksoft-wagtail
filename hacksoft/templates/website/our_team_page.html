@@ -15,37 +15,38 @@
 
 <div class="content-wrapper" >
   <div class="section team-lead-text">
-    <div class="section-content pb100">
-
-      {% for relation in page.teammate_placement.all %}
-      {% if forloop.counter|divisibleby:2 %}
-      <div class="section-content-row underlined float-container">
-        <div class="smaller-part align-right mb50 member-picture right-aligned member-right">
-          {% image relation.teammate.initial_photo fill-500x500 as initial_photo %}
-    	  <img class="filer_image " alt="" src="{{ initial_photo.url }}" />
-          {% image relation.teammate.secondary_photo fill-500x500 as secondary_photo %}
-    	  <img class="filer_image " alt="" src="{{ secondary_photo.url }}" />
+    <div class="section-content">
+      <div class="pt70">
+        {% for relation in page.teammate_placement.all %}
+        {% if forloop.counter|divisibleby:2 %}
+        <div class="section-content-row underlined float-container">
+          <div class="smaller-part align-right mb50 member-picture right-aligned member-right">
+            {% image relation.teammate.initial_photo fill-500x500 as initial_photo %}
+    	    <img class="filer_image " alt="" src="{{ initial_photo.url }}" />
+            {% image relation.teammate.secondary_photo fill-500x500 as secondary_photo %}
+    	    <img class="filer_image " alt="" src="{{ secondary_photo.url }}" />
+          </div>
+          <div class="larger-part text member-left">
+            <b>{{ relation.teammate.name }}</b>
+            {{ relation.teammate.description|richtext }}
+          </div>
         </div>
-        <div class="larger_part text member-left">
-          <b>{{ relation.teammate.name }}</b>
-          {{ relation.teammate.description|richtext }}
+        {% else %}
+        <div class="section-content-row underlined float-container">
+          <div class="smaller-part align-left mb50  member-picture member-left">
+            {% image relation.teammate.initial_photo fill-500x500 as initial_photo %}
+    	    <img class="filer_image " alt="" src="{{ initial_photo.url }}" />
+            {% image relation.teammate.secondary_photo fill-500x500 as secondary_photo %}
+    	    <img class="filer_image " alt="" src="{{ secondary_photo.url }}" />
+          </div>
+          <div class="larger-part text member-right">
+    	    <b>{{ relation.teammate.name }}</b>
+            {{ relation.teammate.description|richtext }}
+          </div>
         </div>
+        {% endif %}
+        {% endfor %}
       </div>
-      {% else %}
-      <div class="section-content-row underlined float-container pt70">
-        <div class="smaller-part align-left mb50  member-picture member-left">
-          {% image relation.teammate.initial_photo fill-500x500 as initial_photo %}
-    	  <img class="filer_image " alt="" src="{{ initial_photo.url }}" />
-          {% image relation.teammate.secondary_photo fill-500x500 as secondary_photo %}
-    	  <img class="filer_image " alt="" src="{{ secondary_photo.url }}" />
-        </div>
-        <div class="new text member-right">
-    	  <b>{{ relation.teammate.name }}</b>
-          {{ relation.teammate.description|richtext }}
-        </div>
-      </div>
-      {% endif %}
-      {% endfor %}
     </div>
   </div>
 </div>
