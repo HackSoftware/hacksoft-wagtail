@@ -509,6 +509,7 @@ a {
                         }
                         @media screen and (max-width: 550px){
                             font-size: 12px;
+                            
                         }
                     }
                 }
@@ -517,6 +518,16 @@ a {
                     width:55%;
                     float:left;
                     margin-bottom:20px;
+                    @media screen and (max-width: 550px) {
+                        &.member-right {
+                            float: none;
+                            width: 100%;
+                        }
+                        &.member-left {
+                            float: none;
+                            width: 100%;
+                        }
+                    }
                     
                     &.member-right{
                         float: right;
@@ -574,6 +585,18 @@ a {
                         position: relative;
                         height: 270px;
                         max-width: 90vw;
+
+                        @media screen and (max-width: 550px) {
+                            float: none;
+                            width: 100%;
+                            height: auto;
+                            &:after {
+                                content: "";
+                                width: 100%;
+                                display: block;
+                                padding-top: 100%;
+                            }
+                        }
                         img{
                             max-height: 100%;
                             position: absolute;
@@ -596,7 +619,6 @@ a {
                         &.member-picture{
                             img{
                                 max-width: 100%;
-                                height: 300px;
                                 width: auto;
                                 left: 0;
                             }
@@ -654,21 +676,22 @@ a {
             }
             .technologies-content{
                 display: inline-block;
-                min-width: 33%;
+                width: 49%;
                 height: 300px;
-                
+                @media screen and (max-width: 630px) {
+                    width: 100%;
+                    height: auto;
+                }
                 .image-box{
-                    width: 100px;;
-                    height: 100%;
+                    width: 33%;
                     float: left;
                     img{
                         width: 60%;
-                        height: auto;
                         margin: 20%;
                     }
                 }
                 .text-box{
-                    max-width: 250px;
+                    width: 66%;
                     float: left;
                     color: #686868;
                 }
