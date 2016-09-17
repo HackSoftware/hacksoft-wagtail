@@ -1,4 +1,6 @@
 {% load staticfiles i18n %}
+{% load menu_active %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,16 +41,16 @@
           </label>
           <input type="checkbox" id="drop" />
           <ul class="menu-main menu">
-            <li class="child selected">
+            <li class="child {% menu_active '^/$' %}">
               <a href="/">Home</a>
             </li>
-            <li class="child sibling">
+            <li class="child sibling {% menu_active 'how-we-work' %}">
               <a href="/how-we-work/">How we work</a>
             </li>
-            <li class="child sibling">
+            <li class="child sibling {% menu_active 'technologies-we-use' %}">
               <a href="/technologies-we-use/">Technologies we use</a>
             </li>
-            <li class="child sibling">
+            <li class="child sibling {% menu_active 'our-team' %}">
               <a href="/our-team/">Our Team</a>
             </li>
           </ul>

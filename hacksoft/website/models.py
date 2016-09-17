@@ -261,7 +261,7 @@ class TechnologiesPagePlacement(Orderable, models.Model):
 @register_snippet
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    background_image = models.ForeignKey(
+    demo_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -275,13 +275,15 @@ class Project(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    short_index_description = RichTextField()
     description = RichTextField()
 
     panels = [
         FieldPanel('name'),
-        ImageChooserPanel('background_image'),
+        ImageChooserPanel('demo_image'),
         ImageChooserPanel('logo'),
-        FieldPanel('description')
+        FieldPanel('description'),
+        FieldPanel('short_index_description'),
     ]
 
     def __str__(self):

@@ -6,8 +6,8 @@
   <div class="new header-image-background dimmed-image-background">
     <div class="new overlay"></div>
     <iframe id="ytplayer" type="text/html" width="640" height="390"
-            src="https://www.youtube.com/embed/zxMt_5l9Nkc?autoplay=1&loop=1&controls=0&playlist=zxMt_5l9Nkc&fs=0&modestbranding=0&rel=0&showinfo=0"
-            frameborder="0"></iframe>
+    src="https://www.youtube.com/embed/zxMt_5l9Nkc?autoplay=1&loop=1&controls=0&playlist=zxMt_5l9Nkc&fs=0&modestbranding=0&rel=0&showinfo=0"
+    frameborder="0"></iframe>
   </div>
   <div class="new header-image-frame">
     <div class="new header-main-text">
@@ -63,82 +63,80 @@
     <div class="section technologies-we-use">
       <div class="section-heading">
         <div>
-  	  <p>{{ page.technologies_we_use_title }}</p>
-        </div>
+         <p>{{ page.technologies_we_use_title }}</p>
+       </div>
+     </div>
+     <div class="section-content-row">
+      <div class="section-content-row align-center panda-pic">
+        {% image page.technologies_we_use_image original %}
       </div>
-      <div class="section-content-row">
-        <div class="section-content-row align-center panda-pic">
-          {% image page.technologies_we_use_image original %}
-        </div>
-        <div class="section-content-row align-center primary-focus-text technologies-text">
-          {{ page.technologies_we_use_center|richtext }}
-        </div>
-        <div class="section-content-row align-center technologies-logos">
-          {% for relation in page.technologies_placement.all %}
-          {% image relation.technology.logo fill-200x200 as tech_logo %}
-          <img src="{{tech_logo.url}}" class="filter_image" />
-          {% endfor %}
-        </div>
+      <div class="section-content-row align-center primary-focus-text technologies-text">
+        {{ page.technologies_we_use_center|richtext }}
       </div>
-    </div>
-
-    <div class="section our-team">
-      <div class="section-heading">
-        <div>
-          <p>{{ page.our_team_title }}</p>
-        </div>
-      </div>
-      <div class="section-content">
-        <div class="section-content-row align-center our-team-text">
-          {{ page.our_team_center|richtext }}
-        </div>
-        <div class="section-content-row align-center our-team-images float-container">
-
-          {% for relation in page.teammate_placement.all %}
-          <div class="team-member">
-            {% image relation.teammate.initial_photo fill-170x170 class="filer_image" %}
-            <div class="name">
-              <p>{{ relation.teammate.name }}</p>
-            </div>
-          </div>
-          {% endfor %}
-
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-heading">
-        <div>
-  	  <p>{{ page.portfolio_title }}</p>
-        </div>
-      </div>
-      <div class="section-content">
-        <div class="section-content-row align-center">
-          {% image page.portfolio_image max-200x200 class="filter_image" %}
-        </div>
-        <div class="section-content-row align-center our-team-text">
-  	  <div>
-            {{ page.portfolio_center|richtext }}
-          </div>
-        </div>
-
-        {% for relation in page.projects_placement.all %}
-        {% image relation.project.background_image fill-1090x301 as bg_image %}
-        <div style="background-image: url({{bg_image.url}})" class="section-content-row  float-container  portfolio-landing">
-          <div class="new portfolio-overlay"></div>
-          <div class="larger-part">
-            {{ relation.project.description|richtext }}
-          </div>
-          <div class="smaller-part">
-            {% image relation.project.logo height-200 as project_logo %}
-            <img src="{{ project_logo.url }}" class="filter_image" />
-          </div>
-        </div>
+      <div class="section-content-row align-center technologies-logos">
+        {% for relation in page.technologies_placement.all %}
+        {% image relation.technology.logo fill-200x200 as tech_logo %}
+        <img src="{{tech_logo.url}}" class="filter_image" />
         {% endfor %}
       </div>
     </div>
   </div>
+
+  <div class="section our-team">
+    <div class="section-heading">
+      <div>
+        <p>{{ page.our_team_title }}</p>
+      </div>
+    </div>
+    <div class="section-content">
+      <div class="section-content-row align-center our-team-text">
+        {{ page.our_team_center|richtext }}
+      </div>
+      <div class="section-content-row align-center our-team-images float-container">
+
+        {% for relation in page.teammate_placement.all %}
+        <div class="team-member">
+          {% image relation.teammate.initial_photo fill-170x170 class="filer_image" %}
+          <div class="name">
+            <p>{{ relation.teammate.name }}</p>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-heading">
+      <div>
+        <p>{{ page.portfolio_title }}</p>
+      </div>
+    </div>
+    <div class="section-content">
+      <div class="section-content-row align-center">
+        {% image page.portfolio_image max-200x200 class="filter_image" %}
+      </div>
+      <div class="section-content-row align-center our-team-text">
+        <div>
+          {{ page.portfolio_center|richtext }}
+        </div>
+      </div>
+
+      {% for relation in page.projects_placement.all %}
+      <div class="section-content-row  float-container  portfolio-landing">
+        <div class="smaller-part {% cycle 'odd' 'even' %}">
+          {% image relation.project.demo_image height-300 as demo_image %}
+          <img src="{{ demo_image.url }}" class="filter_image" />
+        </div>
+        <div class="larger-part">
+          <h3>{{ relation.project }}</h3>
+          {{ relation.project.short_index_description|richtext }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 </div>
 {% endblock content %}
-

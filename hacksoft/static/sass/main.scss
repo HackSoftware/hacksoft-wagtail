@@ -43,7 +43,7 @@ a {
         height:100vh;
         position:absolute;
         background: url(/static/images/home-page-header.jpg) center no-repeat;
-        background-size: cover;        
+        background-size: cover;
 
         #ytplayer {
             visibility: visible;
@@ -67,7 +67,7 @@ a {
         bottom:4vh;
         width:100%;
         img {
-            cursor: pointer; 
+            cursor: pointer;
         }
 
     }
@@ -161,6 +161,7 @@ a {
         }
     }
 }
+
 .static-header{
     @extend .universal-header;
     .header-image-background {
@@ -338,7 +339,7 @@ a {
 }
 
 .align-left {
-    text-align:left;    
+    text-align:left;
 }
 
 .align-right {
@@ -383,7 +384,7 @@ a {
         max-width: 90vw;
         margin-left: 5vw;
     }
-    
+
     &:before {
         position:absolute;
         margin-left:-300%;
@@ -429,7 +430,7 @@ a {
         .section-content {
             color:#666;
             padding-top: 35px;
-            
+
             .section-content-row {
                 margin-bottom:50px;
                 padding-bottom: 30px;
@@ -477,39 +478,25 @@ a {
                     color: #fff;
                     min-height: 250px;
                     background-size: cover;
-                    
-                    .portfolio-overlay{
-                        width: 100%;
-                        height: 100%;
-                        background-color: #F79824;
-                        position: absolute;
-                        top: 0;
-                        opacity: 0.84;
-                    }
+                    background-color: #F79824;
+                    padding: 30px;
+
                     .smaller-part {
                         text-align: center;
-                        
+
                         img {
                             position: relative;
                             z-index: 1;
                             max-width: 100%;
+                            margin-top: -60px;
                         }
                     }
                     .larger-part{
-                        float: left;
-                        margin-bottom: 20px;
                         height: 100%;
                         top: 0;
-                        div{
-                            position: relative;
-                            z-index: 1;
-                            font-weight: bolder;
-                            padding: 20px;
-                            padding-top: 50px;
-                        }
                         @media screen and (max-width: 550px){
                             font-size: 12px;
-                            
+
                         }
                     }
                 }
@@ -528,7 +515,7 @@ a {
                             width: 100%;
                         }
                     }
-                    
+
                     &.member-right{
                         float: right;
                     }
@@ -573,14 +560,20 @@ a {
                     width: 45%;
                     float: left;
                     margin-bottom: 10px;
-                    
+
+                    &.odd {
+                      float: left;
+                    }
+                    &.even {
+                      float: right;
+                    }
                     &.member-right{
                         float: right;
                     }
                     &.member-left{
                         float: left;
                     }
-                    
+
                     &.member-picture{
                         position: relative;
                         height: 270px;
@@ -633,7 +626,7 @@ a {
                     position: relative;
                     h2{
                         text-align: center;
-                        font-size: 32px;  
+                        font-size: 32px;
                     }
                     &:before{
                         content: "";
@@ -655,7 +648,7 @@ a {
                             border-right: 0px solid #CCC;
                         }
                     }
-                    
+
                 }
                 .right-side{
                     @extend .larger-part;
@@ -664,7 +657,7 @@ a {
                     padding: 2.5%;
                     h2{
                         text-align: center;
-                        font-size: 32px;  
+                        font-size: 32px;
                     }
                     @media screen and (max-width: 450px){
                         width: 100%;
@@ -802,7 +795,7 @@ a {
     background-color: #505050;
     position: relative;
     overflow: hidden;
-    
+
     .book-a-meeting {
         padding-top:30px;
         text-align: center;
@@ -823,7 +816,7 @@ a {
         width: 100%;
         margin: 20px 0;
         position: relative;
-        
+
         .text-box{
             color: #fff;
             width: 30%;
@@ -907,7 +900,7 @@ a {
         font-weight: bold;
         margin-bottom: 70px;
         line-height: 60px;
-    }    
+    }
 }
 .popup-overlay {
     position: fixed;
@@ -932,7 +925,7 @@ a {
     width: 30%;
     top: 60px;
     position: relative;
-    $primary-color: #F79824;   
+    $primary-color: #F79824;
     img{
         float: right;
         margin-right: 10%;
@@ -979,15 +972,15 @@ a {
             }
 
             &:-moz-placeholder { /* Firefox 18- */
-                color: $primary-color;  
+                color: $primary-color;
             }
 
             &::-moz-placeholder {  /* Firefox 19+ */
-                color: $primary-color;  
+                color: $primary-color;
             }
 
-            &:-ms-input-placeholder{  
-                color: $primary-color;  
+            &:-ms-input-placeholder{
+                color: $primary-color;
             }
         }
         textarea{
@@ -999,15 +992,15 @@ a {
             }
 
             &:-moz-placeholder { /* Firefox 18- */
-                color: $primary-color;  
+                color: $primary-color;
             }
 
             &::-moz-placeholder {  /* Firefox 19+ */
-                color: $primary-color;  
+                color: $primary-color;
             }
 
-            &:-ms-input-placeholder {  
-                color: $primary-color;  
+            &:-ms-input-placeholder {
+                color: $primary-color;
             }
         }
     }
@@ -1046,7 +1039,7 @@ a {
     &.github {
         color: #505050;
         background-color: #ffffff;
-        
+
         .fa {
             transform: scale(1);
             font-size: 60px;

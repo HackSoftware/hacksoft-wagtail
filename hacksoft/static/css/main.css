@@ -348,31 +348,19 @@ a {
           position: relative;
           color: #fff;
           min-height: 250px;
-          background-size: cover; }
-          .content-wrapper .section .section-content .section-content-row.portfolio-landing .portfolio-overlay {
-            width: 100%;
-            height: 100%;
-            background-color: #F79824;
-            position: absolute;
-            top: 0;
-            opacity: 0.84; }
+          background-size: cover;
+          background-color: #F79824;
+          padding: 30px; }
           .content-wrapper .section .section-content .section-content-row.portfolio-landing .smaller-part {
             text-align: center; }
             .content-wrapper .section .section-content .section-content-row.portfolio-landing .smaller-part img {
               position: relative;
               z-index: 1;
-              max-width: 100%; }
+              max-width: 100%;
+              margin-top: -60px; }
           .content-wrapper .section .section-content .section-content-row.portfolio-landing .larger-part, .content-wrapper .section .section-content .section-content-row.portfolio-landing .left-side, .content-wrapper .section .section-content .section-content-row.portfolio-landing .right-side {
-            float: left;
-            margin-bottom: 20px;
             height: 100%;
             top: 0; }
-            .content-wrapper .section .section-content .section-content-row.portfolio-landing .larger-part div, .content-wrapper .section .section-content .section-content-row.portfolio-landing .left-side div, .content-wrapper .section .section-content .section-content-row.portfolio-landing .right-side div {
-              position: relative;
-              z-index: 1;
-              font-weight: bolder;
-              padding: 20px;
-              padding-top: 50px; }
             @media screen and (max-width: 550px) {
               .content-wrapper .section .section-content .section-content-row.portfolio-landing .larger-part, .content-wrapper .section .section-content .section-content-row.portfolio-landing .left-side, .content-wrapper .section .section-content .section-content-row.portfolio-landing .right-side {
                 font-size: 12px; } }
@@ -413,6 +401,10 @@ a {
           width: 45%;
           float: left;
           margin-bottom: 10px; }
+          .content-wrapper .section .section-content .section-content-row .smaller-part.odd {
+            float: left; }
+          .content-wrapper .section .section-content .section-content-row .smaller-part.even {
+            float: right; }
           .content-wrapper .section .section-content .section-content-row .smaller-part.member-right {
             float: right; }
           .content-wrapper .section .section-content .section-content-row .smaller-part.member-left {
