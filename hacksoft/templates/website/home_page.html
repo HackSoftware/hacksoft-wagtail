@@ -75,8 +75,8 @@
       </div>
       <div class="section-content-row align-center technologies-logos">
         {% for relation in page.technologies_placement.all %}
-        {% image relation.technology.logo fill-200x200 as tech_logo %}
-        <img src="{{tech_logo.url}}" class="filter_image" />
+          {% image relation.technology.logo fill-100x100 as tech_logo %}
+          <img src="{{tech_logo.url}}" class="filter_image wow flipInX" />
         {% endfor %}
       </div>
     </div>
@@ -107,7 +107,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section" id="meche">
     <div class="section-heading">
       <div>
         <p>{{ page.portfolio_title }}</p>
@@ -124,7 +124,7 @@
       </div>
 
       {% for relation in page.projects_placement.all %}
-      <div class="section-content-row  float-container  portfolio-landing">
+      <div class="section-content-row  float-container  portfolio-landing wow {% cycle 'fadeInLeftBig' 'fadeInRightBig' %}">
         <div class="smaller-part {% cycle 'odd' 'even' %}">
           {% image relation.project.demo_image height-300 as demo_image %}
           <img src="{{ demo_image.url }}" class="filter_image" />
@@ -135,6 +135,7 @@
         </div>
       </div>
       {% endfor %}
+
     </div>
   </div>
 </div>
