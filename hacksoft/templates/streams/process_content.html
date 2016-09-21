@@ -1,7 +1,10 @@
 {% load wagtailimages_tags %}
-<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div><div class="timeline-panel">
+<div class="timeline-badge">
+  <i class="{{ self.icon-classes }}"></i>
+</div>
+<div class="timeline-panel">
   <div class="timeline-heading">
-    <h4 class="timeline-title">{{ self.number }} {{ self.title }}</h4>
+    <h4 class="timeline-title">{{ self.title }}</h4>
   </div>
   <div class="timeline-body">
     <p>{{ self.bound_blocks.description.render }}</p>

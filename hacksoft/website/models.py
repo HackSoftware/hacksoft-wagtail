@@ -111,6 +111,7 @@ class HowWeWorkPage(Page):
     the_process_content = StreamField([
         ('process_content', blocks.StructBlock([
             ('title', blocks.CharBlock()),
+            ('icon_classes', blocks.CharBlock()),
             ('description', blocks.RichTextBlock())
         ], template='streams/process_content.html'))])
 

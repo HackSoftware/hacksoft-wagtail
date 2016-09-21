@@ -45,11 +45,11 @@
     <div class="section-heading">
       <div>{{page.the_process_title|richtext}}</div>
     </div>
-    <div class="section-content">
+    <div class="section-content timeline-container">
 
-    <ul class="timeline">
+      <ul class="timeline">
         {% for block in page.the_process_content %}
-        <li class='{% cycle '' 'timeline-inverted' %}'>
+        <li class='{% cycle '' 'timeline-inverted ' %} wow bounceInUp'>
           {{ block }}
         </li>
         {% endfor %}

@@ -782,6 +782,9 @@ a {
     color: #ffffff;
     background-color: #505050; }
 
+.timeline-container {
+  margin-right: -34px; }
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
