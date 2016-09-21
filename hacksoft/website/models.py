@@ -7,7 +7,7 @@ from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -100,18 +100,20 @@ class HowWeWorkPage(Page):
     )
     what_we_do_content = StreamField([
         ('what_we_do_content', blocks.StreamBlock([
+            ('image', ImageChooserBlock()),
             ('title', blocks.RichTextBlock()),
-            ('description', blocks.RichTextBlock())
+            ('description', blocks.RichTextBlock()),
         ]))
     ])
 
     the_process_title = RichTextField()
+
     the_process_content = StreamField([
-        ('process_content', blocks.StreamBlock([
-            ('title', blocks.RichTextBlock()),
+        ('process_content', blocks.StructBlock([
+            ('title', blocks.CharBlock()),
             ('description', blocks.RichTextBlock())
-        ]))
-    ])
+        ], template='streams/process_content.html'))])
+
     content_panels = Page.content_panels + [
         FieldPanel('header_text'),
         ImageChooserPanel('header_image'),

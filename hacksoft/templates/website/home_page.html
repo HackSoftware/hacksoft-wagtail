@@ -94,15 +94,6 @@
       </div>
       <div class="section-content-row align-center our-team-images float-container">
 
-        {% for relation in page.teammate_placement.all %}
-        <div class="team-member">
-          {% image relation.teammate.initial_photo fill-170x170 class="filer_image" %}
-          <div class="name">
-            <p>{{ relation.teammate.name }}</p>
-          </div>
-        </div>
-        {% endfor %}
-
       </div>
     </div>
   </div>

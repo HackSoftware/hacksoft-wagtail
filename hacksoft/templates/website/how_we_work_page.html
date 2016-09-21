@@ -16,7 +16,7 @@
   <div class="section how-we-work">
     <div class="section-content">
       <div class="section-content-row">
-    	<h1 class="top-heading">{{ page.how_we_work_intro|richtext }}</h1>
+        <h1 class="top-heading">{{ page.how_we_work_intro|richtext }}</h1>
       </div>
     </div>
   </div>
@@ -24,17 +24,19 @@
     <div class="section-heading">
       <div>{{page.what_we_do_title }}</div>
     </div>
-    
+
     <div class="section-content">
       <div class="doodle align-center">
         {% image page.what_we_do_image max-250x250 as doodle_image %}
-    	<img class="filer_image mb50" alt="panda_process.gif" src="{{doodle_image.url}}" />
+      <img class="filer_image mb50" alt="panda_process.gif" src="{{doodle_image.url}}" />
       </div>
-      
+
       {% for block in page.what_we_do_content %}
-      <div class="section-content-row text align-center">
-        {% include_block block %}
-      </div>
+        <div class="what-we-do-container">
+          <div class="what-we-do-block">
+            {% include_block block %}
+          </div>
+        </div>
       {% endfor %}
     </div>
   </div>
@@ -44,12 +46,17 @@
       <div>{{page.the_process_title|richtext}}</div>
     </div>
     <div class="section-content">
-      {% for block in page.the_process_content %}
-      <div class="section-content-row text align-center">
-        {% include_block block %}
-      </div>
-      {% endfor %}
+
+    <ul class="timeline">
+        {% for block in page.the_process_content %}
+        <li class='{% cycle '' 'timeline-inverted' %}'>
+          {{ block }}
+        </li>
+        {% endfor %}
+      </ul>
+
     </div>
   </div>
 </div>
+
 {% endblock content %}
