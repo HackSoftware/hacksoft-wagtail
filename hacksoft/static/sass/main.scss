@@ -4,6 +4,7 @@ body{
     font-family: 'Open Sans', serif;
     color:#222;
     overflow-x:hidden;
+    font-size: 16px;
 }
 
 a {
@@ -72,7 +73,13 @@ a {
 
     }
 }
-
+.how-we-work {
+  .how-we-work-image {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }
+}
 .technologies-we-use-heading{
     .dimmed-image{
         height: 50vh;
@@ -1129,11 +1136,10 @@ a {
             width: 46%;
             float: left;
             border: 1px solid #d4d4d4;
-            border-radius: 2px;
             padding: 20px;
             position: relative;
             -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.175);
         }
 
             .timeline > li > .timeline-panel:before {
@@ -1171,7 +1177,7 @@ a {
             top: 16px;
             left: 50%;
             margin-left: -25px;
-            background-color: #999999;
+            background-color: #f79824;
             z-index: 100;
             border-top-right-radius: 50%;
             border-top-left-radius: 50%;

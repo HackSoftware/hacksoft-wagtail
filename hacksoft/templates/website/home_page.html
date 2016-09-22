@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section how-we-work">
 
       <div class="section-heading">
         <div>
@@ -48,16 +48,8 @@
         {{ page.how_we_work_center|richtext }}
       </div>
 
-      <div class="section-content">
-        <div class="section-content-row responsive-underlined float-container">
-          <div class="left-side">
-            {{ page.how_we_work_left|richtext }}
-          </div>
-          <div class="right-side">
-            {{ page.how_we_work_right|richtext }}
-          </div>
-        </div>
-      </div>
+      {% image page.how_we_work_image max-1280x450 class="how-we-work-image" %}
+
     </div>
 
     <div class="section technologies-we-use">
@@ -98,7 +90,7 @@
     </div>
   </div>
 
-  <div class="section" id="meche">
+  <div class="section">
     <div class="section-heading">
       <div>
         <p>{{ page.portfolio_title }}</p>
