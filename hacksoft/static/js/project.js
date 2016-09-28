@@ -53,3 +53,15 @@ $(document).keydown(function (e) {
     $('#success').fadeOut();
   }
 });
+
+$('.video-play').click(function() {
+  $(this).hide();
+  $('.video-pause').show();
+  $(".cover-video").get(0).play();
+})
+
+$('.video-pause').click(function() {
+  $(this).hide();
+  $('.video-play').show();
+  $(".cover-video").get(0).pause();
+})

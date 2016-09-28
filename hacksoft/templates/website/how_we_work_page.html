@@ -31,13 +31,14 @@
       <img class="filer_image mb50" alt="panda_process.gif" src="{{doodle_image.url}}" />
       </div>
 
-      {% for block in page.what_we_do_content %}
-        <div class="what-we-do-container">
+      <div class="what-we-do-container">
+        {% for block in page.what_we_do_content %}
           <div class="what-we-do-block">
             {% include_block block %}
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+
     </div>
   </div>
 

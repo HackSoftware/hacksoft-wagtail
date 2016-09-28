@@ -16,18 +16,18 @@
   <section class="section technologies">
     <div class="section-content">
       <div class="new section-content-row underlined">
-    	<h1>{{ page.technologies_intro|richtext }}</h1>
+        <h1>{{ page.technologies_intro|richtext }}</h1>
       </div>
 
       {% for relation in page.technologies_placement.all %}
       <div class="new technologies-content">
         <div class="new image-box">
           {% image relation.technology.logo max-200x200 as tech_logo %}
-    	  <img class="filer_image " alt="" src="{{ tech_logo.url }}" />
+          <img class="filer_image " alt="" src="{{ tech_logo.url }}" />
         </div>
         <div class="new text-box">
           <div class="new heading">
-    	    <h4><strong>{{ relation.technology.name }}</strong></h4>
+            <h4><strong>{{ relation.technology.name }}</strong></h4>
           </div>
           {{ relation.technology.description|richtext }}
         </div>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+<div class="new technologies-we-use-heading">
+  {% image page.header_image max-1366x1366 as header_image %}
+  <div class="new static-header dimmed-image" style="background-image: url({{ header_image.url }})">
+    <div class="new heading">
+      <p>{{page.header_text}}</p>
+    </div>
+    <div class="new scroll-down-arrow">
+      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+    </div>
+  </div>
+</div>
+
+<div class="content-wrapper" >
+
+  <div class="section how-we-work">
+
+    <div class="section-heading">
+      <div>Our Work</div>
+    </div>
+
+    <div>
+       {{ page.intro|richtext }}
+    </div>
+
+
+    {% for project in projects %}
+    <a href="/project/{{ project.slug }}">
+      <div class="section-content-row  float-container  portfolio-landing wow {% cycle 'fadeInLeftBig' 'fadeInRightBig' %}">
+        <div class="smaller-part {% cycle 'odd' 'even' %}">
+          {% image project.demo_image height-300 as demo_image %}
+          <img src="{{ demo_image.url }}" class="filter_image" />
+        </div>
+        <div class="larger-part">
+          <h3>{{ project }}</h3>
+          {{ project.short_index_description|richtext }}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+
+
+  </div>
+
+</div>
+
+{% endblock content %}

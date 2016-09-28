@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% block content %}
+<div class="homepage-header dimmed-video">
+    <div class="overlay"></div>
+    <img src="{{ STATIC_URL }}/images/header/play_button.png" class="video-play">
+    <img src="{{ STATIC_URL }}/images/header/video_pause.png" class="video-pause">
+    {% if project.video %}
+    <video loop class="cover-video">
+      <source src="/media/{{ project.video }}" type="video/mp4">
+    </video>
+    {% else %}
+      {% image project.cover_image max-1366x1366 as cover_image %}
+    {% endif %}
+</div>
+
+<div class="project-description row">
+  {% for block in project.long_description %}
+      {% include_block block %}
+  {% endfor %}
+</div>
+
+{% endblock content %}

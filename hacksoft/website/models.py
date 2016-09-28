@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.shortcuts import render, get_object_or_404
 
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
@@ -8,6 +9,8 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
+
 
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -165,6 +168,35 @@ class OurTeamPage(Page):
     ]
 
 
+class PortfolioPage(Page):
+    header_text = models.CharField(max_length=255)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    intro = RichTextField()
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image'),
+        FieldPanel('intro'),
+    ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['projects'] = Project.objects.all()
+        return context
+
+
+class ProjectPage(RoutablePageMixin, Page):
+    @route(r'^([\w-]+)/$')
+    def get_project(self, request, slug):
+        project = get_object_or_404(Project, slug=slug)
+        return render(request, 'website/project_page.html', locals())
+
+
 @register_snippet
 class Teammate(models.Model):
     name = models.CharField(max_length=255)
@@ -275,6 +307,14 @@ class Project(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    cover_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    slug = models.SlugField()
     logo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -282,14 +322,24 @@ class Project(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    video = models.FileField(null=True, blank=True)
     short_index_description = RichTextField()
     description = RichTextField()
 
+    long_description = StreamField([
+        ('paragraph', blocks.StructBlock([
+            ('text', blocks.RichTextBlock())
+        ], template='streams/project_description_paragraph.html'))])
+
     panels = [
         FieldPanel('name'),
+        FieldPanel('slug'),
+        FieldPanel('video'),
+        FieldPanel('cover_image'),
         ImageChooserPanel('demo_image'),
         ImageChooserPanel('logo'),
         FieldPanel('description'),
+        StreamFieldPanel('long_description'),
         FieldPanel('short_index_description'),
     ]
 
