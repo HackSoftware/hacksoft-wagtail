@@ -403,6 +403,13 @@ a {
     font-weight: 700;
     font-size: 20px;
     margin-top: 20px; }
+.our-team-images .team-main, .our-team-images .team-secondary {
+  width: 100%;
+  height: auto;
+  border: 2px solid orange;
+  cursor: pointer; }
+.our-team-images .team-secondary {
+  display: none; }
 
 .footer {
   min-height: 270px;

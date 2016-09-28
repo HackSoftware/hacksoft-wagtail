@@ -560,6 +560,15 @@ a {
             margin-top:20px;
         }
     }
+    .team-main, .team-secondary {
+      width: 100%;
+      height: auto;
+      border: 2px solid orange;
+      cursor: pointer;
+    }
+    .team-secondary {
+      display: none;
+    }
 }
 
 .footer {

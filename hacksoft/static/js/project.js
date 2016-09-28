@@ -64,4 +64,13 @@ $('.video-pause').click(function() {
   $(this).hide();
   $('.video-play').show();
   $(".cover-video").get(0).pause();
-})
+});
+
+$('.team-main').hover(function() {
+  $(this).hide();
+  $('.team-secondary').show();
+});
+$('.team-secondary').hover(function(){}, function() {
+  $(this).hide();
+  $('.team-main').show();
+});

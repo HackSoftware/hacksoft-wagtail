@@ -52,6 +52,22 @@ class HomePage(Page):
     our_team_title = models.CharField(max_length=255)
     our_team_center = RichTextField()
 
+    team_image_main = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    team_image_secondary = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     portfolio_title = models.CharField(max_length=255)
     portfolio_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -79,7 +95,8 @@ class HomePage(Page):
         FieldPanel('our_team_title'),
         FieldPanel('our_team_center'),
         InlinePanel('teammate_placement', label="Teammates"),
-
+        ImageChooserPanel('team_image_main'),
+        ImageChooserPanel('team_image_secondary'),
         FieldPanel('portfolio_title'),
         ImageChooserPanel('portfolio_image'),
         FieldPanel('portfolio_center'),
