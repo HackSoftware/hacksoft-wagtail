@@ -63,16 +63,19 @@ a {
   background-size: cover;
   background-position-y: 25%;
   background-position-x: 50%; }
+.technologies-we-use-heading .slightly-down {
+  background-position-y: 45%; }
 .technologies-we-use-heading .scroll-down-arrow {
   bottom: 54vh; }
 .technologies-we-use-heading .heading {
   color: #eee;
   cursor: default;
   position: absolute;
+  font-weight: bold;
   top: 40%;
   left: 50%;
   padding: 18px;
-  font-size: 25px;
+  font-size: 50px;
   text-align: center;
   transform: translate(-50%, 0%); }
   @media screen and (max-width: 630px) {
