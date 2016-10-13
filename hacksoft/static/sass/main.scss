@@ -541,6 +541,14 @@ a {
 }
 
 .our-team-images {
+    margin-left: -50%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 200%;
+    background-attachment: fixed;
+    
     .team-member {
         width:220px;
         margin-bottom: 20px;
@@ -563,15 +571,6 @@ a {
             font-size: 20px;
             margin-top:20px;
         }
-    }
-    .team-main, .team-secondary {
-      width: 100%;
-      height: auto;
-      border: 2px solid orange;
-      cursor: pointer;
-    }
-    .team-secondary {
-      display: none;
     }
 }
 
@@ -1344,4 +1343,30 @@ a {
       margin-bottom: 150px;
     }
   }
+}
+
+.vertical-sections-container {
+    display:flex;
+    width:400px;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    color:white;
+
+    .vertical-section {
+        height:100%;
+        width:50%;
+        border-left:1px solid silver;
+        padding:30px;
+        text-align: left;
+
+        &:first-child{
+          border-left:0;
+          text-align: right;
+        }
+        .section-header {
+            font-weight: 700;
+            font-size: 20px;
+        }
+    }
 }

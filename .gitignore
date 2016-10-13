@@ -32,7 +32,7 @@ pip-log.txt
 .tox
 nosetests.xml
 htmlcov
-=======
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -79,13 +79,11 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
->>>>>>> 11b88e1d620f89d5b0fcda9ce9b13c8d8c6fd80d
 
 # Translations
 *.mo
 *.pot
 
-<<<<<<< HEAD
 # Pycharm
 .idea/*
 
@@ -112,3 +110,5 @@ hacksoft/media/
 tests/.hitch
 
 .cache
+
+*.css.map
