@@ -11,11 +11,11 @@
   </div>
   <div class="new header-image-frame">
     <div class="new header-main-text">
-      <h1>HackSoft is your trusted provider of high quality software</h1>
+      <h1>{{ page.h1|richtext }}</h1>
     </div>
     <div class="new header-info-text">
       <div class="new info-text">
-        <p>We are not just outsourcers, but partners with our clients</p>
+        <p>{{ page.h2|richtext }}</p>
       </div>
     </div>
   </div>
@@ -86,8 +86,8 @@
       </div>
       <div class="section-content-row align-center our-team-images float-container">
         <a href="/our-work/">
-          {% image page.team_image_main fill-1920x1200 class="team-main" %}
-          {% image page.team_image_secondary fill-1920x1200 class="team-secondary" %}
+          {% image page.team_image_main fill-1488x1049 class="team-main" %}
+          {% image page.team_image_secondary fill-1488x1049 class="team-secondary" %}
         </a>
       </div>
     </div>

@@ -19,6 +19,9 @@ from modelcluster.fields import ParentalKey
 
 
 class HomePage(Page):
+    h1 = models.CharField(max_length=255)
+    h2 = models.CharField(max_length=255)
+
     intro_h1 = models.CharField(max_length=255)
     intro_h2 = models.CharField(max_length=255)
     intro_image = models.ForeignKey(
@@ -79,6 +82,8 @@ class HomePage(Page):
     portfolio_center = RichTextField()
 
     content_panels = Page.content_panels + [
+        FieldPanel('h1'),
+        FieldPanel('h2'),
         FieldPanel('intro_h1'),
         FieldPanel('intro_h2'),
         ImageChooserPanel('intro_image'),
