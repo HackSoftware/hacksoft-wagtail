@@ -84,12 +84,8 @@
       <div class="section-content-row align-center our-team-text">
         {{ page.our_team_center|richtext }}
       </div>
-      <div class="section-content-row align-center our-team-images float-container">
-        <a href="/our-work/">
-          {% image page.team_image_main fill-1488x1049 class="team-main" %}
-          {% image page.team_image_secondary fill-1488x1049 class="team-secondary" %}
-        </a>
-      </div>
+      {% image page.team_image_main fill-1920x1200 as team_photo %}
+      <div class="section-content-row align-center our-team-images" style="background-image:url({{team_photo.url}})"></div>
     </div>
   </div>
 

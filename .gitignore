@@ -32,7 +32,7 @@ pip-log.txt
 .tox
 nosetests.xml
 htmlcov
-=======
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -109,3 +109,5 @@ hacksoft/media/
 tests/.hitch
 
 .cache
+
+*.css.map

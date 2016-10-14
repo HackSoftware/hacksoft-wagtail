@@ -63,16 +63,19 @@ a {
   background-size: cover;
   background-position-y: 25%;
   background-position-x: 50%; }
+.technologies-we-use-heading .slightly-down {
+  background-position-y: 45%; }
 .technologies-we-use-heading .scroll-down-arrow {
   bottom: 54vh; }
 .technologies-we-use-heading .heading {
   color: #eee;
   cursor: default;
   position: absolute;
+  font-weight: bold;
   top: 40%;
   left: 50%;
   padding: 18px;
-  font-size: 25px;
+  font-size: 50px;
   text-align: center;
   transform: translate(-50%, 0%); }
   @media screen and (max-width: 630px) {
@@ -384,32 +387,33 @@ a {
   .technologies-logos img {
     padding: 21px; }
 
-.our-team-images .team-member {
-  width: 220px;
-  margin-bottom: 20px;
-  display: inline-block; }
-  @media screen and (max-width: 425px) {
-    .our-team-images .team-member {
-      width: 50%; } }
-  .our-team-images .team-member img {
-    width: 170px;
-    border-radius: 50%; }
-    @media screen and (max-width: 375px) {
-      .our-team-images .team-member img {
-        width: 130px;
-        height: auto; } }
-  .our-team-images .team-member .name {
-    color: #F79824;
-    font-weight: 700;
-    font-size: 20px;
-    margin-top: 20px; }
-.our-team-images .team-main, .our-team-images .team-secondary {
-  width: 100%;
-  height: auto;
-  border: 2px solid orange;
-  cursor: pointer; }
-.our-team-images .team-secondary {
-  display: none; }
+.our-team-images {
+  margin-left: -50%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  width: 200%;
+  background-attachment: fixed; }
+  .our-team-images .team-member {
+    width: 220px;
+    margin-bottom: 20px;
+    display: inline-block; }
+    @media screen and (max-width: 425px) {
+      .our-team-images .team-member {
+        width: 50%; } }
+    .our-team-images .team-member img {
+      width: 170px;
+      border-radius: 50%; }
+      @media screen and (max-width: 375px) {
+        .our-team-images .team-member img {
+          width: 130px;
+          height: auto; } }
+    .our-team-images .team-member .name {
+      color: #F79824;
+      font-weight: 700;
+      font-size: 20px;
+      margin-top: 20px; }
 
 .footer {
   min-height: 270px;
@@ -997,5 +1001,38 @@ a {
       background: #FFF; }
     .project-description .text-box:last-of-type {
       margin-bottom: 150px; }
+
+.vertical-sections-container {
+  display: flex;
+  width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: white; }
+  .vertical-sections-container .vertical-section {
+    height: 100%;
+    width: 50%;
+    padding: 30px;
+    padding-top: 20px;
+    text-align: left;
+    position: relative; }
+    .vertical-sections-container .vertical-section:after {
+      position: absolute;
+      height: 80%;
+      top: 10%;
+      right: 0;
+      width: 1px;
+      background-color: silver;
+      content: ""; }
+    .vertical-sections-container .vertical-section:first-child {
+      text-align: right; }
+    .vertical-sections-container .vertical-section:last-child:after {
+      display: none; }
+    .vertical-sections-container .vertical-section .section-header {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 20px; }
+    .vertical-sections-container .vertical-section .section-content ul {
+      list-style-type: none; }
 
 /*# sourceMappingURL=main.css.map */

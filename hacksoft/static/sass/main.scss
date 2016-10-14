@@ -88,6 +88,9 @@ a {
         background-position-y: 25%;
         background-position-x: 50%
     }
+    .slightly-down {
+        background-position-y: 45%;
+    }
     .scroll-down-arrow{
         bottom: 54vh;
     }
@@ -95,10 +98,11 @@ a {
         color: #eee;
         cursor: default;
         position: absolute;
+        font-weight: bold;
         top: 40%;
         left: 50%;
         padding: 18px;
-        font-size: 25px;
+        font-size: 50px;
         text-align: center;
         transform: translate(-50%, 0%);
         @media screen and (max-width: 630px){
@@ -537,6 +541,14 @@ a {
 }
 
 .our-team-images {
+    margin-left: -50%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 200%;
+    background-attachment: fixed;
+    
     .team-member {
         width:220px;
         margin-bottom: 20px;
@@ -559,15 +571,6 @@ a {
             font-size: 20px;
             margin-top:20px;
         }
-    }
-    .team-main, .team-secondary {
-      width: 100%;
-      height: auto;
-      border: 2px solid orange;
-      cursor: pointer;
-    }
-    .team-secondary {
-      display: none;
     }
 }
 
@@ -1340,4 +1343,52 @@ a {
       margin-bottom: 150px;
     }
   }
+}
+
+.vertical-sections-container {
+    display:flex;
+    width:400px;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    color:white;
+
+    .vertical-section {
+        height:100%;
+        width:50%;
+        padding:30px;
+        padding-top: 20px;
+        text-align: left;
+        position:relative;
+
+        &:after {
+            position:absolute;
+            height:80%;
+            top:10%;
+            right:0;
+            width:1px;
+            background-color:silver;
+            content:"";
+        }
+
+        &:first-child{
+          text-align: right;
+        }
+
+        &:last-child {
+            &:after {
+                display:none;
+            }
+        }
+        .section-header {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom:20px;
+        }
+        .section-content {
+            ul {
+                list-style-type: none;
+            }
+        }
+    }
 }
