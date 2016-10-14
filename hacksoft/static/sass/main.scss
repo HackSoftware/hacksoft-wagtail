@@ -1356,17 +1356,39 @@ a {
     .vertical-section {
         height:100%;
         width:50%;
-        border-left:1px solid silver;
         padding:30px;
+        padding-top: 20px;
         text-align: left;
+        position:relative;
+
+        &:after {
+            position:absolute;
+            height:80%;
+            top:10%;
+            right:0;
+            width:1px;
+            background-color:silver;
+            content:"";
+        }
 
         &:first-child{
-          border-left:0;
           text-align: right;
+        }
+
+        &:last-child {
+            &:after {
+                display:none;
+            }
         }
         .section-header {
             font-weight: 700;
             font-size: 20px;
+            margin-bottom:20px;
+        }
+        .section-content {
+            ul {
+                list-style-type: none;
+            }
         }
     }
 }

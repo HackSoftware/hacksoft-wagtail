@@ -1012,14 +1012,27 @@ a {
   .vertical-sections-container .vertical-section {
     height: 100%;
     width: 50%;
-    border-left: 1px solid silver;
     padding: 30px;
-    text-align: left; }
+    padding-top: 20px;
+    text-align: left;
+    position: relative; }
+    .vertical-sections-container .vertical-section:after {
+      position: absolute;
+      height: 80%;
+      top: 10%;
+      right: 0;
+      width: 1px;
+      background-color: silver;
+      content: ""; }
     .vertical-sections-container .vertical-section:first-child {
-      border-left: 0;
       text-align: right; }
+    .vertical-sections-container .vertical-section:last-child:after {
+      display: none; }
     .vertical-sections-container .vertical-section .section-header {
       font-weight: 700;
-      font-size: 20px; }
+      font-size: 20px;
+      margin-bottom: 20px; }
+    .vertical-sections-container .vertical-section .section-content ul {
+      list-style-type: none; }
 
 /*# sourceMappingURL=main.css.map */
