@@ -80,6 +80,7 @@ a {
 .how-we-work {
   .how-we-work-image {
     width: 100vw;
+    height: 40vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
   }
@@ -472,6 +473,7 @@ a {
         }
 
         .our-team-text {
+          padding-bottom: 0 !important;
             div {
                 color:#999;
                 padding-top:30px;
@@ -539,15 +541,19 @@ a {
 }
 
 .our-team-images {
-    margin-left: -50%;
-    height: 500px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    width: 200%;
+    background-repeat: no-repeat;
+    height: 48vw;
+    width: 100vw;
     background-attachment: fixed;
-    background-size:100%;
-
+    background-size: 100%;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-bottom: 30px !important;
+    margin-bottom: -50px !important;
+    @media all and (orientation:portrait) {
+      background-attachment: inherit;
+      height: 70vw;
+    }
     .team-member {
         width:220px;
         margin-bottom: 20px;
