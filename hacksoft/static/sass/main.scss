@@ -40,18 +40,22 @@ a {
     border-bottom:2px solid #F79824;
 
     .dimmed-image-background {
+        position: relative;
+        overflow: hidden;
         width:100vw;
         height:100vh;
-        position:absolute;
-        background: url(/static/images/home-page-header.jpg) center no-repeat;
-        background-size: cover;
-
-        #ytplayer {
-            visibility: visible;
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            z-index: -2;
+        max-height:100vh;
+        text-align:center;
+        .video-container {
+          position:absolute;
+          height:100%;
+          width:200%;
+          left:-50%;
+          #player {
+            height:auto;
+            min-height:100%;
+            min-width:50%;
+          }
         }
         .overlay {
             position:absolute;
@@ -123,40 +127,35 @@ a {
     .header-image-background {
         position:fixed;
         .overlay {
-            z-index:-1;
+            z-index: 1;
         }
     }
 
     .header-image-frame {
-        position:fixed;
-        width:66vw;
-        height:75vh;
-        left:50%;
-        top:50%;
-        margin-left:-33vw;
-        margin-top:-45vh;
-
+        position: fixed;
+        width: 90vw;
+        height: 75vh;
+        left: 50%;
+        top: 50%;
+        margin-left: -45vw;
+        margin-top: -45vh;
         .header-main-text {
             text-align: center;
             color: #eee;
             margin-top: 20vh;
-            font-size: 4vmin;
-            @media screen and (max-width: 450px){
-                font-size: 16px;
+            h1 {
+              font-size: 300%;
             }
-
         }
 
         .header-info-text {
             width:100%;
             text-align: center;
-            line-height: 7vmin;
-            font-size: 4vmin;
             color:white;
             position:absolute;
-            bottom:4vmin;
             font-weight: 300;
-
+            font-size: 250%;
+            padding-top: 80px;
             i {
                 font-style: italic;
             }
@@ -413,7 +412,6 @@ a {
             background-color:#F8F8F8;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
-            margin-bottom:50px;
             &:after {
                 content:"";
                 display:block;
@@ -576,13 +574,12 @@ a {
 }
 
 .footer {
-    min-height: 270px;
+    min-height: 170px;
     background-color: #505050;
     position: relative;
     overflow: hidden;
 
     .book-a-meeting {
-        padding-top:30px;
         text-align: center;
         position:relative;
         z-index:2;

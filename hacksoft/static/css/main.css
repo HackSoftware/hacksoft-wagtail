@@ -28,17 +28,21 @@ a {
   height: 100vh;
   border-bottom: 2px solid #F79824; }
   .dimmed-image .dimmed-image-background {
+    position: relative;
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    background: url(/static/images/home-page-header.jpg) center no-repeat;
-    background-size: cover; }
-    .dimmed-image .dimmed-image-background #ytplayer {
-      visibility: visible;
+    max-height: 100vh;
+    text-align: center; }
+    .dimmed-image .dimmed-image-background .video-container {
       position: absolute;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2; }
+      height: 100%;
+      width: 200%;
+      left: -50%; }
+      .dimmed-image .dimmed-image-background .video-container #player {
+        height: auto;
+        min-height: 100%;
+        min-width: 50%; }
     .dimmed-image .dimmed-image-background .overlay {
       position: absolute;
       width: 100%;
@@ -92,32 +96,29 @@ a {
 .universal-header .header-image-background, .homepage-header .header-image-background, .static-header .header-image-background {
   position: fixed; }
   .universal-header .header-image-background .overlay, .homepage-header .header-image-background .overlay, .static-header .header-image-background .overlay {
-    z-index: -1; }
+    z-index: 1; }
 .universal-header .header-image-frame, .homepage-header .header-image-frame, .static-header .header-image-frame {
   position: fixed;
-  width: 66vw;
+  width: 90vw;
   height: 75vh;
   left: 50%;
   top: 50%;
-  margin-left: -33vw;
+  margin-left: -45vw;
   margin-top: -45vh; }
   .universal-header .header-image-frame .header-main-text, .homepage-header .header-image-frame .header-main-text, .static-header .header-image-frame .header-main-text {
     text-align: center;
     color: #eee;
-    margin-top: 20vh;
-    font-size: 4vmin; }
-    @media screen and (max-width: 450px) {
-      .universal-header .header-image-frame .header-main-text, .homepage-header .header-image-frame .header-main-text, .static-header .header-image-frame .header-main-text {
-        font-size: 16px; } }
+    margin-top: 20vh; }
+    .universal-header .header-image-frame .header-main-text h1, .homepage-header .header-image-frame .header-main-text h1, .static-header .header-image-frame .header-main-text h1 {
+      font-size: 300%; }
   .universal-header .header-image-frame .header-info-text, .homepage-header .header-image-frame .header-info-text, .static-header .header-image-frame .header-info-text {
     width: 100%;
     text-align: center;
-    line-height: 7vmin;
-    font-size: 4vmin;
     color: white;
     position: absolute;
-    bottom: 4vmin;
-    font-weight: 300; }
+    font-weight: 300;
+    font-size: 250%;
+    padding-top: 80px; }
     .universal-header .header-image-frame .header-info-text i, .homepage-header .header-image-frame .header-info-text i, .static-header .header-image-frame .header-info-text i {
       font-style: italic; }
 
@@ -299,8 +300,7 @@ a {
     .content-wrapper .section .section-heading {
       background-color: #F8F8F8;
       margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      margin-bottom: 50px; }
+      margin-right: calc(-50vw + 50%); }
       .content-wrapper .section .section-heading:after {
         content: "";
         display: block;
@@ -394,7 +394,8 @@ a {
   position: relative;
   z-index: 1;
   width: 200%;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  background-size: 100%; }
   .our-team-images .team-member {
     width: 220px;
     margin-bottom: 20px;
@@ -416,12 +417,11 @@ a {
       margin-top: 20px; }
 
 .footer {
-  min-height: 270px;
+  min-height: 170px;
   background-color: #505050;
   position: relative;
   overflow: hidden; }
   .footer .book-a-meeting {
-    padding-top: 30px;
     text-align: center;
     position: relative;
     z-index: 2; }

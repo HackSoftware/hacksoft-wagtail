@@ -3,12 +3,18 @@
 
 {% block content %}
 <div class="new homepage-header dimmed-image">
+
   <div class="new header-image-background dimmed-image-background">
     <div class="new overlay"></div>
-    <iframe id="ytplayer" type="text/html" width="640" height="390"
-    src="https://www.youtube.com/embed/zxMt_5l9Nkc?autoplay=1&loop=1&controls=0&playlist=zxMt_5l9Nkc&fs=0&modestbranding=0&rel=0&showinfo=0"
-    frameborder="0"></iframe>
+
+    <div class="video-container">
+      <video preload muted loop autoplay id="player">
+        <source type="video/webm" src="{% static 'hacksoft_video.mp4' %}">
+      </video>
+    </div>
+
   </div>
+
   <div class="new header-image-frame">
     <div class="new header-main-text">
       <h1>{{ page.h1|richtext }}</h1>
@@ -43,11 +49,6 @@
           <p>{{ page.how_we_work_title }}</p>
         </div>
       </div>
-
-      <div class="section-content-row align-center our-team-text">
-        {{ page.how_we_work_center|richtext }}
-      </div>
-
       {% image page.how_we_work_image max-1280x450 class="how-we-work-image" %}
 
     </div>

@@ -1,0 +1,26 @@
+<div class="footer background">
+  <div class="vertical-sections-container">
+    <div class="vertical-section">
+      <div class="section-header">
+        {{ footer.links_text }}
+      </div>
+      <div class="section-content">
+        <ul>
+          {% for block in footer.links %}
+            {{ block }}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="vertical-section">
+      <div class="section-header">
+        {{ footer.contact_text }}
+      </div>
+      <div class="book-a-meeting">
+        <div class="book-a-meeting-button">
+          {{ footer.button_text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

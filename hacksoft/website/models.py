@@ -10,12 +10,10 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
-
-
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
-from wagtail.wagtailsnippets.models import register_snippet
-
 from modelcluster.fields import ParentalKey
+
+from .snippets import Project
 
 
 class HomePage(Page):
@@ -219,58 +217,6 @@ class ProjectPage(RoutablePageMixin, Page):
         return render(request, 'website/project_page.html', locals())
 
 
-@register_snippet
-class Teammate(models.Model):
-    name = models.CharField(max_length=255)
-    description = RichTextField()
-    initial_photo = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    secondary_photo = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    panels = [
-        FieldPanel('name'),
-        ImageChooserPanel('initial_photo'),
-        ImageChooserPanel('secondary_photo'),
-        FieldPanel('description')
-    ]
-
-    def __str__(self):
-        return self.name
-
-
-@register_snippet
-class Technology(models.Model):
-    name = models.CharField(max_length=255)
-    logo = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    description = RichTextField()
-
-    panels = [
-        FieldPanel('name'),
-        ImageChooserPanel('logo'),
-        FieldPanel('description')
-    ]
-
-    def __str__(self):
-        return self.name
-
-
 class TeammatePlacement(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='teammate_placement')
     teammate = models.ForeignKey('website.Teammate', related_name='+')
@@ -317,56 +263,6 @@ class TechnologiesPagePlacement(Orderable, models.Model):
 
     def __str__(self):
         return "{} -> {}".format(self.page.title, self.technology.name)
-
-
-@register_snippet
-class Project(models.Model):
-    name = models.CharField(max_length=255)
-    demo_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    cover_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    slug = models.SlugField()
-    logo = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    video = models.FileField(null=True, blank=True)
-    short_index_description = RichTextField()
-    description = RichTextField()
-
-    long_description = StreamField([
-        ('paragraph', blocks.StructBlock([
-            ('text', blocks.RichTextBlock())
-        ], template='streams/project_description_paragraph.html'))])
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('slug'),
-        FieldPanel('video'),
-        FieldPanel('cover_image'),
-        ImageChooserPanel('demo_image'),
-        ImageChooserPanel('logo'),
-        FieldPanel('description'),
-        StreamFieldPanel('long_description'),
-        FieldPanel('short_index_description'),
-    ]
-
-    def __str__(self):
-        return self.name
 
 
 class ProjectsPlacement(Orderable, models.Model):
