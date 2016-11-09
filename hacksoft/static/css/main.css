@@ -432,7 +432,8 @@ a {
   .footer .book-a-meeting {
     text-align: center;
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+    width: 195px; }
     .footer .book-a-meeting .book-a-meeting-button {
       border: 4px solid #F79824;
       font-size: 20px;
