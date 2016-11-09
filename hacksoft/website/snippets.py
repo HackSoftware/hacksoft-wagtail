@@ -116,6 +116,8 @@ class Footer(models.Model):
     links_text = models.CharField(max_length=255)
     contact_text = models.CharField(max_length=255)
     button_text = models.CharField(max_length=255)
+    popup_text = RichTextField()
+    popup_heading = models.CharField(max_length=255)
 
     links = StreamField([
         ('link', blocks.StructBlock([
@@ -129,6 +131,8 @@ class Footer(models.Model):
         FieldPanel('links_text'),
         FieldPanel('contact_text'),
         FieldPanel('button_text'),
+        FieldPanel('popup_text'),
+        FieldPanel('popup_heading'),
         StreamFieldPanel('links'),
     ]
 

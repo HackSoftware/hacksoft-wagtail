@@ -851,6 +851,9 @@ a {
             padding-bottom: 0;
         }
     }
+    .panda-pic {
+        padding-top: 35px;
+    }
 }
 
 .social-button {
@@ -1395,4 +1398,19 @@ a {
             }
         }
     }
+}
+
+.modal-content {
+  border-radius: 0px;
+  .modal-heading {
+    text-align: center;
+    margin-top: 5px;
+    padding-bottom: 10px;
+  }
+  .sales-picture {
+    img {
+      border: 2px solid #f79824;
+      width: 100%;
+    }
+  }
 }

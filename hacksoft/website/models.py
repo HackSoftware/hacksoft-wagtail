@@ -20,8 +20,8 @@ class HomePage(Page):
     h1 = models.CharField(max_length=255)
     h2 = models.CharField(max_length=255)
 
-    intro_h1 = models.CharField(max_length=255)
-    intro_h2 = models.CharField(max_length=255)
+    intro_h1 = models.CharField(max_length=500)
+    intro_h2 = models.CharField(max_length=500)
     intro_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,

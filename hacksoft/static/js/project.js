@@ -48,7 +48,6 @@ $('.close').click(function () {
 $(document).keydown(function (e) {
   //ESC button pressed
   if (e.keyCode == 27) {
-    console.log('lil');
     $('#popup1').fadeOut();
     $('#success').fadeOut();
   }

@@ -1,3 +1,5 @@
+{% load wagtailcore_tags %}
+
 <div class="footer background">
   <div class="vertical-sections-container">
     <div class="vertical-section">
@@ -17,8 +19,37 @@
         {{ footer.contact_text }}
       </div>
       <div class="book-a-meeting">
-        <div class="book-a-meeting-button">
+        <div class="book-a-meeting-button"   data-toggle="modal" data-target=".bs-example-modal-lg">
           {{ footer.button_text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h2 class="modal-heading">Meet our sales team!</h2>
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="sales-picture">
+              <img src="http://hacksoft.io/media/images/tony_smile_pobleda_web.2e16d0ba.fill-500x500.png">
+            </div>
+          </div>
+
+          <div class="col-md-4">
+          {{ footer.popup_text|richtext }}
+          </div>
+
+          <div class="col-md-4">
+            <div class="sales-picture">
+              <img src="http://hacksoft.io/media/images/radi_razseqna_web.2e16d0ba.fill-500x500.png">
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

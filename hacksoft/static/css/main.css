@@ -632,6 +632,8 @@ a {
 .technologies-we-use .section-content .align-center.panda-pic {
   margin-bottom: 0;
   padding-bottom: 0; }
+.technologies-we-use .panda-pic {
+  padding-top: 35px; }
 
 .social-button.github {
   color: #505050;
@@ -1042,5 +1044,15 @@ a {
       margin-bottom: 20px; }
     .vertical-sections-container .vertical-section .section-content ul {
       list-style-type: none; }
+
+.modal-content {
+  border-radius: 0px; }
+  .modal-content .modal-heading {
+    text-align: center;
+    margin-top: 5px;
+    padding-bottom: 10px; }
+  .modal-content .sales-picture img {
+    border: 2px solid #f79824;
+    width: 100%; }
 
 /*# sourceMappingURL=main.css.map */
