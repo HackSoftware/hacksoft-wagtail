@@ -18,11 +18,11 @@ def menu_active(context, pattern_or_urlname):
             pattern = '^' + reverse(pattern_or_urlname) + "([-\w]+)?"
     except NoReverseMatch:
         pattern = pattern_or_urlname
-    path = context['request'].path
+    # path = context['request'].path
 
-    if re.search(pattern, path):
-        return 'selected'
-    return ''
+    # if re.search(pattern, path):
+    return 'selected'
+    # return ''
 
 
 @register.inclusion_tag('tags/footer.html', takes_context=True)

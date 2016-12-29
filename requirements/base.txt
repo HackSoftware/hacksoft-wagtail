@@ -42,16 +42,10 @@ pytz==2016.6.1
 django-redis==4.4.4
 redis>=2.10.0
 
-
-
-
-
-
-
 # Your custom requirements go here
 
 # Wagtati
-wagtail==1.6
+wagtail==1.8
 
 # Wand
 Wand==0.4.3

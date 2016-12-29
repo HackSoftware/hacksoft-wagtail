@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="section how-we-work">
+<!--     <div class="section how-we-work">
 
       <div class="section-heading">
         <div>
@@ -52,7 +52,7 @@
       <a href="/how-we-work/">
         {% image page.how_we_work_image max-1280x450 class="how-we-work-image" %}
       </a>
-    </div>
+    </div> -->
 
     <div class="section technologies-we-use">
       <div class="section-heading">
@@ -98,9 +98,6 @@
       </div>
     </div>
     <div class="section-content">
-      <div class="section-content-row align-center">
-        {% image page.portfolio_image max-200x200 class="filter_image" %}
-      </div>
       <div class="section-content-row align-center our-team-text">
         <div>
           {{ page.portfolio_center|richtext }}
@@ -119,6 +116,11 @@
         </div>
       </div>
       {% endfor %}
+
+      <div class="align-center">
+        {% image page.portfolio_image max-200x200 class="filter_image" %}
+      </div>
+
 
     </div>
   </div>
