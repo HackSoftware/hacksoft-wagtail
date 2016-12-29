@@ -394,6 +394,7 @@ a {
   background-repeat: no-repeat;
   height: 48vw;
   width: 100vw;
+  background-position-y: 72px;
   background-attachment: fixed;
   background-size: 100%;
   margin-left: calc(-50vw + 50%);
