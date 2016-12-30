@@ -62,23 +62,9 @@ class Technology(models.Model):
 
 
 @register_snippet
-class Project(models.Model):
+class Client(models.Model):
     name = models.CharField(max_length=255)
-    demo_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    cover_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-    slug = models.SlugField()
+    description = RichTextField()
     logo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -86,25 +72,41 @@ class Project(models.Model):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    video = models.FileField(null=True, blank=True)
-    short_index_description = RichTextField()
-    description = RichTextField()
-
-    long_description = StreamField([
-        ('paragraph', blocks.StructBlock([
-            ('text', blocks.RichTextBlock())
-        ], template='streams/project_description_paragraph.html'))])
 
     panels = [
         FieldPanel('name'),
-        FieldPanel('slug'),
-        FieldPanel('video'),
-        FieldPanel('cover_image'),
-        ImageChooserPanel('demo_image'),
         ImageChooserPanel('logo'),
         FieldPanel('description'),
-        StreamFieldPanel('long_description'),
+    ]
+
+    def __str__(self):
+        return self.name
+
+
+@register_snippet
+class Project(models.Model):
+    name = models.CharField(max_length=255)
+    short_index_description = RichTextField()
+    client = models.ForeignKey(Client, null=True, blank=True)
+
+    description = RichTextField()
+
+    demo_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    technologies = models.ManyToManyField(Technology)
+    panels = [
+        FieldPanel('name'),
+        ImageChooserPanel('demo_image'),
+        FieldPanel('description'),
         FieldPanel('short_index_description'),
+        FieldPanel('client'),
+        FieldPanel('technologies'),
     ]
 
     def __str__(self):
