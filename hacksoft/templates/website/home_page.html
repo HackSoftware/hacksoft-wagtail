@@ -62,7 +62,8 @@
      </div>
      <div class="section-content-row">
       <div class="align-center panda-pic">
-        {% image page.technologies_we_use_image original %}
+        {% image page.technologies_we_use_image original as tech_panda %}
+          <img src="{{tech_panda.url}}" class="technologies-panda"/>
       </div>
       <div class="section-content-row align-center primary-focus-text technologies-text">
         {{ page.technologies_we_use_center|richtext }}
@@ -70,7 +71,7 @@
       <div class="section-content-row align-center technologies-logos">
         {% for relation in page.technologies_placement.all %}
           {% image relation.technology.logo max-100x100 as tech_logo %}
-          <img src="{{tech_logo.url}}" class="filter_image wow flipInX" />
+          <img src="{{tech_logo.url}}" class="filter_image wow flipInX"/>
         {% endfor %}
       </div>
     </div>
@@ -90,7 +91,7 @@
       <div class="section-content-row align-center our-team-images" style="background-image:url({{team_photo.url}})"></div>
     </div>
   </div>
-
+<!--
   <div class="section">
     <div class="section-heading">
       <div>
@@ -123,7 +124,7 @@
 
 
     </div>
-  </div>
+  </div> -->
 </div>
 </div>
 {% endblock content %}

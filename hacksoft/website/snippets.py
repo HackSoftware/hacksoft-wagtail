@@ -86,7 +86,6 @@ class Client(models.Model):
 @register_snippet
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    short_index_description = RichTextField()
     client = models.ForeignKey(Client, null=True, blank=True)
 
     description = RichTextField()
@@ -104,7 +103,6 @@ class Project(models.Model):
         FieldPanel('name'),
         ImageChooserPanel('demo_image'),
         FieldPanel('description'),
-        FieldPanel('short_index_description'),
         FieldPanel('client'),
         FieldPanel('technologies'),
     ]

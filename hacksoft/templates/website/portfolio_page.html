@@ -18,28 +18,42 @@
 
   <div class="section how-we-work">
 
-    <div class="section-heading">
-      <div>Our Work</div>
-    </div>
-
     <div>
        {{ page.intro|richtext }}
     </div>
 
-
-    {% for project in projects %}
-    <a href="/project/{{ project.slug }}">
-      <div class="section-content-row  float-container  portfolio-landing wow {% cycle 'fadeInLeftBig' 'fadeInRightBig' %}">
-        <div class="smaller-part {% cycle 'odd' 'even' %}">
-          {% image project.demo_image height-300 as demo_image %}
-          <img src="{{ demo_image.url }}" class="filter_image" />
-        </div>
-        <div class="larger-part">
-          <h3>{{ project }}</h3>
-          {{ project.short_index_description|richtext }}
-        </div>
+    {% for client in clients %}
+      <div class="section-heading">
+        <div><strong>{{ client.name }}</strong></div>
       </div>
-    </a>
+
+      <div class="client-description">
+        {% image client.logo original as client_logo %}
+        <img src="{{client_logo.url}}" class="filter_image wow flipInX" />
+        {{ client.description|richtext }}
+      </div>
+
+      {% for project in client.project_set.all %}
+      <div class="section-content-row  float-container  portfolio-landing wow row {% cycle 'fadeInLeftBig' 'fadeInRightBig' %} ">
+
+        <div class="col-md-10">
+          <h3>{{ project }}</h3>
+          <div>
+            {{ project.description|richtext }}
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="portfolio-technologies">
+            {% for technology in project.technologies.all %}
+              {% image technology.logo max-100x100 as tech_logo %}
+              <img src="{{tech_logo.url}}" class="filter_image wow flipInX" />
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
     {% endfor %}
 
 

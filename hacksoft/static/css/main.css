@@ -1044,6 +1044,7 @@ a {
     height: 100%;
     width: 50%;
     padding-top: 20px;
+    padding-left: 20px;
     text-align: left;
     position: relative; }
     .vertical-sections-container .vertical-section:after {
@@ -1081,5 +1082,28 @@ a {
   .modal-content .sales-picture img {
     border: 2px solid #f79824;
     width: 100%; }
+
+.client-description {
+  padding: 60px 0 20px 0; }
+
+.portfolio-technologies img {
+  height: 70px;
+  padding: 5px; }
+
+.process_panda {
+  position: absolute;
+  width: 190px;
+  left: 30px;
+  top: 100vh; }
+  @media screen and (max-width: 1550px) {
+    .process_panda {
+      display: none; } }
+
+.technologies-panda {
+  position: absolute;
+  left: -150px; }
+  @media screen and (max-width: 1550px) {
+    .technologies-panda {
+      display: none; } }
 
 /*# sourceMappingURL=main.css.map */
