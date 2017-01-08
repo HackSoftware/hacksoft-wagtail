@@ -103,8 +103,12 @@ class HomePage(Page):
         FieldPanel('portfolio_title'),
         ImageChooserPanel('portfolio_image'),
         FieldPanel('portfolio_center'),
-        InlinePanel('projects_placement', label="Projects")
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['clients'] = Client.objects.all()
+        return context
 
 
 class HowWeWorkPage(Page):
@@ -208,6 +212,23 @@ class PortfolioPage(Page):
         context = super().get_context(request)
         context['clients'] = Client.objects.all()
         return context
+
+
+class ContactsPage(Page):
+    header_text = models.CharField(max_length=255)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = RichTextField()
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image'),
+        FieldPanel('text'),
+    ]
 
 
 class ProjectPage(RoutablePageMixin, Page):

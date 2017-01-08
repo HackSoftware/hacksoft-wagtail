@@ -18,18 +18,21 @@
 
   <div class="section how-we-work">
 
-    <div>
-       {{ page.intro|richtext }}
+    <div class="row box-container">
+      {% for client in clients %}
+        <div class="client-box" data-client-number="{{ forloop.counter }}">
+          {% image client.logo original as client_logo %}
+          <img src="{{client_logo.url}}" class="filter_image wow flipInX box-logo"/>
+        </div>
+      {% endfor %}
     </div>
 
     {% for client in clients %}
-      <div class="section-heading">
+      <div class="section-heading" id="clinet-number-{{ forloop.counter }}">
         <div><strong>{{ client.name }}</strong></div>
       </div>
 
       <div class="client-description">
-        {% image client.logo original as client_logo %}
-        <img src="{{client_logo.url}}" class="filter_image wow flipInX" />
         {{ client.description|richtext }}
       </div>
 

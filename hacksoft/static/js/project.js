@@ -73,3 +73,10 @@ $('.video-pause').click(function() {
 //   $(this).hide();
 //   $('.team-main').show();
 // });
+
+$('.client-box').click(function() {
+  var clinetNumber= $(this).data('client-number');
+  $('html, body').animate({
+    scrollTop: $("#clinet-number-" + clinetNumber).offset().top - 60
+  }, 1000);
+})

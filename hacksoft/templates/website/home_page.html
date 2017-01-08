@@ -91,7 +91,7 @@
       <div class="section-content-row align-center our-team-images" style="background-image:url({{team_photo.url}})"></div>
     </div>
   </div>
-<!--
+
   <div class="section">
     <div class="section-heading">
       <div>
@@ -104,27 +104,19 @@
           {{ page.portfolio_center|richtext }}
         </div>
       </div>
-
-      {% for relation in page.projects_placement.all %}
-      <div class="section-content-row  float-container  portfolio-landing wow {% cycle 'fadeInLeftBig' 'fadeInRightBig' %}">
-        <div class="smaller-part {% cycle 'odd' 'even' %}">
-          {% image relation.project.demo_image height-300 as demo_image %}
-          <img src="{{ demo_image.url }}" class="filter_image" />
-        </div>
-        <div class="larger-part">
-          <h3>{{ relation.project }}</h3>
-          {{ relation.project.short_index_description|richtext }}
-        </div>
-      </div>
-      {% endfor %}
-
-      <div class="align-center">
-        {% image page.portfolio_image max-200x200 class="filter_image" %}
-      </div>
-
-
     </div>
-  </div> -->
+
+    <div class="row box-container">
+    {% for client in clients %}
+      <a href="/our-clients/">
+        <div class="client-box" data-client-number="{{ forloop.counter }}">
+          {% image client.logo original as client_logo %}
+          <img src="{{client_logo.url}}" class="filter_image wow flipInX box-logo"/>
+        </div>
+      </a>
+    {% endfor %}
+    </div>
+
 </div>
 </div>
 {% endblock content %}

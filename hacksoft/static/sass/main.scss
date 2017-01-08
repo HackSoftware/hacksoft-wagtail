@@ -1476,3 +1476,25 @@ a {
     display: none;
   }
 }
+
+.footer-panda {
+  text-align: center;
+}
+
+.box-container {
+  padding: 20px 0 20px 0;
+  .client-box {
+    height: 15vw;
+    width: 15vw;
+    border: 3px solid #F79824;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    display: flex;
+    float: left;
+    cursor: pointer;
+    .box-logo {
+      width: 100%;
+      margin:auto;
+    }
+  }
+}

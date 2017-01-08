@@ -53,11 +53,12 @@
       </ul>
 
     </div>
-
+    <div class="footer-panda">
+      {% image page.what_we_do_image max-250x250 as doodle_image %}
+      <img class="filer_image" alt="panda_process.gif" src="{{doodle_image.url}}" />
+    </div>
   </div>
-</div>
 
-{% image page.what_we_do_image max-250x250 as doodle_image %}
-<img class="filer_image mb50 process_panda" alt="panda_process.gif" src="{{doodle_image.url}}" />
+</div>
 
 {% endblock content %}
