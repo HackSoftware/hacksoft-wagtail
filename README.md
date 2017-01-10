@@ -1,4 +1,4 @@
-HackSoft Wagtail
+hacksoft.io
 ==============================
 A HackSoft website based on the wagtail CMS. It is deployed here: www.hacksoft.io
 
