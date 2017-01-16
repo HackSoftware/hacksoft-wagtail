@@ -1132,18 +1132,22 @@ a {
   text-align: center; }
 
 .box-container {
-  padding: 20px 0 20px 0; }
+  padding: 20px 0 20px 0;
+  display: flex; }
   .box-container .client-box {
-    height: 15vw;
-    width: 15vw;
-    border: 3px solid #F79824;
-    margin: 0.5vw;
-    padding: 0.5vw;
-    display: flex;
-    float: left;
-    cursor: pointer; }
+    position: relative;
+    width: 33%;
+    cursor: pointer;
+    text-align: center; }
+    .box-container .client-box:before {
+      height: 100%;
+      content: "";
+      display: inline-block;
+      vertical-align: middle; }
     .box-container .client-box .box-logo {
-      width: 100%;
-      margin: auto; }
+      margin: auto;
+      max-width: 80%;
+      max-height: 50%;
+      vertical-align: middle; }
 
 /*# sourceMappingURL=main.css.map */

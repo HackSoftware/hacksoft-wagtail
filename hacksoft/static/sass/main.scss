@@ -1422,51 +1422,51 @@ a {
     color:white;
 
     .vertical-section {
-        height:100%;
-        width:50%;
-        padding-top: 20px;
-        padding-left: 20px;
-        text-align: left;
-        position:relative;
+      height:100%;
+      width:50%;
+      padding-top: 20px;
+      padding-left: 20px;
+      text-align: left;
+      position:relative;
 
+      &:after {
+        position:absolute;
+        height:80%;
+        top:10%;
+        right:0;
+        width:1px;
+        background-color:silver;
+        content:"";
+      }
+
+      &:first-child{
+        text-align: right;
+        @media screen and (max-width: 450px){
+          padding: 10px 10px 0 0;
+        }
+        padding:30px 30px 0 0;
+
+
+      }
+
+      &:last-child {
         &:after {
-            position:absolute;
-            height:80%;
-            top:10%;
-            right:0;
-            width:1px;
-            background-color:silver;
-            content:"";
+            display:none;
         }
-
-        &:first-child{
-          text-align: right;
-          @media screen and (max-width: 450px){
-            padding: 10px 10px 0 0;
-          }
-          padding:30px 30px 0 0;
-
-
+        @media screen and (max-width: 450px){
+         padding: 10px 0 0  10px;
         }
-
-        &:last-child {
-            &:after {
-                display:none;
-            }
-            @media screen and (max-width: 450px){
-             padding: 10px 0 0  10px;
-            }
+      }
+      .section-header {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom:20px;
+      }
+      .section-content {
+        ul {
+          list-style-type: none;
         }
-        .section-header {
-            font-weight: 700;
-            font-size: 20px;
-            margin-bottom:20px;
-        }
-        .section-content {
-            ul {
-                list-style-type: none;
-            }
-        }
+      }
     }
 }
 
@@ -1522,18 +1522,27 @@ a {
 
 .box-container {
   padding: 20px 0 20px 0;
+  display: flex;
+
+
   .client-box {
-    height: 15vw;
-    width: 15vw;
-    border: 3px solid #F79824;
-    margin: 0.5vw;
-    padding: 0.5vw;
-    display: flex;
-    float: left;
+    position:relative;
+    width: 33%;
     cursor: pointer;
+    text-align: center;
+
+    &:before {
+      height:100%;
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     .box-logo {
-      width: 100%;
       margin:auto;
+      max-width: 80%;
+      max-height:50%;
+      vertical-align: middle;
     }
   }
 }
