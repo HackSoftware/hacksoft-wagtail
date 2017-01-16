@@ -409,10 +409,12 @@ a {
   .content-wrapper .video img {
     max-width: 400px; }
 
-.technologies-logos {
-  margin-bottom: 100px; }
-  .technologies-logos img {
-    padding: 21px; }
+.section-content-row.technologies-logos {
+  margin-bottom: 0px;
+  padding-bottom: 0px; }
+  .section-content-row.technologies-logos img {
+    padding: 21px;
+    width: 110px; }
 
 .our-team-images {
   background-repeat: no-repeat;

@@ -560,11 +560,13 @@ a {
     }
 }
 
-.technologies-logos {
-    margin-bottom: 100px;
-    img {
-        padding: 21px
-    }
+.section-content-row.technologies-logos {
+  margin-bottom: 0px;
+  padding-bottom:0px;
+  img {
+    padding: 21px;
+    width: 110px;
+  }
 }
 
 .our-team-images {
