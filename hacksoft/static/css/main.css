@@ -57,6 +57,13 @@ a {
       height: 100%;
       background-color: #000;
       opacity: 0.6; }
+  .dimmed-image .dim {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(120, 120, 120, 0.3); }
   .dimmed-image .scroll-down-arrow {
     text-align: center;
     position: absolute;
@@ -80,10 +87,11 @@ a {
   background-position-x: 50%; }
 .technologies-we-use-heading .slightly-down {
   background-position-y: 45%; }
-.technologies-we-use-heading .scroll-down-arrow {
-  bottom: 54vh; }
+.technologies-we-use-heading div.scroll-down-arrow {
+  bottom: 54vh;
+  z-index: 1; }
 .technologies-we-use-heading .heading {
-  color: #eee;
+  color: #fff;
   cursor: default;
   position: absolute;
   font-weight: bold;
@@ -92,7 +100,8 @@ a {
   padding: 18px;
   font-size: 50px;
   text-align: center;
-  transform: translate(-50%, 0%); }
+  transform: translate(-50%, 0%);
+  z-index: 1; }
   @media screen and (max-width: 630px) {
     .technologies-we-use-heading .heading {
       font-size: 17px; } }
@@ -207,6 +216,8 @@ a {
         float: left; }
         .header .header-container .nav-menu .menu-main li.selected {
           color: #fff; }
+          .header .header-container .nav-menu .menu-main li.selected.black-active-text {
+            color: #000; }
         .header .header-container .nav-menu .menu-main li:hover {
           border-bottom: 2px solid #F79824; }
         .header .header-container .nav-menu .menu-main li.selected:hover {
