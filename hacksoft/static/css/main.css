@@ -77,8 +77,6 @@ a {
   height: 40vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%); }
-.how-we-work .section-heading:after {
-  margin-left: -35px !important; }
 
 .technologies-we-use-heading .dimmed-image {
   height: 50vh;
@@ -172,6 +170,7 @@ a {
   max-width: 100vw;
   z-index: 101;
   border-top: 3px solid #F79824;
+  background-color: rgba(255, 255, 255, 0.4);
   -webkit-transition: all 1.0s ease;
   -moz-transition: all 1.0s ease;
   -ms-transition: all 1.0s ease;
@@ -222,6 +221,8 @@ a {
           border-bottom: 2px solid #F79824; }
         .header .header-container .nav-menu .menu-main li.selected:hover {
           border-bottom: 2px solid #fff; }
+          .header .header-container .nav-menu .menu-main li.selected:hover.black-active-text {
+            border-bottom: 2px solid #000; }
     .header .header-container .nav-menu a {
       display: block;
       padding: 20px;
@@ -248,7 +249,7 @@ a {
         display: none; }
       .header .header-container .toggle {
         display: block;
-        padding: 14px 20px;
+        padding: 14px 0px;
         color: #FFF;
         font-size: 17px;
         text-decoration: none;
@@ -334,7 +335,7 @@ a {
         display: block;
         position: absolute;
         left: 50%;
-        margin-left: -18px;
+        margin-left: -35px;
         border-top: 36px solid #F79824;
         border-left: 35px solid transparent;
         border-right: 35px solid transparent; }
@@ -372,17 +373,14 @@ a {
       color: #999;
       padding-top: 30px;
       padding-bottom: 30px; }
-    .content-wrapper .section .our-team-text, .content-wrapper .section .technologies-text {
-      padding-bottom: 0 !important; }
-      .content-wrapper .section .our-team-text div, .content-wrapper .section .technologies-text div {
-        color: #999;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        line-height: 35px;
-        width: 100%;
-        max-width: 90vw;
-        margin: auto;
-        font-size: 21px; }
+    .content-wrapper .section .our-team-text div, .content-wrapper .section .technologies-text div {
+      color: #999;
+      padding-top: 30px;
+      line-height: 35px;
+      width: 100%;
+      max-width: 90vw;
+      margin: auto;
+      font-size: 21px; }
     .content-wrapper .section .technologies-text.primary-focus-text {
       margin-bottom: 0; }
   .content-wrapper h1.lead-text {
@@ -551,7 +549,7 @@ a {
     @media screen and (max-width: 700px) {
       .how-we-work .what-we-do-container .what-we-do-block {
         padding: 2%;
-        width: 100%;
+        width: 96%;
         margin: 15px 0 0 0; } }
     .how-we-work .what-we-do-container .what-we-do-block img {
       width: 100%;
@@ -605,6 +603,11 @@ a {
 .popup-overlay:target {
   visibility: visible;
   z-index: 4; }
+
+.contact-us {
+  padding-top: 30px; }
+  .contact-us iframe {
+    max-width: 100%; }
 
 .popup {
   margin: 70px auto;
@@ -1145,7 +1148,6 @@ a {
   text-align: center; }
 
 .box-container {
-  padding: 20px 0 20px 0;
   display: flex; }
   .box-container .client-box {
     position: relative;
