@@ -462,7 +462,7 @@ a {
   overflow: hidden;
   position: absolute;
   width: 100%;
-  bottom: 0; }
+  bottom: -170px; }
   .footer .footer-container {
     max-width: 1100px;
     margin-left: auto;
