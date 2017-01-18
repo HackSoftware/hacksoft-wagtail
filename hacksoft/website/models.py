@@ -206,12 +206,8 @@ class PortfolioPage(Page):
         FieldPanel('header_text'),
         ImageChooserPanel('header_image'),
         FieldPanel('intro'),
+        InlinePanel('clients_placement', label="Clients"),
     ]
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        context['clients'] = Client.objects.all()
-        return context
 
 
 class ContactsPage(Page):
@@ -296,3 +292,15 @@ class ProjectsPlacement(Orderable, models.Model):
 
     def __str__(self):
         return "{} -> {}".format(self.page.title, self.project.name)
+
+
+class ClientPlacement(Orderable, models.Model):
+    page = ParentalKey('website.PortfolioPage', related_name='clients_placement')
+    client = models.ForeignKey('website.Client', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('client'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.client.name)

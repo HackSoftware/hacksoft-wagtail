@@ -1,7 +1,7 @@
 /* Project specific Javascript goes here. */
 
 // here is the header picture, we have uploaded from django-cms
-new WOW().init();
+new WOW({mobile: false }).init();
 
 var url = window.location.href, idx = url.indexOf("#")
 var hash = idx != -1 ? url.substring(idx + 1) : "";
