@@ -638,6 +638,14 @@ a {
     width:100%;
     bottom:-170px;
 
+    @media screen and (max-width:375px) {
+        bottom: -200px;
+    }
+
+    @media screen and (max-width:320px) {
+        bottom:-230px;
+    }
+
     .footer-container {
         max-width:1100px;
         margin-left:auto;

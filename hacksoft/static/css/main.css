@@ -473,6 +473,12 @@ a {
   position: absolute;
   width: 100%;
   bottom: -170px; }
+  @media screen and (max-width: 375px) {
+    .footer {
+      bottom: -200px; } }
+  @media screen and (max-width: 320px) {
+    .footer {
+      bottom: -230px; } }
   .footer .footer-container {
     max-width: 1100px;
     margin-left: auto;
@@ -750,7 +756,7 @@ a {
   clear: both; }
 
 .timeline > li > .timeline-panel {
-  width: 46%;
+  width: 42%;
   float: left;
   border: 1px solid #d4d4d4;
   padding: 20px;
