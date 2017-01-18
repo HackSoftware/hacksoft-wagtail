@@ -22,7 +22,7 @@
       {% for client in clients %}
         <div class="client-box" data-client-number="{{ forloop.counter }}">
           {% image client.logo original as client_logo %}
-          <img src="{{client_logo.url}}" class="filter_image box-logo"/>
+          <img src="{{client_logo.url}}" class="filter_image wow flipInX box-logo"/>
         </div>
       {% endfor %}
     </div>
@@ -37,7 +37,7 @@
       </div>
 
       {% for project in client.project_set.all %}
-      <div class="section-content-row  float-container  portfolio-landing row ">
+      <div class="section-content-row  float-container  portfolio-landing wow row {% cycle 'fadeInLeftBig' 'fadeInRightBig' %} ">
 
         <div class="col-md-10">
           <h3>{{ project }}</h3>
