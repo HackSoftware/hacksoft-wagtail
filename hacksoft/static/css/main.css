@@ -423,7 +423,8 @@ a {
   padding-bottom: 0px; }
   .section-content-row.technologies-logos img {
     padding: 21px;
-    width: 110px; }
+    max-width: 110px;
+    max-height: 110px; }
 
 .our-team-images {
   background-repeat: no-repeat;
@@ -490,6 +491,10 @@ a {
       display: none; }
   .footer .copyright {
     font-weight: bold; }
+  .footer .hosting-partner {
+    width: 65px;
+    position: relative;
+    top: 6px; }
   .footer ul {
     padding-left: 0;
     margin-bottom: 20px; }

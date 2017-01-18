@@ -123,8 +123,7 @@ class Footer(models.Model):
         ('link', blocks.StructBlock([
             ('text', blocks.TextBlock()),
             ('url', blocks.URLBlock()),
-        ],
-        template='streams/footer_link.html'))
+        ], template='streams/footer_link.html'))
     ])
 
     panels = [

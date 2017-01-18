@@ -1,3 +1,4 @@
+{% load staticfiles i18n %}
 {% load wagtailcore_tags %}
 
 <div class="footer background">
@@ -14,7 +15,13 @@
             {% endfor %}
           </ul>
           <div class="copyright">
-            © 2017 HackSoft
+            <p>
+              © 2017 HackSoft.
+              <p>
+                <span>Hosted by:</span>
+                <a href="https://kyup.com/" target="_blank"><img class="hosting-partner" src="{% static 'images/kyup.png' %}"></a>
+              </p>
+            </p>
           </div>
         </div>
       </div>
