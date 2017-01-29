@@ -304,3 +304,35 @@ class ClientPlacement(Orderable, models.Model):
 
     def __str__(self):
         return "{} -> {}".format(self.page.title, self.client.name)
+
+
+class BlogPostsPage(Page):
+    header_text = models.CharField(max_length=255)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = RichTextField()
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image'),
+        FieldPanel('text'),
+    ]
+
+
+class BlogPost(Page):
+    cover_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = RichTextField()
+    content_panels = Page.content_panels + [
+        ImageChooserPanel('cover_image'),
+        FieldPanel('text'),
+    ]
