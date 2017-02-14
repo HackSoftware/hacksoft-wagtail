@@ -63,15 +63,6 @@ $(document).ready(function() {
     $(".cover-video").get(0).pause();
   });
 
-  // $('.team-main').hover(function() {
-  //   $(this).hide();
-  //   $('.team-secondary').show();
-  // });
-  // $('.team-secondary').hover(function(){}, function() {
-  //   $(this).hide();
-  //   $('.team-main').show();
-  // });
-
   $('.client-box').click(function() {
     var clinetNumber= $(this).data('client-number');
     $('html, body').animate({
