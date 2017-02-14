@@ -13,7 +13,7 @@ from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey
 
-from .snippets import Project, Client
+from .snippets import Project, Client, Teammate
 
 
 class HomePage(Page):
@@ -332,7 +332,10 @@ class BlogPost(Page):
         related_name='+'
     )
     text = models.TextField()
+    authors = models.ManyToManyField(Teammate)
+
     content_panels = Page.content_panels + [
         ImageChooserPanel('cover_image'),
         FieldPanel('text'),
+        FieldPanel('authors')
     ]

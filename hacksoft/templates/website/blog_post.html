@@ -16,6 +16,13 @@
 
 <div class="content-wrapper" >
 
+  <div class="authors">
+    <p>Authors:</p>
+    {% for author in page.authors.all %}
+      {{ author }}
+    {% endfor %}
+  </div>
+
   <div class="section-content">
     {% autoescape off %}
       {{ page.text|markdown }}
