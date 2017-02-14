@@ -7,6 +7,7 @@ from pygments import highlight
 from pygments.formatters import HtmlFormatter, ClassNotFound
 from pygments.lexers import get_lexer_by_name
 
+
 class HighlighterRenderer(m.HtmlRenderer):
     def blockcode(self, text, lang):
         try:
@@ -25,6 +26,7 @@ renderer = HighlighterRenderer()
 md = m.Markdown(renderer, extensions=('fenced-code',))
 
 register = template.Library()
+
 
 def markdown(value):
     return md(value)
