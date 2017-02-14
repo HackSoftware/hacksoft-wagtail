@@ -49,3 +49,6 @@ wagtail==1.8
 
 # Wand
 Wand==0.4.3
+
+# Markdown
+misaka==2.1.0

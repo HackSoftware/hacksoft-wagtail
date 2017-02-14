@@ -331,7 +331,7 @@ class BlogPost(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    text = RichTextField()
+    text = models.TextField()
     content_panels = Page.content_panels + [
         ImageChooserPanel('cover_image'),
         FieldPanel('text'),

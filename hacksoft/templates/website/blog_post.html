@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags markdown %}
 {% block content %}
 <div class="new technologies-we-use-heading">
   {% image page.header_image max-1366x1366 as header_image %}
@@ -17,7 +17,9 @@
 <div class="content-wrapper" >
 
   <div class="section-content">
-    {{ page.text|richtext }}
+    {% autoescape off %}
+      {{ page.text|markdown }}
+    {% endautoescape %}
   </div>
 
 </div>
