@@ -9,7 +9,7 @@ $(document).ready(function() {
   }
 
 
-  fixed_header = $('.header');
+  var fixed_header = $('.header');
 
   $(window).on("scroll", function (e) {
     if ($(document).scrollTop() > 0) {
