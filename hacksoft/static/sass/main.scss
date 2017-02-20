@@ -428,9 +428,12 @@ a {
     position:relative;
     padding-bottom: 50px;
 
+    @media screen and (max-width: 1400px) {
+        max-width:900px;
+    }
+
     @media screen and (max-width: 1100px) {
         max-width: 90vw;
-        margin-left: 5vw;
     }
 
     &:before {
@@ -1582,4 +1585,82 @@ a {
       vertical-align: middle;
     }
   }
+}
+
+.blog-posts-container {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.blog-post-container {
+    width: 33%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    padding:10px;
+    .blog-post {
+        box-shadow: 0px 10px 30px #ababab;
+        padding:10px;
+        .head-image {
+            width: 100%;
+            height: 190px;
+            background-position: center;
+            background-size: cover;
+        }
+        .blog-post-body {
+            padding:10px;
+            .title {
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .description {
+
+            }
+        }
+    }
+}
+
+.blog-post-page {
+    .back-to-blog {
+        display:inline-block;
+        margin-top:20px;
+        margin-bottom:20px;
+        color:grey; 
+    }
+    .author {
+        &:after {
+            content: "&";
+            font-size: 30px;
+            font-weight: bold;
+            display:block;
+            float:left;
+            line-height: 100px;
+            color:#ff8400;
+            margin-left:20px;
+            margin-right:20px;
+        }
+        &:last-child:after{
+            display: none;
+        }
+
+        .author_image {
+            width:100px;
+            height:100px;
+            background-position:center;
+            background-size:cover;
+            border-radius:50%;
+            float:left;
+        }
+        .author_name {
+            line-height:100px;
+            float:left;
+            margin-left:20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    }
+    .article-main-image {
+        width:100%;
+        margin-top:50px;
+    }
 }

@@ -20,10 +20,34 @@
     {{ page.text|richtext }}
   </div>
 
+  <div class="blog-posts-container">
+  {% for a in "1234567"|make_list %}
   {% for page in self.get_children.specific %}
-    {{ page.title }}
-    <a href="{{ page.url }}">READ More</a>
+    <div class="blog-post-container">
+      
+      <a href="{{ page.url }}">
+        <div class="blog-post">
+          {% image page.cover_image width-400 as tmp_photo %}
+          <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
+          </div>
+          <div class="blog-post-body">
+            <div class="title">
+              {{ page.title }}
+            </div>
+            <div class="authors">
+              {% for author in page.authors.all %}
+                {{author.name}}
+              {% endfor %}
+            </div>
+            <div class="description">
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
   {% endfor %}
+  {% endfor %}
+  </div>
 
 </div>
 {% endblock content %}

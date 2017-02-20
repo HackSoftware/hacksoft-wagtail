@@ -2,10 +2,10 @@
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags markdown %}
 {% block content %}
 <div class="new technologies-we-use-heading">
-  {% image page.header_image max-1366x1366 as header_image %}
+  {% image page.cover_image max-1366x1366 as header_image %}
   <div class="new static-header dimmed-image slightly-down" style="background-image: url({{header_image.url}})">
     <div class="new heading">
-      <p>{{page.header_text|richtext}}</p>
+      <p>{{page.title|richtext}}</p>
     </div>
     <div class="new scroll-down-arrow">
       <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
@@ -14,15 +14,22 @@
   </div>
 </div>
 
-<div class="content-wrapper" >
-
-  <div class="authors">
-    <p>Authors:</p>
+<div class="content-wrapper blog-post-page">
+  <div class="back-to-blog">
+    < <a href="/blog">Back to Blog</a>
+  </div>
+  <div class="authors float-container">
     {% for author in page.authors.all %}
-      {{ author }}
+      <div class="author">
+        {% image author.initial_photo max-200x200 as author_image %}
+        <div class="author_image" style="background-image:url({{author_image.url}})"></div>
+        <div class="author_name">{{ author.name }}</div>
+      </div>
     {% endfor %}
   </div>
-
+  <div class="article-main-image">
+    {% image page.cover_image max-900x900 %}
+  </div>
   <div class="section-content">
     {% autoescape off %}
       {{ page.text|markdown }}

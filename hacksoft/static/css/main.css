@@ -311,10 +311,12 @@ a {
   margin: auto;
   position: relative;
   padding-bottom: 50px; }
+  @media screen and (max-width: 1400px) {
+    .content-wrapper {
+      max-width: 900px; } }
   @media screen and (max-width: 1100px) {
     .content-wrapper {
-      max-width: 90vw;
-      margin-left: 5vw; } }
+      max-width: 90vw; } }
   .content-wrapper:before {
     position: absolute;
     margin-left: -300%;
@@ -1175,5 +1177,66 @@ a {
       max-width: 80%;
       max-height: 50%;
       vertical-align: middle; }
+
+.blog-posts-container {
+  display: flex;
+  flex-wrap: wrap; }
+
+.blog-post-container {
+  width: 33%;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+  padding: 10px; }
+  .blog-post-container .blog-post {
+    box-shadow: 0px 10px 30px #ababab;
+    padding: 10px; }
+    .blog-post-container .blog-post .head-image {
+      width: 100%;
+      height: 190px;
+      background-position: center;
+      background-size: cover; }
+    .blog-post-container .blog-post .blog-post-body {
+      padding: 10px; }
+      .blog-post-container .blog-post .blog-post-body .title {
+        font-size: 20px;
+        font-weight: bold; }
+
+.blog-post-page .back-to-blog {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: grey; }
+.blog-post-page .author:after {
+  content: "&";
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+  float: left;
+  line-height: 100px;
+  color: #ff8400;
+  margin-left: 20px;
+  margin-right: 20px; }
+.blog-post-page .author:last-child:after {
+  display: none; }
+.blog-post-page .author .author_image {
+  width: 100px;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  float: left; }
+.blog-post-page .author .author_name {
+  line-height: 100px;
+  float: left;
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 20px; }
+.blog-post-page .article-main-image {
+  width: 100%;
+  margin-top: 50px; }
 
 /*# sourceMappingURL=main.css.map */
