@@ -1,22 +1,15 @@
 {% extends 'base.html' %}
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags markdown %}
 {% block content %}
-<div class="new technologies-we-use-heading">
-  {% image page.cover_image max-1366x1366 as header_image %}
-  <div class="new static-header dimmed-image slightly-down" style="background-image: url({{header_image.url}})">
-    <div class="new heading">
-      <p>{{page.title|richtext}}</p>
-    </div>
-    <div class="new scroll-down-arrow">
-      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
-    </div>
-    <div class="dim"></div>
-  </div>
-</div>
-
 <div class="content-wrapper blog-post-page">
-  <div class="back-to-blog">
-    < <a href="/blog">Back to Blog</a>
+  <div class="article-title">
+    <h1>{{ page.title }}</h1>
+  </div>
+  <div class="article-date">
+    Posted: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
+  </div>
+  <div class="article-categories">
+    Categories: {{ page.categories.all|join:", " }}
   </div>
   <div class="authors float-container">
     {% for author in page.authors.all %}
@@ -35,6 +28,24 @@
       {{ page.text|markdown }}
     {% endautoescape %}
   </div>
+  <div id="disqus_thread">
+    <script>
+    var disqus_config = function () {
+      this.page.url = "{{ page.get_site.root_url }}{{ page.url }}";
+      this.page.identifier = {{ page.id }};
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hacksoft-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </div>
+
 
 </div>
 {% endblock content %}

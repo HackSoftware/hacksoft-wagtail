@@ -19,33 +19,40 @@
   <div class="section-content">
     {{ page.text|richtext }}
   </div>
-
   <div class="blog-posts-container">
-  {% for a in "1234567"|make_list %}
   {% for page in self.get_children.specific %}
     <div class="blog-post-container">
-      
+
       <a href="{{ page.url }}">
         <div class="blog-post">
           {% image page.cover_image width-400 as tmp_photo %}
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
           </div>
+          {% for author in page.authors.all %}
+            {% image author.initial_photo width-400 as avatar %}
+            <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
+          {% endfor %}
           <div class="blog-post-body">
             <div class="title">
               {{ page.title }}
             </div>
             <div class="authors">
               {% for author in page.authors.all %}
-                {{author.name}}
+                <div class="author">
+                  {{ author.name }}
+                </div>
               {% endfor %}
             </div>
             <div class="description">
+              {{ page.index_text }}
+            </div>
+            <div class="date">
+              Posted: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
             </div>
           </div>
         </div>
       </a>
     </div>
-  {% endfor %}
   {% endfor %}
   </div>
 

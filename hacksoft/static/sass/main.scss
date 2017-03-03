@@ -1599,8 +1599,9 @@ a {
     box-sizing: border-box;         /* Opera/IE 8+ */
     padding:10px;
     .blog-post {
-        box-shadow: 0px 10px 30px #ababab;
-        padding:10px;
+        box-shadow: 0px 10px 15px #ababab;
+        padding: 10px;
+        margin: 10px 5px 15px 5px;
         .head-image {
             width: 100%;
             height: 190px;
@@ -1610,22 +1611,59 @@ a {
         .blog-post-body {
             padding:10px;
             .title {
-                font-size: 20px;
+                font-size: 24px;
                 font-weight: bold;
             }
             .description {
 
             }
+
+            .date {
+              color:silver;
+              text-align: right;
+              padding-top:10px;
+              span {
+                font-size: 16px;
+              }
+            }
+        }
+        .avatar {
+          width:70px;
+          height:70px;
+          background-position:center;
+          background-size:cover;
+          border-radius:50%;
+          float:right;
+          margin:-35px 5px 0 0;
+        }
+        .authors {
+          font-weight: bold;
+          margin:10px 0;
+          .author {
+            display:inline-block;
+            &:after {
+              content: "&";
+              font-size: 20px;
+              font-weight: bold;
+              display:inline-block;
+              color:#ff8400;
+              margin:0 1px;
+            }
+            &:last-child:after{
+                display: none;
+            }
+          }
         }
     }
 }
 
 .blog-post-page {
+    padding-top: 70px;
     .back-to-blog {
         display:inline-block;
         margin-top:20px;
         margin-bottom:20px;
-        color:grey; 
+        color:grey;
     }
     .author {
         &:after {
@@ -1659,8 +1697,23 @@ a {
             font-size: 20px;
         }
     }
+    .article-date {
+      color: silver;
+      margin-top: -20px;
+    }
     .article-main-image {
-        width:100%;
-        margin-top:50px;
+        img {
+          width:100%;
+          margin-top:10px;
+        }
+    }
+    .section-content {
+      font-size: 18px;
+    }
+    .article-categories {
+      color: #5a5a5a;
+    }
+    #disqus_thread {
+      padding-top: 25px;
     }
 }
