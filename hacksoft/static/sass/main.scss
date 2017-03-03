@@ -1665,6 +1665,11 @@ a {
         margin-bottom:20px;
         color:grey;
     }
+    .authors {
+      margin-top: -35px;
+      position: relative;
+      z-index: 10;
+    }
     .author {
         &:after {
             content: "&";
@@ -1682,6 +1687,7 @@ a {
         }
 
         .author_image {
+            border: 2px solid silver;
             width:100px;
             height:100px;
             background-position:center;
@@ -1697,9 +1703,13 @@ a {
             font-size: 20px;
         }
     }
+    .article-title {
+        padding-top: 30px;
+    }
     .article-date {
       color: silver;
       margin-top: -20px;
+      padding-bottom: 20px;
     }
     .article-main-image {
         img {

@@ -1241,6 +1241,10 @@ a {
     margin-top: 20px;
     margin-bottom: 20px;
     color: grey; }
+  .blog-post-page .authors {
+    margin-top: -35px;
+    position: relative;
+    z-index: 10; }
   .blog-post-page .author:after {
     content: "&";
     font-size: 30px;
@@ -1254,6 +1258,7 @@ a {
   .blog-post-page .author:last-child:after {
     display: none; }
   .blog-post-page .author .author_image {
+    border: 2px solid silver;
     width: 100px;
     height: 100px;
     background-position: center;
@@ -1266,9 +1271,12 @@ a {
     margin-left: 20px;
     font-weight: bold;
     font-size: 20px; }
+  .blog-post-page .article-title {
+    padding-top: 30px; }
   .blog-post-page .article-date {
     color: silver;
-    margin-top: -20px; }
+    margin-top: -20px;
+    padding-bottom: 20px; }
   .blog-post-page .article-main-image img {
     width: 100%;
     margin-top: 10px; }

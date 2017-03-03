@@ -2,14 +2,8 @@
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags markdown %}
 {% block content %}
 <div class="content-wrapper blog-post-page">
-  <div class="article-title">
-    <h1>{{ page.title }}</h1>
-  </div>
-  <div class="article-date">
-    Posted: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
-  </div>
-  <div class="article-categories">
-    Categories: {{ page.categories.all|join:", " }}
+  <div class="article-main-image">
+    {% image page.cover_image max-900x900 %}
   </div>
   <div class="authors float-container">
     {% for author in page.authors.all %}
@@ -20,9 +14,15 @@
       </div>
     {% endfor %}
   </div>
-  <div class="article-main-image">
-    {% image page.cover_image max-900x900 %}
+  <div class="article-title">
+    <h1>{{ page.title }}</h1>
   </div>
+  <div class="article-date">
+    Posted: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
+  </div>
+<!--   <div class="article-categories">
+    Categories: {{ page.categories.all|join:", " }}
+  </div> -->
   <div class="section-content">
     {% autoescape off %}
       {{ page.text|markdown }}
