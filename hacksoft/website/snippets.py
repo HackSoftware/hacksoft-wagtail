@@ -137,3 +137,15 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.links_text
+
+
+@register_snippet
+class Category(models.Model):
+    name = models.CharField(max_length=55)
+
+    panels = [
+        FieldPanel('name'),
+    ]
+
+    def __str__(self):
+        return self.name

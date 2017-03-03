@@ -13,7 +13,7 @@ from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey
 
-from .snippets import Project, Client
+from .snippets import Project, Client, Teammate, Category
 
 
 class HomePage(Page):
@@ -322,6 +322,11 @@ class BlogPostsPage(Page):
         FieldPanel('text'),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['categories'] = Category.objects.all()
+        return context
+
 
 class BlogPost(Page):
     cover_image = models.ForeignKey(
@@ -331,8 +336,17 @@ class BlogPost(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    text = RichTextField()
+    text = models.TextField()
+    index_text = models.CharField(max_length=255)
+    authors = models.ManyToManyField(Teammate)
+    categories = models.ManyToManyField(Category)
+    date = models.DateField("Post date")
+
     content_panels = Page.content_panels + [
         ImageChooserPanel('cover_image'),
         FieldPanel('text'),
+        FieldPanel('index_text'),
+        FieldPanel('date'),
+        FieldPanel('categories'),
+        FieldPanel('authors')
     ]
