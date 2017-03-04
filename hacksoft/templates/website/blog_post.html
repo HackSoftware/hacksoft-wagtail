@@ -5,20 +5,11 @@
   <div class="article-main-image">
     {% image page.cover_image max-900x900 %}
   </div>
-  <div class="authors float-container">
-    {% for author in page.authors.all %}
-      <div class="author">
-        {% image author.initial_photo max-200x200 as author_image %}
-        <div class="author_image" style="background-image:url({{author_image.url}})"></div>
-        <div class="author_name">{{ author.name }}</div>
-      </div>
-    {% endfor %}
-  </div>
   <div class="article-title">
     <h1>{{ page.title }}</h1>
   </div>
-  <div class="article-date">
-    Posted: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
+  <div class="article-meta">
+    Written by {{ page.authors.all|join:" and " }} posted on: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
   </div>
 <!--   <div class="article-categories">
     Categories: {{ page.categories.all|join:", " }}
@@ -28,6 +19,22 @@
       {{ page.text|markdown }}
     {% endautoescape %}
   </div>
+
+  <div class="authors float-container">
+
+    <div class="contact-authors">
+      Meet the authors:
+    </div>
+
+    {% for author in page.authors.all %}
+      <div class="author">
+        {% image author.initial_photo max-200x200 as author_image %}
+        <div class="author_image" style="background-image:url({{author_image.url}})"></div>
+        <div class="author_name">{{ author.name }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
   <div id="disqus_thread">
     <script>
     var disqus_config = function () {

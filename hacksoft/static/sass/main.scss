@@ -1656,6 +1656,11 @@ a {
         }
     }
 }
+.contact-authors {
+    padding: 20px 0 20px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
 
 .blog-post-page {
     padding-top: 70px;
@@ -1664,11 +1669,6 @@ a {
         margin-top:20px;
         margin-bottom:20px;
         color:grey;
-    }
-    .authors {
-      margin-top: -35px;
-      position: relative;
-      z-index: 10;
     }
     .author {
         &:after {
@@ -1706,8 +1706,8 @@ a {
     .article-title {
         padding-top: 30px;
     }
-    .article-date {
-      color: silver;
+    .article-meta {
+      color: #6d6c6c;
       margin-top: -20px;
       padding-bottom: 20px;
     }

@@ -1234,6 +1234,11 @@ a {
         .blog-post-container .blog-post .authors .author:last-child:after {
           display: none; }
 
+.contact-authors {
+  padding: 20px 0 20px 0;
+  font-size: 19px;
+  font-weight: bold; }
+
 .blog-post-page {
   padding-top: 70px; }
   .blog-post-page .back-to-blog {
@@ -1241,10 +1246,6 @@ a {
     margin-top: 20px;
     margin-bottom: 20px;
     color: grey; }
-  .blog-post-page .authors {
-    margin-top: -35px;
-    position: relative;
-    z-index: 10; }
   .blog-post-page .author:after {
     content: "&";
     font-size: 30px;
@@ -1273,8 +1274,8 @@ a {
     font-size: 20px; }
   .blog-post-page .article-title {
     padding-top: 30px; }
-  .blog-post-page .article-date {
-    color: silver;
+  .blog-post-page .article-meta {
+    color: #6d6c6c;
     margin-top: -20px;
     padding-bottom: 20px; }
   .blog-post-page .article-main-image img {
