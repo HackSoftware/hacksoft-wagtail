@@ -520,6 +520,13 @@ a {
       width: 30%;
       margin: auto;
       text-align: center; }
+  @media screen and (max-width: 425px) {
+    .footer .footer-contact-text b {
+      display: block;
+      font-size: 14px; } }
+  @media screen and (max-width: 320px) {
+    .footer .footer-contact-text b {
+      font-size: 12px; } }
 
 .team-page-dimmed-image {
   margin-top: -66px; }
@@ -1191,6 +1198,12 @@ a {
   box-sizing: border-box;
   /* Opera/IE 8+ */
   padding: 10px; }
+  @media screen and (max-width: 768px) {
+    .blog-post-container {
+      width: 50%; } }
+  @media screen and (max-width: 425px) {
+    .blog-post-container {
+      width: 100%; } }
   .blog-post-container .blog-post {
     box-shadow: 0px 10px 15px #ababab;
     padding: 10px;
@@ -1219,6 +1232,11 @@ a {
       border-radius: 50%;
       float: right;
       margin: -35px 5px 0 0; }
+      @media screen and (max-width: 320px) {
+        .blog-post-container .blog-post .avatar {
+          margin: -27px 5px 0 0;
+          width: 50px;
+          height: 50px; } }
     .blog-post-container .blog-post .authors {
       font-weight: bold;
       margin: 10px 0; }
@@ -1256,6 +1274,14 @@ a {
     color: #ff8400;
     margin-left: 20px;
     margin-right: 20px; }
+  @media screen and (max-width: 425px) {
+    .blog-post-page .author {
+      margin-bottom: 10px; }
+      .blog-post-page .author:after {
+        display: block;
+        content: "";
+        clear: both;
+        float: none; } }
   .blog-post-page .author:last-child:after {
     display: none; }
   .blog-post-page .author .author_image {
@@ -1266,21 +1292,31 @@ a {
     background-size: cover;
     border-radius: 50%;
     float: left; }
+    @media screen and (max-width: 425px) {
+      .blog-post-page .author .author_image {
+        width: 80px;
+        height: 80px; } }
   .blog-post-page .author .author_name {
     line-height: 100px;
     float: left;
     margin-left: 20px;
     font-weight: bold;
     font-size: 20px; }
+    @media screen and (max-width: 425px) {
+      .blog-post-page .author .author_name {
+        line-height: 80px; } }
   .blog-post-page .article-title {
     padding-top: 30px; }
   .blog-post-page .article-meta {
     color: #6d6c6c;
     margin-top: -20px;
     padding-bottom: 20px; }
+  .blog-post-page .article-text .highlight pre {
+    white-space: normal; }
   .blog-post-page .article-main-image img {
     width: 100%;
-    margin-top: 10px; }
+    margin-top: 10px;
+    height: auto; }
   .blog-post-page .section-content {
     font-size: 18px; }
   .blog-post-page .article-categories {

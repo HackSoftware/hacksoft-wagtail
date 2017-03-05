@@ -14,7 +14,7 @@
 <!--   <div class="article-categories">
     Categories: {{ page.categories.all|join:", " }}
   </div> -->
-  <div class="section-content">
+  <div class="section-content article-text">
     {% autoescape off %}
       {{ page.text|markdown }}
     {% endautoescape %}
