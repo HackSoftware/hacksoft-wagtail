@@ -1312,7 +1312,7 @@ a {
     margin-top: -20px;
     padding-bottom: 20px; }
   .blog-post-page .article-text .highlight pre {
-    white-space: normal; }
+    white-space: pre-wrap; }
   .blog-post-page .article-main-image img {
     width: 100%;
     margin-top: 10px;
