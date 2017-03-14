@@ -1259,6 +1259,12 @@ a {
 
 .blog-post-page {
   padding-top: 70px; }
+  .blog-post-page code {
+    background-color: #f8f8f8; }
+  .blog-post-page a {
+    color: #F79824; }
+  .blog-post-page pre {
+    padding: 4px; }
   .blog-post-page .back-to-blog {
     display: inline-block;
     margin-top: 20px;
