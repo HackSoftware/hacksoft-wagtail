@@ -2,7 +2,7 @@
 {% load utils i18n wagtailimages_tags wagtailcore_tags markdown %}
 
 {% block meta %}
-  {% image page.cover_image max-900x900 as cover_image %}
+  {% image page.cover_image width-1200 as cover_image %}
   {% full_url cover_image.url as image_url %}
   {% include 'website/og_tags.html' with og_title=page.title og_url=page.full_url og_description=page.index_text og_type='article' og_image=image_url %}
 {% endblock meta %}
@@ -10,7 +10,7 @@
 {% block content %}
 <div class="content-wrapper blog-post-page">
   <div class="article-main-image">
-    {% image page.cover_image max-900x900 %}
+    {% image page.cover_image width-1200 %}
   </div>
   <div class="article-title">
     <h1>{{ page.title }}</h1>
