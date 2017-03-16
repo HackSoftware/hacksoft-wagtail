@@ -25,7 +25,7 @@
 
       <a href="{{ page.url }}">
         <div class="blog-post">
-          {% image page.cover_image width-400 as tmp_photo %}
+          {% image page.cover_image width-300 as tmp_photo %}
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
           </div>
           {% for author in page.authors.all %}

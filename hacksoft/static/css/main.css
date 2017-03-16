@@ -1211,8 +1211,7 @@ a {
     .blog-post-container .blog-post .head-image {
       width: 100%;
       height: 190px;
-      background-position: center;
-      background-size: cover; }
+      background-position: center; }
     .blog-post-container .blog-post .blog-post-body {
       padding: 10px; }
       .blog-post-container .blog-post .blog-post-body .title {
