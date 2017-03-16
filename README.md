@@ -4,6 +4,14 @@ A HackSoft website based on the wagtail CMS. It is deployed here: www.hacksoft.i
 
 ## Basic Commands
 
+### Compiling sass
+
+In order to compile sass:
+
+```bash
+$ sass --watch hacksoft/static/sass/main.scss:hacksoft/static/css/main.css
+```
+
 ### Running tests
 
 This is a simple website with basically no functionallity. There are no tests.

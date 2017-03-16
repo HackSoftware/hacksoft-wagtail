@@ -1320,8 +1320,6 @@ a {
   .blog-post-page .article-text .highlight pre {
     white-space: pre-wrap; }
   .blog-post-page .article-main-image img {
-    width: 100%;
-    margin-top: 10px;
     height: auto; }
   .blog-post-page .section-content {
     font-size: 18px; }
