@@ -1339,21 +1339,29 @@ a {
                                 padding-top: 100%;
                             }
                         }
-                        img{
-                            max-height: 100%;
-                            position: absolute;
-                            left: 0;
-                            &:hover{
+                        &:hover{
+                            img {
                                 opacity: 0;
                                 transition: opacity .4s ease-out;
                                 -moz-transition: opacity .4s ease-out;
                                 -webkit-transition: opacity .4s ease-out;
                                 -o-transition: opacity .4s ease-out;
+                                &.secondary {
+                                    opacity: 1;
+                                }
                             }
                         }
                         &.right-aligned img{
                             right: 0;
                             left: auto;
+                        }
+                        img{
+                            max-height: 100%;
+                            position: absolute;
+                            left: 0;
+                            &.secondary {
+                                opacity: 0;
+                            }
                         }
                     }
                     @media screen and (max-width: 550px){
