@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
-{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags utils %}
+
+{% block meta %}
+  {% image page.header_image width-1200 as header_image %}
+  {% full_url header_image.url as image_url %}
+  {% include 'website/og_tags.html' with og_title=page.title og_url=page.full_url og_description=page.index_text og_type='article' og_image=image_url %}
+{% endblock meta %}
+
+
 {% block content %}
 <div class="new technologies-we-use-heading">
   {% image page.header_image max-1366x1366 as header_image %}
