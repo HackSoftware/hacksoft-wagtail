@@ -8,6 +8,7 @@
 {% endblock meta %}
 
 {% block content %}
+
 <div class="content-wrapper blog-post-page">
   <div class="article-main-image">
     {% image page.cover_image width-1200 %}
@@ -21,6 +22,8 @@
 <!--   <div class="article-categories">
     Categories: {{ page.categories.all|join:", " }}
   </div> -->
+  <div class="article-toc">
+  </div>
   <div class="section-content article-text">
     {% autoescape off %}
       {{ page.text|markdown }}
@@ -40,9 +43,7 @@
         <div class="author_name">{{ author.name }}</div>
       </div>
     {% endfor %}
-  </div>
-
-  <div id="disqus_thread">
+    <div id="disqus_thread">
     <script>
     var disqus_config = function () {
       this.page.url = "{{ page.get_site.root_url }}{{ page.url }}";
@@ -56,10 +57,35 @@
     })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
   </div>
-
-
+  </div>
 </div>
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" src="https://bowercdn.net/c/contents-4.0.2/dist/browser/contents.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      var articleId = gajus.Contents.articleId;
+      gajus.Contents.articleId = function(articleName, element) {
+        if(articleName) {
+          articleName = articleName.split(" ")
+                                   .map(function(str) { 
+                                          return str.trim().toLowerCase();
+                                        })
+                                   .join('-');
+        }
+
+        return articleId(articleName, element);
+      }
+
+      var toc = gajus.Contents({
+        articles: $(".article-text").find("h1, h2, h3, h4, h5, h6").get()
+      });
+      $(".article-toc").prepend(toc.list());
+    });
+  </script>
+
+  
+{% endblock javascript %}
