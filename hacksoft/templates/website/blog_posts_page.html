@@ -30,26 +30,24 @@
 
   <div class="featured-article">
     {% if self.featured_article %}
-      <h1>Featured:</h1>
-    <div class="blog-post-container">
+    <div class="blog-post-section-heading">Featured</div>
+    <div class="blog-post-container featured-blog-post">
 
       <a href="{{ self.featured_article.url }}">
         <div class="blog-post">
           {% image self.featured_article.cover_image width-300 as tmp_photo %}
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
           </div>
-          {% for author in self.featured_article.authors.all %}
-            {% image author.initial_photo width-400 as avatar %}
-            <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
-          {% endfor %}
           <div class="blog-post-body">
             <div class="title">
-              {{ page.title }}
+              {{ self.featured_article.title }}
             </div>
             <div class="authors">
-              {% for author in page.authors.all %}
+              {% for author in self.featured_article.authors.all %}
                 <div class="author">
-                  {{ author.name }}
+                  {% image author.initial_photo width-400 as avatar %}
+                  <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
+                  <div class="author-name">{{ author.name }}</div>
                 </div>
               {% endfor %}
             </div>
@@ -65,8 +63,7 @@
     </div>
     {% endif %}
   </div>
-
-  <h1>Posts:</h1>
+  
   <div class="blog-posts-container">
   {% for page in self.get_children.specific %}
     <div class="blog-post-container">
