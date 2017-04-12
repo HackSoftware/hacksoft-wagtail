@@ -1648,19 +1648,57 @@ a {
             height:110%;
             margin-top:-70px;
             z-index:-1;
+            @media screen and (max-width: 768px) {
+                height:105%;
+            }
         }
         .blog-post {
             background-color: white;
             display:flex;
+
+            @media screen and (max-width: 768px) {
+                flex-direction:column;
+                padding:20px;
+            }
+            @media screen and (max-width: 425px) {
+                padding:10px;
+            }
             .head-image {
                 background-size: cover;
                 min-height: 300px;
                 height:auto;
                 width:60%;
+                
+                @media screen and (max-width: 768px) {
+                    width:auto;
+                }
+                @media screen and (max-width: 425px) {
+                    height:190px;
+                    min-height:initial;
+                }
             }
             .blog-post-body {
                 padding:0 20px;
                 width: 40%;
+                position: relative;
+                @media screen and (max-width: 768px) {
+                    width:auto;
+                    padding:0px;
+                }
+                .responsive-author-images {
+                    display:none;
+                    @media screen and (max-width: 425px) {
+                        display:block;
+                    }
+                    .avatar {
+                        float:right;
+                        margin:-35px 5px 0 0;
+                        @media screen and (max-width: 425px) {
+                            display:block;
+                        }
+                    }
+                }
+
                 .title {
                     font-size: 30px;
                 }
@@ -1668,6 +1706,9 @@ a {
                     margin:0 10px;
                 }
                 .avatar {
+                    @media screen and (max-width: 425px) {
+                        display:none;
+                    }
                     margin:0;
                     float:none;
                 }

@@ -39,6 +39,12 @@
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
           </div>
           <div class="blog-post-body">
+            <div class="responsive-author-images">
+              {% for author in self.featured_article.authors.all %}
+                {% image author.initial_photo width-400 as avatar %}
+                <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
+              {% endfor %}
+            </div>
             <div class="title">
               {{ self.featured_article.title }}
             </div>
