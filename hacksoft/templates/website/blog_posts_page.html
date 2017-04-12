@@ -35,7 +35,7 @@
 
       <a href="{{ self.featured_article.url }}">
         <div class="blog-post">
-          {% image self.featured_article.cover_image width-300 as tmp_photo %}
+          {% image self.featured_article.cover_image width-600 as tmp_photo %}
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
           </div>
           <div class="blog-post-body">
@@ -63,7 +63,7 @@
     </div>
     {% endif %}
   </div>
-  
+
   <div class="blog-posts-container">
   {% for page in self.get_children.specific %}
     <div class="blog-post-container">
