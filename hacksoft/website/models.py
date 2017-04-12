@@ -316,10 +316,18 @@ class BlogPostsPage(Page):
         related_name='+'
     )
     text = RichTextField()
+    featured_article = models.OneToOneField(
+        'BlogPost',
+        blank=True,
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL)
+
     content_panels = Page.content_panels + [
         FieldPanel('header_text'),
         ImageChooserPanel('header_image'),
         FieldPanel('text'),
+        FieldPanel('featured_article'),
     ]
 
     def get_context(self, request):
