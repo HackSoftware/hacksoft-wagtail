@@ -1246,7 +1246,6 @@ a {
         .blog-post-container.featured-blog-post .blog-post {
           padding: 10px; } }
       .blog-post-container.featured-blog-post .blog-post .head-image {
-        background-size: cover;
         min-height: 300px;
         height: auto;
         width: 60%; }
