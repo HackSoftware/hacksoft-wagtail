@@ -335,6 +335,11 @@ class BlogPostsPage(Page):
         context['categories'] = Category.objects.all()
         return context
 
+    def get_children(self, *args, **kwargs):
+        result = super().get_children(*args, **kwargs)
+
+        return result.order_by('-id')
+
 
 class BlogPost(Page):
     cover_image = models.ForeignKey(
