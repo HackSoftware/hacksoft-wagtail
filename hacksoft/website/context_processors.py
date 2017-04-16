@@ -1,5 +1,5 @@
 from django.conf import settings
 
 
-def django_settings(request):
-    return dict(django_settings=settings.SETTINGS_MODULE)
+def ga_tracking_id(request):
+    return {'ga_tracking_id': settings.GA_TRACKING_ID}

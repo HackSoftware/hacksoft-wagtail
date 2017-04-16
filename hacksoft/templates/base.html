@@ -1,5 +1,5 @@
 {% load staticfiles i18n %}
-{% load menu_active %}
+{% load menu_active utils %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,8 +85,10 @@
   {% endblock javascript %}
 
   {% block google-analytics %}
-    {% if not request.is_preview and django_settings == "config.settings.production" %}
-      {% include "external/ga.html" %}
+    {% get_from_settings 'USE_GA' as use_ga %}
+
+    {% if not request.is_preview and use_ga %}
+      {% include "external/ga.html" with ga_tracking_id=ga_tracking_id %}
     {% endif %}
   {% endblock google-analytics %}
   </body>
