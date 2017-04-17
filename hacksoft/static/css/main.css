@@ -1264,6 +1264,10 @@ a {
   padding-top: 70px; }
   .blog-post-page code {
     background-color: #f8f8f8; }
+  .blog-post-page blockquote {
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 2px; }
   .blog-post-page a {
     color: #F79824; }
   .blog-post-page pre {
