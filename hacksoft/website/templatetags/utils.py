@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -11,3 +12,8 @@ def full_url(context, url):
         return page.get_site().root_url + url
 
     return url
+
+
+@register.simple_tag
+def get_from_settings(key, default=None):
+    return getattr(settings, key, default)
