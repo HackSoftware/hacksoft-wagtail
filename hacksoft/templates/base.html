@@ -80,10 +80,8 @@
 
   <script src="{% static 'js/wow.min.js' %}"></script>
   <script src="{% static 'js/project.js' %}"></script>
-
-
   {% endblock javascript %}
-
+ 
   {% block google-analytics %}
     {% get_from_settings 'USE_GA' as use_ga %}
 
