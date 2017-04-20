@@ -11,7 +11,7 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
 
 from .snippets import Project, Client, Teammate, Category
 
@@ -338,8 +338,8 @@ class BlogPost(Page):
     )
     text = models.TextField()
     index_text = models.CharField(max_length=255)
-    authors = models.ManyToManyField(Teammate)
-    categories = models.ManyToManyField(Category)
+    authors = ParentalManyToManyField(Teammate)
+    categories = ParentalManyToManyField(Category)
     date = models.DateField("Post date")
 
     content_panels = Page.content_panels + [
