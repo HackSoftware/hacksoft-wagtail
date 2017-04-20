@@ -157,6 +157,9 @@ class HowWeWorkPage(Page):
         StreamFieldPanel('the_process_content'),
     ]
 
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
+
 
 class TechnologiesWeUsePage(Page):
     header_text = models.CharField(max_length=255)
@@ -175,6 +178,9 @@ class TechnologiesWeUsePage(Page):
         InlinePanel('technologies_placement', label="Technologies"),
     ]
 
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
+
 
 class OurTeamPage(Page):
     header_text = models.CharField(max_length=255)
@@ -190,6 +196,9 @@ class OurTeamPage(Page):
         ImageChooserPanel('header_image'),
         InlinePanel('teammate_placement', label="Teammates"),
     ]
+
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
 
 
 class PortfolioPage(Page):
@@ -209,6 +218,9 @@ class PortfolioPage(Page):
         InlinePanel('clients_placement', label="Clients"),
     ]
 
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
+
 
 class ContactsPage(Page):
     header_text = models.CharField(max_length=255)
@@ -226,8 +238,14 @@ class ContactsPage(Page):
         FieldPanel('text'),
     ]
 
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
+
 
 class ProjectPage(RoutablePageMixin, Page):
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
+
     @route(r'^([\w-]+)/$')
     def get_project(self, request, slug):
         project = get_object_or_404(Project, slug=slug)
@@ -316,16 +334,33 @@ class BlogPostsPage(Page):
         related_name='+'
     )
     text = RichTextField()
+    featured_article = models.OneToOneField(
+        'BlogPost',
+        blank=True,
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL)
+
     content_panels = Page.content_panels + [
         FieldPanel('header_text'),
         ImageChooserPanel('header_image'),
         FieldPanel('text'),
+        FieldPanel('featured_article'),
     ]
+
+    subpage_types = ['website.BlogPost']
+    parent_page_types = ['website.HomePage']
+
 
     def get_context(self, request):
         context = super().get_context(request)
         context['categories'] = Category.objects.all()
         return context
+
+    def get_children(self, *args, **kwargs):
+        result = super().get_children(*args, **kwargs)
+
+        return result.order_by('-id')
 
 
 class BlogPost(Page):
@@ -350,3 +385,5 @@ class BlogPost(Page):
         FieldPanel('categories'),
         FieldPanel('authors')
     ]
+
+    parent_page_types = ['website.BlogPostsPage']

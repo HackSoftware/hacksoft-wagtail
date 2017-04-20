@@ -26,3 +26,11 @@ class PageTests(WagtailPageTests):
 
     def test_can_create_blogposts_from_blogposts_page(self):
         self.assertCanCreateAt(BlogPostsPage, BlogPost)
+
+    def test_blogpost_page_subpages_and_parentpages(self):
+        self.assertAllowedSubpageTypes(
+            BlogPostsPage, {BlogPost})
+
+        self.assertAllowedParentPageTypes(
+            BlogPostsPage, {HomePage})
+    

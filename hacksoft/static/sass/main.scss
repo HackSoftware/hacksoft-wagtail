@@ -1609,9 +1609,21 @@ a {
 
 .blog-posts-container {
     display:flex;
-    flex-wrap: wrap;
 }
 
+.featured-article {
+    position:relative;
+    z-index:1;
+    margin-bottom:40px;
+}
+.blog-post-section-heading {
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    font-family: 'Open Sans', serif;
+    text-transform: uppercase;
+}
 .blog-post-container {
     width: 33%;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -1623,6 +1635,88 @@ a {
     }
     @media screen and (max-width: 425px){
         width:100%;
+    }
+    &.featured-blog-post {
+        width:100%;
+        &:before {
+            content:"";
+            display:block;
+            background-color:#efefef;
+            position:absolute;
+            left:-100%;
+            width:300%;
+            height:110%;
+            margin-top:-70px;
+            z-index:-1;
+            @media screen and (max-width: 768px) {
+                height:105%;
+            }
+        }
+        .blog-post {
+            background-color: white;
+            display:flex;
+
+            @media screen and (max-width: 768px) {
+                flex-direction:column;
+                padding:20px;
+            }
+            @media screen and (max-width: 425px) {
+                padding:10px;
+            }
+            .head-image {
+                min-height: 300px;
+                height:auto;
+                width:60%;
+                
+                @media screen and (max-width: 768px) {
+                    width:auto;
+                }
+                @media screen and (max-width: 425px) {
+                    height:190px;
+                    min-height:initial;
+                }
+            }
+            .blog-post-body {
+                padding:0 20px;
+                width: 40%;
+                position: relative;
+                @media screen and (max-width: 768px) {
+                    width:auto;
+                    padding:0px;
+                }
+                .responsive-author-images {
+                    display:none;
+                    @media screen and (max-width: 425px) {
+                        display:block;
+                    }
+                    .avatar {
+                        float:right;
+                        margin:-35px 5px 0 0;
+                        @media screen and (max-width: 425px) {
+                            display:block;
+                        }
+                    }
+                }
+
+                .title {
+                    font-size: 30px;
+                }
+                .author:after {
+                    margin:0 10px;
+                }
+                .avatar {
+                    @media screen and (max-width: 425px) {
+                        display:none;
+                    }
+                    margin:0;
+                    float:none;
+                }
+                .author-name {
+                    display:inline-block;
+                }
+             
+            }
+        }
     }
     .blog-post {
         box-shadow: 0px 10px 15px #ababab;
