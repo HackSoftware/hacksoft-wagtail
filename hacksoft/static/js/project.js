@@ -1,82 +1,74 @@
-/* Project specific Javascript goes here. */
+$(document).ready(function() {
+  new WOW({mobile: false }).init();
 
-// here is the header picture, we have uploaded from django-cms
-new WOW({mobile: false }).init();
-
-var url = window.location.href, idx = url.indexOf("#")
-var hash = idx != -1 ? url.substring(idx + 1) : "";
-if (hash == "success") {
-  $('.popup-overlay').fadeIn();
-  $('.success-popup').fadeIn();
-}
-
-
-fixed_header = $('.header');
-
-$(window).on("scroll", function (e) {
-  if ($(document).scrollTop() > 0) {
-    fixed_header.addClass("scrolled-header");
-  } else {
-    fixed_header.removeClass("scrolled-header");
+  var url = window.location.href, idx = url.indexOf("#")
+  var hash = idx != -1 ? url.substring(idx + 1) : "";
+  if (hash == "success") {
+    $('.popup-overlay').fadeIn();
+    $('.success-popup').fadeIn();
   }
 
-});
 
-$('.homepage-header').find('.scroll-down-landpage img').click(function () {
-  var header = $('.homepage-header').height();
-  $('html, body').animate({
-    scrollTop: header
-  }, 900);
-});
+  var fixed_header = $('.header');
 
-$('.static-header').find('.scroll-down-arrow img').click(function () {
-  var header = $('.static-header').height();
-  $('html, body').animate({
-    scrollTop: header
-  }, 900);
-});
+  $(window).on("scroll", function (e) {
+    if ($(document).scrollTop() > 0) {
+      fixed_header.addClass("scrolled-header");
+    } else {
+      fixed_header.removeClass("scrolled-header");
+    }
 
-$('.book-a-meeting-button').click(function () {
-  $('#popup1').fadeIn();
-});
+  });
 
-$('.close').click(function () {
-  $('#popup1').fadeOut();
-  $('#success').fadeOut();
-});
+  $('.homepage-header').find('.scroll-down-landpage img').click(function () {
+    var header = $('.homepage-header').height();
+    $('html, body').animate({
+      scrollTop: header
+    }, 900);
+  });
 
-$(document).keydown(function (e) {
-  //ESC button pressed
-  if (e.keyCode == 27) {
+  $('.static-header').find('.scroll-down-arrow img').click(function () {
+    var header = $('.static-header').height();
+    $('html, body').animate({
+      scrollTop: header
+    }, 900);
+  });
+
+  $('.book-a-meeting-button').click(function () {
+    $('#popup1').fadeIn();
+  });
+
+  $('.close').click(function () {
     $('#popup1').fadeOut();
     $('#success').fadeOut();
-  }
+  });
+
+  $(document).keydown(function (e) {
+    //ESC button pressed
+    if (e.keyCode == 27) {
+      $('#popup1').fadeOut();
+      $('#success').fadeOut();
+    }
+  });
+
+  $('.video-play').click(function() {
+    $(this).hide();
+    $('.video-pause').show();
+    $(".cover-video").get(0).play();
+  })
+
+  $('.video-pause').click(function() {
+    $(this).hide();
+    $('.video-play').show();
+    $(".cover-video").get(0).pause();
+  });
+
+  $('.client-box').click(function() {
+    var clinetNumber= $(this).data('client-number');
+    $('html, body').animate({
+      scrollTop: $("#clinet-number-" + clinetNumber).offset().top - 60
+    }, 1000);
+  })
+
+  $('a[href^="http"]').attr('target', '_blank');
 });
-
-$('.video-play').click(function() {
-  $(this).hide();
-  $('.video-pause').show();
-  $(".cover-video").get(0).play();
-})
-
-$('.video-pause').click(function() {
-  $(this).hide();
-  $('.video-play').show();
-  $(".cover-video").get(0).pause();
-});
-
-// $('.team-main').hover(function() {
-//   $(this).hide();
-//   $('.team-secondary').show();
-// });
-// $('.team-secondary').hover(function(){}, function() {
-//   $(this).hide();
-//   $('.team-main').show();
-// });
-
-$('.client-box').click(function() {
-  var clinetNumber= $(this).data('client-number');
-  $('html, body').animate({
-    scrollTop: $("#clinet-number-" + clinetNumber).offset().top - 60
-  }, 1000);
-})
