@@ -176,7 +176,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                # Your stuff: custom template context processors go here
+                'hacksoft.website.context_processors.ga_tracking_id'
             ],
         },
     },
@@ -256,3 +256,6 @@ ADMIN_URL = r'^admin/'
 # Your common stuff: Below this line define 3rd party library settings
 
 WAGTAIL_SITE_NAME = ''
+
+GA_TRACKING_ID = env('DJANGO_GA_TRACKING_ID', default='UA-47118692-5')
+USE_GA = env.bool('DJANGO_USE_GA', default=False)
