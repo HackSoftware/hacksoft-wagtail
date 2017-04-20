@@ -360,7 +360,7 @@ class BlogPostsPage(Page):
     def get_children(self, *args, **kwargs):
         result = super().get_children(*args, **kwargs)
 
-        return result.order_by('-id')
+        return result.order_by('-id').live()
 
 
 class BlogPost(Page):
