@@ -351,16 +351,12 @@ class BlogPostsPage(Page):
     subpage_types = ['website.BlogPost']
     parent_page_types = ['website.HomePage']
 
-
     def get_context(self, request):
         context = super().get_context(request)
+        ordered_blog_posts = context['page'].get_children().order_by('-id').live()
         context['categories'] = Category.objects.all()
+        context['blog_posts'] = ordered_blog_posts
         return context
-
-    def get_children(self, *args, **kwargs):
-        result = super().get_children(*args, **kwargs)
-
-        return result.order_by('-id').live()
 
 
 class BlogPost(Page):
