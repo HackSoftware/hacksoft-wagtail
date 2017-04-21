@@ -1213,7 +1213,8 @@ a {
   /* Firefox, other Gecko */
   box-sizing: border-box;
   /* Opera/IE 8+ */
-  padding: 10px; }
+  padding: 10px;
+  position: relative; }
   @media screen and (max-width: 768px) {
     .blog-post-container {
       width: 50%; } }
@@ -1290,7 +1291,10 @@ a {
   .blog-post-container .blog-post {
     box-shadow: 0px 10px 15px #ababab;
     padding: 10px;
-    margin: 10px 5px 15px 5px; }
+    margin: 10px 5px 15px 5px;
+    padding-bottom: 20px;
+    height: 100%;
+    box-sizing: border-box; }
     .blog-post-container .blog-post .head-image {
       width: 100%;
       height: 190px;
@@ -1303,7 +1307,10 @@ a {
       .blog-post-container .blog-post .blog-post-body .date {
         color: silver;
         text-align: right;
-        padding-top: 10px; }
+        padding-top: 10px;
+        position: absolute;
+        bottom: 10px;
+        right: 20px; }
         .blog-post-container .blog-post .blog-post-body .date span {
           font-size: 16px; }
     .blog-post-container .blog-post .avatar {
