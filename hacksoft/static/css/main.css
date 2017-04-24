@@ -1230,7 +1230,7 @@ a {
       position: absolute;
       left: -100%;
       width: 300%;
-      height: 110%;
+      height: 120%;
       margin-top: -70px;
       z-index: -1; }
       @media screen and (max-width: 768px) {
