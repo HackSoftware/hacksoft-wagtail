@@ -76,11 +76,11 @@
 
       <a href="{{ page.url }}">
         <div class="blog-post">
-          {% image page.cover_image width-300 as tmp_photo %}
+          {% image page.cover_image width-600 as tmp_photo %}
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
           </div>
           {% for author in page.authors.all %}
-            {% image author.initial_photo width-400 as avatar %}
+            {% image author.initial_photo width-150 as avatar %}
             <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
           {% endfor %}
           <div class="blog-post-body">
