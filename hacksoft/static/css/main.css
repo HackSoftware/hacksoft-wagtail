@@ -1190,10 +1190,8 @@ a {
       vertical-align: middle; }
 
 .blog-posts-container {
-  display: flex; }
-  @media screen and (max-width: 425px) {
-    .blog-posts-container {
-      display: block; } }
+  display: flex;
+  flex-wrap: wrap; }
 
 .featured-article {
   position: relative;
@@ -1235,7 +1233,7 @@ a {
       height: 120%;
       margin-top: -70px;
       z-index: -1; }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 1024px) {
         .blog-post-container.featured-blog-post:before {
           height: 105%; } }
   .blog-post-container.featured-blog-post .blog-post {

@@ -1609,9 +1609,7 @@ a {
 
 .blog-posts-container {
     display: flex;
-    @media screen and (max-width: 425px) {
-        display: block;
-    }
+    flex-wrap: wrap;
 }
 
 .featured-article {
@@ -1652,7 +1650,7 @@ a {
             height:120%;
             margin-top:-70px;
             z-index:-1;
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 1024px) {
                 height:105%;
             }
         }
@@ -1755,9 +1753,9 @@ a {
               color:silver;
               text-align: right;
               padding-top:10px;
-	      position: absolute;
-	      bottom: 10px;
-	      right: 20px;
+              position: absolute;
+              bottom: 10px;
+              right: 20px;
               span {
                 font-size: 16px;
               }
