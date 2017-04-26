@@ -41,6 +41,7 @@ a {
     width:100%;
     height: auto !important;
     padding-bottom:170px;
+    overflow-x: hidden;
 }
 
 .dimmed-image {
@@ -1632,10 +1633,10 @@ a {
     box-sizing: border-box;         /* Opera/IE 8+ */
     padding:10px;
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 1300px){
         width:50%;
     }
-    @media screen and (max-width: 425px){
+    @media screen and (max-width: 767px){
         width:100%;
     }
     &.featured-blog-post {
@@ -1647,11 +1648,11 @@ a {
             position:absolute;
             left:-100%;
             width:300%;
-            height:120%;
+            height:105%;
             margin-top:-70px;
             z-index:-1;
-            @media screen and (max-width: 1024px) {
-                height:105%;
+            @media screen and (min-width: 2560px) and (max-width: 1440px) {
+                height:120%;
             }
         }
     }
