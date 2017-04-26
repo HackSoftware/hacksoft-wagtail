@@ -1356,7 +1356,8 @@ a {
 .blog-post-page {
   padding-top: 70px; }
   .blog-post-page code {
-    background-color: #f8f8f8; }
+    background-color: #f8f8f8;
+    word-wrap: break-word; }
   .blog-post-page blockquote {
     background-color: #f8f8f8;
     margin: 0;
