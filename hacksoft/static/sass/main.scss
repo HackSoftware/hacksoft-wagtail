@@ -1884,6 +1884,7 @@ a {
     .article-text {
         .highlight pre{
             white-space: pre-wrap;
+            word-wrap:break-word;
         }
     }
     .article-main-image {

@@ -1418,7 +1418,8 @@ a {
     margin-top: -20px;
     padding-bottom: 20px; }
   .blog-post-page .article-text .highlight pre {
-    white-space: pre-wrap; }
+    white-space: pre-wrap;
+    word-wrap: break-word; }
   .blog-post-page .article-main-image img {
     height: auto;
     max-width: 100%; }
