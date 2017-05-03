@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
+{% load staticfiles i18n %}
+
 {% block title %}Page Not found{% endblock %}
 
 {% block content %}
+
 
 <style>
 .header {
@@ -15,11 +18,19 @@
 .page-wrapper {
 	position:static;
 }
+.sadpanda {
+	margin:auto;
+	display:block;
+	max-width: 100%;
+	width:500px;
+}
 </style>
 
 <div class="content-wrapper" >
-	<h1>Page Not found</h1>
 
-	<p>This is not the page you were looking for.</p>
+	<h1 align="center">404 Page Not found</h1>
+
+	<img src="{% static 'images/sadpandaface.png' %}" class="sadpanda">
+
 </div>
 {% endblock content %}
