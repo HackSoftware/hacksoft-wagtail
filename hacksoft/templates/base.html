@@ -89,5 +89,13 @@
       {% include "external/ga.html" with ga_tracking_id=ga_tracking_id %}
     {% endif %}
   {% endblock google-analytics %}
+
+  {% block livechat %}
+    {% get_from_settings 'USE_LIVECHAT' as use_livechat %}
+
+    {% if not request.is_preview and use_livechat %}
+      {% include "external/livechat.html" %}
+    {% endif %}
+  {% endblock livechat %}
   </body>
 </html>
