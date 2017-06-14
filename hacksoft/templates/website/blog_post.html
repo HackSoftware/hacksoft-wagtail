@@ -30,6 +30,10 @@
     {% endautoescape %}
   </div>
 
+  <div class="subscribe">
+    {% include "external/mailerlite_blog_post.html" %}
+  </div>
+
   <div class="authors float-container">
     <div class="contact-authors">
       Meet the authors:
@@ -42,10 +46,6 @@
         <div class="author_name">{{ author.name }}</div>
       </div>
     {% endfor %}
-  </div>
-
-  <div class="subscribe">
-    {% include "external/mailerlite.html" %}
   </div>
 
   <div id="disqus_thread">

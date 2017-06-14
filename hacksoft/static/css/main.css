@@ -1359,6 +1359,9 @@ a {
   .subscribe .subscribe-form {
     margin: 0 auto; }
 
+.footer-subscribe {
+  float: right; }
+
 .blog-post-page {
   padding-top: 70px; }
   .blog-post-page code {
