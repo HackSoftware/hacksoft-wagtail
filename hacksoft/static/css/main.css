@@ -1354,6 +1354,11 @@ a {
   font-size: 19px;
   font-weight: bold; }
 
+.subscribe {
+  margin-top: 1em; }
+  .subscribe .subscribe-form {
+    margin: 0 auto; }
+
 .blog-post-page {
   padding-top: 70px; }
   .blog-post-page code {
