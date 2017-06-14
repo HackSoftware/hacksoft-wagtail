@@ -31,7 +31,6 @@
   </div>
 
   <div class="authors float-container">
-
     <div class="contact-authors">
       Meet the authors:
     </div>
@@ -44,19 +43,19 @@
       </div>
     {% endfor %}
   </div>
+
+  <div class="subscribe">
+    {% autoescape off %}
+    <script type="text/javascript" src="//static.mailerlite.com/data/webforms/444929/l0f6i4.js?v2"></script>
+    {% endautoescape %}
+  </div>
+
   <div id="disqus_thread">
-    <script>
-    var disqus_config = function () {
-      this.page.url = "{{ page.get_site.root_url }}{{ page.url }}";
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://hacksoft-io.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {% get_from_settings 'USE_DISQUS' as use_disqus %}
+
+    {% if not request.is_preview and use_disqus %}
+      {% include "external/discus.html" with page=page %}
+    {% endif %}
   </div>
 </div>
 {% endblock content %}
