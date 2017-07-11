@@ -111,3 +111,4 @@ tests/.hitch
 .cache
 
 *.css.map
+static/css/*.css
