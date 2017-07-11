@@ -1,12 +1,39 @@
 {% extends "base.html" %}
 
+{% load staticfiles i18n %}
+
 {% block title %}Page Not found{% endblock %}
 
 {% block content %}
 
-<div class="content-wrapper" >
-	<h1>Page Not found</h1>
 
-	<p>This is not the page you were looking for.</p>
+<style>
+.header {
+	position:static;
+}
+.page-wrapper {
+	position:absolute;
+	height:100% !important;
+	padding-bottom:200px;
+	box-sizing: border-box;
+	min-height:750px;
+}
+.sadpanda {
+	margin:auto;
+	display:block;
+	max-width: 100%;
+	width:500px;
+}
+.footer {
+	bottom: 0px;
+}
+</style>
+
+<div class="content-wrapper" >
+
+	<h1 align="center">404 Page Not found</h1>
+
+	<img src="{% static 'images/sadpandaface.png' %}" class="sadpanda">
+
 </div>
 {% endblock content %}

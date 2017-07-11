@@ -1802,6 +1802,18 @@ a {
     font-weight: bold;
 }
 
+.subscribe {
+  margin-top: 1em;
+
+  .subscribe-form {
+    margin: 0 auto;
+  }
+}
+
+.footer-subscribe {
+  float: right;
+}
+
 .blog-post-page {
     code {
       background-color: #f8f8f8;

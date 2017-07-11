@@ -259,3 +259,6 @@ WAGTAIL_SITE_NAME = ''
 
 GA_TRACKING_ID = env('DJANGO_GA_TRACKING_ID', default='UA-47118692-5')
 USE_GA = env.bool('DJANGO_USE_GA', default=False)
+
+USE_LIVECHAT = env.bool('DJANGO_USE_LIVECHAT', default=False)
+USE_DISQUS = env.bool('DJANGO_USE_DISQUS', default=False)
