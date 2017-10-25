@@ -54,3 +54,5 @@ Wand==0.4.3
 misaka==2.1.0
 houdini.py==0.1.0
 Pygments==2.2.0
+
+libsass==0.13.2
