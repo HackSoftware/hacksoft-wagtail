@@ -109,6 +109,3 @@ hacksoft/media/
 tests/.hitch
 
 .cache
-
-*.css.map
-hacksoft/static/css/*.css
