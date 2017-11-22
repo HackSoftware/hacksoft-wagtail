@@ -52,7 +52,7 @@
     {% get_from_settings 'USE_DISQUS' as use_disqus %}
 
     {% if not request.is_preview and use_disqus %}
-      {% include "external/discus.html" with page=page %}
+      {% include "external/disqus.html" with page=page %}
     {% endif %}
   </div>
 </div>
