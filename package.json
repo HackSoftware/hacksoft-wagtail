@@ -5,7 +5,7 @@
     "node": "6.11.1"
   },
   "scripts": {
-    "postinstall": "node-sass --output-style compressed -o hacksoft/static/css hacksoft/static/scss"
+    "postinstall": "node-sass --output-style compressed hacksoft/static/sass -o hacksoft/static/css"
   },
   "dependencies": {
     "node-sass": "^4.5.3"
