@@ -2,7 +2,7 @@
   "name": "hackosoft",
   "version": "0.1.0",
   "engines": {
-    "node": "8.4.1"
+    "node": "6.11.1"
   },
   "scripts": {
     "postinstall": "sass --update hacksoft/static/sass/main.scss:hacksoft/static/css/main.css"
