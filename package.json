@@ -5,7 +5,7 @@
     "node": "6.11.1"
   },
   "scripts": {
-    "postinstall": "sass --update hacksoft/static/sass/main.scss:hacksoft/static/css/main.css"
+    "postinstall": "node-sass --update hacksoft/static/sass/main.scss:hacksoft/static/css/main.css"
   },
   "dependencies": {
     "node-sass": "^4.5.3"
