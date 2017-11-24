@@ -4,6 +4,18 @@ hacksoft.io
 
 A HackSoft website based on the wagtail CMS. It is deployed here: www.hacksoft.io
 
+## Deployment
+
+* Every commit in `staging` (main branch) forces rebuild & deploy on the `hacksoft-website-staging` app.
+
+* To deploy in production click *promote*.
+
+**Important Note** `python manage.py collectstatic` is not run on promotion! To collect the statics run:
+
+```bash
+heroku run python manage.py collectstatic --no-input --app hacksoft-website-production
+```
+
 ## Local development setup
 
 The project is using:
