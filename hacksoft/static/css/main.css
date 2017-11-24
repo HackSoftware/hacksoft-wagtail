@@ -1360,7 +1360,8 @@ a {
     margin: 0 auto; }
 
 .footer-subscribe {
-  float: right; }
+  float: right;
+  padding-bottom: 10px; }
 
 .blog-post-page {
   padding-top: 70px; }
