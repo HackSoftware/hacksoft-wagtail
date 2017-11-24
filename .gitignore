@@ -109,3 +109,11 @@ hacksoft/media/
 tests/.hitch
 
 .cache
+
+# Emacs
+\#*\#
+*.elc
+.\#*
+.projectile
+auto-save-list
+tramp
