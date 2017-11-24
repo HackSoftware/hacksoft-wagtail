@@ -5,6 +5,9 @@
     "node": "8.4.1"
   },
   "scripts": {
-    "build:scss": "sass --update hacksoft/static/sass/main.scss:hacksoft/static/css/main.css"
+    "postinstall": "sass --update hacksoft/static/sass/main.scss:hacksoft/static/css/main.css"
+  },
+  "dependencies": {
+    "node-sass": "^4.5.3"
   }
 }
