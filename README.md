@@ -6,11 +6,11 @@ A HackSoft website based on the wagtail CMS. It is deployed here: www.hacksoft.i
 
 ## Deployment
 
-* Every commit in `staging` (main branch) forces rebuild & deploy on the `hacksoft-website-staging` app.
+* Every commit to `staging` (main branch) forces rebuild & deploy of the `hacksoft-website-staging` app.
 
-* To deploy in production click *promote*.
+* To deploy on production click *promote*.
 
-**Important Note** `python manage.py collectstatic` is not run on promotion! To collect the statics run:
+**Important Note** `python manage.py collectstatic` is not run upon promotion! To collect the statics run:
 
 ```bash
 heroku run python manage.py collectstatic --no-input --app hacksoft-website-production
@@ -60,7 +60,7 @@ $ python manage.py migrate
 
 ### Bootstrap data
 
-At this point you have working server with empty database. Since it's a CMS the content of the site is inside your database. To fetch latest production database backup you'll have to do the following:
+At this point you have working server with empty database. Since it's a CMS site's content is inside the database. To fetch latest production database backup you'll have to do the following:
 
 * Setup `heroku-cli` and login. See https://devcenter.heroku.com/articles/heroku-cli for more details.
 
