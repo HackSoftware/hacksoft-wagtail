@@ -1641,19 +1641,17 @@ a {
     }
     &.featured-blog-post {
         width:100%;
+
         &:before {
             content:"";
             display:block;
             background-color:#efefef;
             position:absolute;
-            left:-100%;
-            width:300%;
-            height:105%;
+            left:-5%;
+            width:110%;
+            height:110%;
             margin-top:-70px;
             z-index:-1;
-            @media screen and (min-width: 2560px) and (max-width: 1440px) {
-                height:120%;
-            }
         }
     }
     &.featured-blog-post .blog-post {
@@ -1812,6 +1810,7 @@ a {
 
 .footer-subscribe {
   float: right;
+  padding-bottom: 10px;
 }
 
 .blog-post-page {

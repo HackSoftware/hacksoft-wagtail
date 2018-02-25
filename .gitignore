@@ -110,5 +110,10 @@ tests/.hitch
 
 .cache
 
-*.css.map
-hacksoft/static/css/*.css
+# Emacs
+\#*\#
+*.elc
+.\#*
+.projectile
+auto-save-list
+tramp
