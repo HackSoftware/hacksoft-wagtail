@@ -22,12 +22,6 @@
   </div>
 </div>
 
-<div class="content-wrapper" >
-
-  <div class="section-content">
-    {{ page.text|richtext }}
-  </div>
-
   <div class="featured-article">
     {% if self.featured_article %}
     <h1 class="blog-post-section-heading">Featured</h1>
@@ -68,6 +62,13 @@
       </a>
     </div>
     {% endif %}
+  </div>
+
+
+<div class="content-wrapper" >
+
+  <div class="section-content">
+    {{ page.text|richtext }}
   </div>
 
   <div class="blog-posts-container">
