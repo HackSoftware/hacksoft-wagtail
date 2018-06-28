@@ -103,12 +103,13 @@ a {
         background-size: cover;
         background-position-y: 25%;
         background-position-x: 50%;
+        min-height: 350px;
     }
     .slightly-down {
         background-position-y: 45%;
     }
     div.scroll-down-arrow {
-        bottom: 54vh;
+        top: 70%;
         z-index: 1;
     }
 
