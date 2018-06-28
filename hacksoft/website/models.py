@@ -30,16 +30,6 @@ class HomePage(Page):
         related_name='+'
     )
 
-    how_we_work_title = models.CharField(max_length=255)
-    how_we_work_center = RichTextField()
-    how_we_work_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
     technologies_we_use_title = models.CharField(max_length=255)
     technologies_we_use_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -85,10 +75,6 @@ class HomePage(Page):
         FieldPanel('intro_h1'),
         FieldPanel('intro_h2'),
         ImageChooserPanel('intro_image'),
-
-        FieldPanel('how_we_work_title'),
-        FieldPanel('how_we_work_center'),
-        ImageChooserPanel('how_we_work_image'),
 
         FieldPanel('technologies_we_use_title'),
         ImageChooserPanel('technologies_we_use_image'),
