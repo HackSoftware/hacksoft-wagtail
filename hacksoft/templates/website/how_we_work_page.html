@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+
 {% block content %}
-<div class="new technologies-we-use-heading">
-  {% image page.header_image max-1366x1366 as header_image %}
-  <div class="new static-header dimmed-image" style="background-image: url({{header_image.url}})">
-    <div class="new heading">
-      <p>{{page.header_text}}</p>
-    </div>
-    <div class="new scroll-down-arrow">
-      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+{% image page.header_image max-1366x1366 as header_image %}
+
+<div class="page-content">
+  <div class="new technologies-we-use-heading">
+    <div class="new static-header dimmed-image" style="background-image: url({{header_image.url}})">
+      <div class="new heading">
+        <p>{{page.header_text}}</p>
+      </div>
+      <div class="new scroll-down-arrow">
+        <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+      </div>
     </div>
   </div>
-</div>
-<div class="page-content">
+
   <div class="section how-we-work">
     <div class="content-wrapper" >
       <div class="section-content">
@@ -27,13 +30,12 @@
     <div class="section-heading">
       <div>{{page.what_we_do_title }}</div>
     </div>
-
     <div class="section-content">
       <div class="content-wrapper">
         <div class="what-we-do-container">
-          {% for block in page.what_we_do_content %}
+          {% for what_we_do_block in page.what_we_do_content %}
             <div class="what-we-do-block">
-              {% include_block block %}
+              {% include_block what_we_do_block %}
             </div>
           {% endfor %}
         </div>
@@ -62,6 +64,4 @@
     </div>
   </div>
 </div>
-
-
 {% endblock content %}

@@ -41,7 +41,7 @@ a {
     position: absolute;
     width: 100%;
     height: auto !important;
-    padding-bottom: 170px;
+    padding-bottom: 140px;
 }
 
 .dimmed-image {
@@ -418,7 +418,6 @@ a {
     max-width: 1100px;
     margin: auto;
     position: relative;
-    padding-bottom: 150px;
 
     @media screen and (max-width: 1400px) {
         max-width: 900px;
@@ -518,6 +517,10 @@ a {
         &.primary-focus-text {
             margin-bottom: 0;
         }
+    }
+
+    &.portfolio {
+        padding-bottom: 50px;
     }
 }
 
@@ -731,6 +734,9 @@ h1.top-heading {
 }
 
 .how-we-work {
+    &:last-child {
+        padding-bottom: 180px;
+    }
     h1 {
         max-width: 660px;
         margin: auto;
@@ -834,6 +840,7 @@ h1.top-heading {
 
 .contact-us {
     padding-top: 30px;
+    padding-bottom: 100px;
     iframe {
         max-width: 100%;
     }
@@ -992,14 +999,23 @@ h1.top-heading {
 }
 
 .timeline:before {
-    top: 0;
-    bottom: 0;
+    top: 60px;
+    bottom: 110px;
     position: absolute;
     content: " ";
     width: 3px;
     background-color: #eeeeee;
     left: 50%;
     margin-left: -1.5px;
+    @media screen and (max-width: 1400px) {
+        bottom: 120px;
+    }
+    @media screen and (max-width: 425px) {
+        bottom: 150px;
+    }
+    @media screen and (max-width: 375px) {
+        bottom: 170px;
+    }
 }
 
 .timeline > li {
@@ -1590,6 +1606,7 @@ h1.top-heading {
 .blog-posts-container {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 100px;
 }
 
 .featured-article {
