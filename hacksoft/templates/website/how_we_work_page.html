@@ -12,29 +12,32 @@
     </div>
   </div>
 </div>
-<div class="content-wrapper" >
+<div class="page-content">
   <div class="section how-we-work">
-    <div class="section-content">
-      <div class="section-content-row">
-        <h1 class="top-heading">{{ page.how_we_work_intro|richtext }}</h1>
+    <div class="content-wrapper" >
+      <div class="section-content">
+        <div class="section-content-row">
+          <h1 class="top-heading">{{ page.how_we_work_intro|richtext }}</h1>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="section how-we-work">
     <div class="section-heading">
       <div>{{page.what_we_do_title }}</div>
     </div>
 
     <div class="section-content">
-
-      <div class="what-we-do-container">
-        {% for block in page.what_we_do_content %}
-          <div class="what-we-do-block">
-            {% include_block block %}
-          </div>
-        {% endfor %}
+      <div class="content-wrapper">
+        <div class="what-we-do-container">
+          {% for block in page.what_we_do_content %}
+            <div class="what-we-do-block">
+              {% include_block block %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
-
     </div>
   </div>
 
@@ -43,22 +46,22 @@
       <div>{{page.the_process_title|richtext}}</div>
     </div>
     <div class="section-content timeline-container">
-
-      <ul class="timeline">
-        {% for block in page.the_process_content %}
-        <li class='{% cycle '' 'timeline-inverted ' %} wow bounceInUp'>
-          {{ block }}
-        </li>
-        {% endfor %}
-      </ul>
-
-    </div>
-    <div class="footer-panda">
-      {% image page.what_we_do_image max-250x250 as doodle_image %}
-      <img class="filer_image" alt="panda_process.gif" src="{{doodle_image.url}}" />
+      <div class="content-wrapper">
+        <ul class="timeline">
+          {% for block in page.the_process_content %}
+          <li class='{% cycle '' 'timeline-inverted ' %} wow bounceInUp'>
+            {{ block }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-panda">
+        {% image page.what_we_do_image max-250x250 as doodle_image %}
+        <img class="filer_image" alt="panda_process.gif" src="{{doodle_image.url}}" />
+      </div>
     </div>
   </div>
-
 </div>
+
 
 {% endblock content %}
