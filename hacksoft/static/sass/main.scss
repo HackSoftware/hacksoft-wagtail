@@ -1913,3 +1913,18 @@ h1.top-heading {
 .twitter-tweet {
     margin: 0 auto;
 }
+
+.hack-cast-page {
+  .episode-container {
+    .episode-title {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    color: #f79824;
+    &:hover {
+        border-bottom: 2px solid #f79824;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
 {% block content %}
+<div class="hack-cast-page">
   <div class="new technologies-we-use-heading">
     {% image page.header_image max-1366x1366 as header_image %}
     <div class="new static-header dimmed-image slightly-down" style="background-image: url({{header_image.url}})">
@@ -19,8 +20,8 @@
         <h1>HackCast episodes:</h1>
 
         {% for episode in episodes %}
-        <div className="episode-container">
-          <p className="episode-title">{{ episode.title }}</p>
+        <div class="episode-container">
+          <p class="episode-title">{{ episode.title }}</p>
 
           <p>Links:</p>
           
@@ -34,4 +35,5 @@
       </div>
     </div>
   </div>
+</div>
 {% endblock content %}
