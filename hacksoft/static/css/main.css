@@ -1452,8 +1452,12 @@ h1.top-heading {
 .twitter-tweet {
   margin: 0 auto; }
 
-.hack-cast-page .episode-container .episode-title {
-  font-weight: bold; }
+.hack-cast-page .episode-container {
+  border-bottom: 1px solid black; }
+  .hack-cast-page .episode-container:last-child {
+    border-bottom: 0px; }
+  .hack-cast-page .episode-container .episode-title {
+    font-weight: bold; }
 .hack-cast-page a {
   color: #f79824; }
   .hack-cast-page a:hover {

@@ -1916,6 +1916,12 @@ h1.top-heading {
 
 .hack-cast-page {
   .episode-container {
+    border-bottom: 1px solid black;
+
+    &:last-child {
+      border-bottom: 0px;
+    }
+
     .episode-title {
       font-weight: bold;
     }
