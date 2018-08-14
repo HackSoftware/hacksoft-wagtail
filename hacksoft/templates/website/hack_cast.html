@@ -16,7 +16,21 @@
   <div class="content-wrapper" >
     <div class="section contact-us">
       <div class="section-content">
-        HackCast
+        <h1>HackCast episodes:</h1>
+
+        {% for episode in episodes %}
+        <div className="episode-container">
+          <p className="episode-title">{{ episode.title }}</p>
+
+          <p>Links:</p>
+          
+          <ul>
+            <li><a href="{{episode.mp3_url}}" target="_blank">Download mp3</a></li>
+            <li><a href="{{episode.youtube_url}}" target="_blank">Watch on YouTube</a></li>
+          </ul>
+          
+        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

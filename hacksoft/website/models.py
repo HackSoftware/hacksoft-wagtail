@@ -13,7 +13,7 @@ from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 
-from .snippets import Project, Client, Teammate, Category
+from .snippets import Project, Client, Teammate, Category, HackCastEpisode
 
 
 class HomePage(Page):
@@ -374,3 +374,9 @@ class BlogPost(Page):
 class HackCast(Page):
     subpage_types = []
     parent_page_types = ['website.HomePage']
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['episodes'] = HackCastEpisode.objects.all()
+
+        return context
