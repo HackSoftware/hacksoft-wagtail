@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% block content %}
+  <div class="new technologies-we-use-heading">
+    {% image page.header_image max-1366x1366 as header_image %}
+    <div class="new static-header dimmed-image slightly-down" style="background-image: url({{header_image.url}})">
+      <div class="new heading">
+        <p>{{page.header_text|richtext}}</p>
+      </div>
+      <div class="new scroll-down-arrow">
+        <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrapper" >
+    <div class="section contact-us">
+      <div class="section-content">
+        HackCast
+      </div>
+    </div>
+  </div>
+{% endblock content %}

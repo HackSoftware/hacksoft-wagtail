@@ -369,3 +369,8 @@ class BlogPost(Page):
     ]
 
     parent_page_types = ['website.BlogPostsPage']
+
+
+class HackCast(Page):
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
