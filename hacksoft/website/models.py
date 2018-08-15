@@ -372,7 +372,7 @@ class BlogPost(Page):
 
 
 class HackCast(Page):
-    header_text = models.CharField(max_length=255)
+    header_text = models.CharField(max_length=255, blank=True)
     header_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
