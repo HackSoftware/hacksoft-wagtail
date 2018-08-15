@@ -13,7 +13,7 @@ from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
 from wagtail.wagtailadmin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 
-from .snippets import Project, Client, Teammate, Category
+from .snippets import Project, Client, Teammate, Category, HackCastEpisode
 
 
 class HomePage(Page):
@@ -369,3 +369,28 @@ class BlogPost(Page):
     ]
 
     parent_page_types = ['website.BlogPostsPage']
+
+
+class HackCast(Page):
+    header_text = models.CharField(max_length=255, blank=True)
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    subpage_types = []
+    parent_page_types = ['website.HomePage']
+
+    content_panels = Page.content_panels + [
+        FieldPanel('header_text'),
+        ImageChooserPanel('header_image')
+    ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['episodes'] = HackCastEpisode.objects.all()
+
+        return context

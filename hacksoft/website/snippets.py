@@ -149,3 +149,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+@register_snippet
+class HackCastEpisode(models.Model):
+    title = models.CharField(unique=True, max_length=255)
+
+    mp3_url = models.URLField()
+    youtube_url = models.URLField()
+
+    def __str__(self):
+        return self.title

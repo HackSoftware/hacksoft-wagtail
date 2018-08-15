@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% block content %}
+<div class="hack-cast-page">
+  <div class="new technologies-we-use-heading">
+    {% image page.header_image max-1366x1366 as header_image %}
+    <div class="new static-header dimmed-image slightly-down" style="background-image: url({{header_image.url}})">
+      <div class="new heading">
+        <p>{{page.header_text|richtext}}</p>
+      </div>
+      <div class="new scroll-down-arrow">
+        <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrapper" >
+    <div class="section contact-us">
+      <div class="section-content">
+        <h1>HackCast episodes:</h1>
+
+        {% for episode in episodes %}
+        <div class="episode-container">
+          <p class="episode-title">{{ episode.title }}</p>
+
+          <p>Links:</p>
+          
+          <ul>
+            <li><a href="{{episode.mp3_url}}" target="_blank">Download mp3</a></li>
+            <li><a href="{{episode.youtube_url}}" target="_blank">Watch on YouTube</a></li>
+          </ul>
+          
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
