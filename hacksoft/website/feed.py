@@ -8,6 +8,12 @@ class FeedGenerator(Rss201rev2Feed):
     def add_root_elements(self, handler):
         super().add_root_elements(handler)
 
+        if 'author_name' in self.feed:
+            handler.addQuickElement('author_name', self.feed['author_name'])
+
+        if 'author_email' in self.feed:
+            handler.addQuickElement('author_email', self.feed['author_email'])
+
         if 'image' in self.feed:
             image = self.feed['image']
 
@@ -17,6 +23,8 @@ class FeedGenerator(Rss201rev2Feed):
             handler.addQuickElement('description', image['description'])
             handler.addQuickElement('link', image['link'])
             handler.endElement('image')
+
+            handler.addQuickElement('itunes:image', '', {'href': image['url']})
 
 
 class HackCastRssFeed(Feed):
