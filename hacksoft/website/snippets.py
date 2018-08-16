@@ -1,12 +1,13 @@
 from __future__ import unicode_literals
-from wagtail.wagtailsnippets.models import register_snippet
-from django.db import models
 
+from django.db import models
+from django.utils import timezone
 
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailsnippets.models import register_snippet
 
 
 @register_snippet
@@ -154,9 +155,17 @@ class Category(models.Model):
 @register_snippet
 class HackCastEpisode(models.Model):
     title = models.CharField(unique=True, max_length=255)
+    description = models.TextField(blank=True)
 
     mp3_url = models.URLField()
     youtube_url = models.URLField()
+
+    duration = models.PositiveIntegerField(
+        default=0,
+        help_text='Duration of the episode in minutes'
+    )
+
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
