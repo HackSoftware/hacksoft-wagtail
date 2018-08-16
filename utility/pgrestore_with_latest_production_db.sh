@@ -1,4 +1,6 @@
-USERNAME="YOUR_USERNAME"
+USERNAME="$1"
+
+echo "Using pg user: $USERNAME"
 
 echo "Fetching latest dump ...\n"
 curl -o db.dump `heroku pg:backups public-url --app hacksoft-website-production`
