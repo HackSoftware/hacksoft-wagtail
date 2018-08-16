@@ -154,6 +154,7 @@ class Category(models.Model):
 @register_snippet
 class HackCastEpisode(models.Model):
     title = models.CharField(unique=True, max_length=255)
+    description = models.TextField(blank=True)
 
     mp3_url = models.URLField()
     youtube_url = models.URLField()
