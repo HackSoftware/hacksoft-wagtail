@@ -2,22 +2,28 @@
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
 
 {% block content %}
-<div class="new technologies-we-use-heading">
-  {% image page.header_image max-1366x1366 as header_image %}
-  <div class="new static-header dimmed-image" style="background-image: url({{ header_image.url }})">
-    <div class="new heading">
-      <p>{{page.header_text}}</p>
-    </div>
-    <div class="new scroll-down-arrow">
-      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+<div class="testimonial-page">
+  <div class="new technologies-we-use-heading">
+    {% image page.header_image max-1366x1366 as header_image %}
+    <div class="new static-header dimmed-image" style="background-image: url({{ header_image.url }})">
+      <div class="new heading">
+        <p>{{page.header_text}}</p>
+      </div>
+      <div class="new scroll-down-arrow">
+        <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+      </div>
     </div>
   </div>
-</div>
 
   <div class="content-wrapper" >
     <div class="section contact-us">
       <div class="section-content">
+        <h1>
+          <a href="https://clutch.co/profile/hack-soft" target="_blank">Visit HackSoft Clutch Profile</a>
+        </h1>
+        <div class="clutch-widget" data-url="https://clutch.co" data-widget-type="5" data-snippets="true" data-height="auto" data-expandifr="true" data-clutchcompany-id="534443"></div>
       </div>
     </div>
   </div>
+</div>
 {% endblock content %}
