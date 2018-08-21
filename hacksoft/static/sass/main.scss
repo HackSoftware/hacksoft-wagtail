@@ -1936,6 +1936,10 @@ h1.top-heading {
 }
 
 .testimonial-page {
+  h1 {
+    padding-left: 2rem;
+  }
+
   h1 > a {
     color: #f79824;
     &:hover {
