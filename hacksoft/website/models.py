@@ -391,6 +391,6 @@ class HackCast(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['episodes'] = HackCastEpisode.objects.all()
+        context['episodes'] = HackCastEpisode.objects.order_by('-id')
 
         return context
