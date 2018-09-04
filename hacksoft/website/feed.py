@@ -101,6 +101,15 @@ class BlogRssFeed(Feed):
     def item_description(self, item):
         return item.index_text
 
+    def item_guid(self, item):
+        return f'{item.id}/{item.title}'
+
+    def item_author_name(self, item):
+        return ', '.join([author.name for author in item.authors.all()])
+
+    def item_categories(self, item):
+        return item.categories.all()
+
 
 class BlogAtomFeed(BlogRssFeed):
     feed_type = Atom1Feed
