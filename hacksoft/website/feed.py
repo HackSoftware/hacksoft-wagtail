@@ -90,7 +90,7 @@ class BlogRssFeed(Feed):
     feed_type = FeedGenerator
 
     def items(self):
-        return BlogPost.objects.order_by('-date')
+        return BlogPost.objects.live().order_by('-date')
 
     def item_title(self, item):
         return item.title
