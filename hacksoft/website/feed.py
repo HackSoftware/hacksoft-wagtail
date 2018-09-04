@@ -81,7 +81,7 @@ class HackCastAtomFeed(HackCastRssFeed):
 
 
 class BlogRssFeed(Feed):
-    title = 'HackBlog'
+    title = 'HackSoft Blog'
     link = '/blog/'
     description = 'HackSoft\'s official blog page'
     author_name = 'HackSoft'
