@@ -2,6 +2,7 @@ from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Atom1Feed, Rss201rev2Feed
 
 from hacksoft.website.snippets import HackCastEpisode
+from hacksoft.website.models import BlogPost
 
 
 class FeedGenerator(Rss201rev2Feed):
@@ -77,3 +78,39 @@ class HackCastRssFeed(Feed):
 class HackCastAtomFeed(HackCastRssFeed):
     feed_type = Atom1Feed
     subtitle = HackCastRssFeed.description
+
+
+class BlogRssFeed(Feed):
+    title = 'HackSoft Blog'
+    link = '/blog/'
+    description = 'HackSoft\'s official blog page'
+    author_name = 'HackSoft'
+    author_email = 'consulting@hacksoft.io'
+
+    feed_type = FeedGenerator
+
+    def items(self):
+        return BlogPost.objects.live().order_by('-date')
+
+    def item_title(self, item):
+        return item.title
+
+    def item_link(self, item):
+        return item.full_url
+
+    def item_description(self, item):
+        return item.index_text
+
+    def item_guid(self, item):
+        return f'{item.id}/{item.title}'
+
+    def item_author_name(self, item):
+        return ', '.join([author.name for author in item.authors.all()])
+
+    def item_categories(self, item):
+        return item.categories.all()
+
+
+class BlogAtomFeed(BlogRssFeed):
+    feed_type = Atom1Feed
+    subtitle = BlogRssFeed.description
