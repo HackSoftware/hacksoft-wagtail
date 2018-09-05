@@ -16,7 +16,8 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from hacksoft.website.feed import HackCastRssFeed, HackCastAtomFeed, BlogRssFeed, BlogAtomFeed
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
+    # Django Admin, use {% url 'admin:index' %}
+    url(settings.ADMIN_URL, include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
@@ -30,8 +31,6 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
-    # Django Admin, use {% url 'admin:index' %}
-    url(settings.ADMIN_URL, include(admin.site.urls)),
 
     # Your stuff: custom urls includes go here
 
