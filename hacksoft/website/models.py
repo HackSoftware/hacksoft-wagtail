@@ -357,7 +357,7 @@ class BlogPost(Page):
     index_text = models.CharField(max_length=255)
     authors = ParentalManyToManyField(Teammate)
     categories = ParentalManyToManyField(Category)
-    date = models.DateField("Post date")
+    date = models.DateTimeField("Post date")
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('cover_image'),

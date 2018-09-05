@@ -110,6 +110,9 @@ class BlogRssFeed(Feed):
     def item_categories(self, item):
         return item.categories.all()
 
+    def item_pubdate(self, item):
+        return item.date
+
 
 class BlogAtomFeed(BlogRssFeed):
     feed_type = Atom1Feed
