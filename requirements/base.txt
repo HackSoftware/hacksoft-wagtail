@@ -41,7 +41,7 @@ redis>=2.10.0
 # Your custom requirements go here
 
 # Wagtati
-wagtail==1.9
+wagtail==1.13.2
 
 # Wand
 Wand==0.4.3
