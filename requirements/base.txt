@@ -10,8 +10,6 @@ django==1.11.15
 # Configuration
 django-environ==0.4.0
 
-
-
 # Forms
 django-braces==1.9.0
 django-crispy-forms==1.6.0
@@ -40,7 +38,7 @@ redis>=2.10.0
 
 # Your custom requirements go here
 
-# Wagtati
+# Wagtail
 wagtail==1.13.2
 
 # Wand
