@@ -3,11 +3,11 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
 
 
 @register_snippet

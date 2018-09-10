@@ -5,8 +5,8 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
+import wagtail.core.blocks
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -26,15 +26,15 @@ class Migration(migrations.Migration):
                 ('intro_h1', models.CharField(max_length=255)),
                 ('intro_h2', models.CharField(max_length=255)),
                 ('how_we_work_title', models.CharField(max_length=255)),
-                ('how_we_work_center', wagtail.wagtailcore.fields.RichTextField()),
-                ('how_we_work_left', wagtail.wagtailcore.fields.RichTextField()),
-                ('how_we_work_right', wagtail.wagtailcore.fields.RichTextField()),
+                ('how_we_work_center', wagtail.core.fields.RichTextField()),
+                ('how_we_work_left', wagtail.core.fields.RichTextField()),
+                ('how_we_work_right', wagtail.core.fields.RichTextField()),
                 ('technologies_we_use_title', models.CharField(max_length=255)),
-                ('technologies_we_use_center', wagtail.wagtailcore.fields.RichTextField()),
+                ('technologies_we_use_center', wagtail.core.fields.RichTextField()),
                 ('our_team_title', models.CharField(max_length=255)),
-                ('our_team_center', wagtail.wagtailcore.fields.RichTextField()),
+                ('our_team_center', wagtail.core.fields.RichTextField()),
                 ('portfolio_title', models.CharField(max_length=255)),
-                ('portfolio_center', wagtail.wagtailcore.fields.RichTextField()),
+                ('portfolio_center', wagtail.core.fields.RichTextField()),
                 ('intro_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
                 ('portfolio_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
                 ('technologies_we_use_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
@@ -49,11 +49,11 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('header_text', models.CharField(max_length=255)),
-                ('how_we_work_intro', wagtail.wagtailcore.fields.RichTextField()),
+                ('how_we_work_intro', wagtail.core.fields.RichTextField()),
                 ('what_we_do_title', models.CharField(max_length=255)),
-                ('what_we_do_content', wagtail.wagtailcore.fields.StreamField((('what_we_do_content', wagtail.wagtailcore.blocks.StreamBlock((('title', wagtail.wagtailcore.blocks.RichTextBlock()), ('description', wagtail.wagtailcore.blocks.RichTextBlock())))),))),
-                ('the_process_title', wagtail.wagtailcore.fields.RichTextField()),
-                ('the_process_content', wagtail.wagtailcore.fields.StreamField((('process_content', wagtail.wagtailcore.blocks.StreamBlock((('title', wagtail.wagtailcore.blocks.RichTextBlock()), ('description', wagtail.wagtailcore.blocks.RichTextBlock())))),))),
+                ('what_we_do_content', wagtail.core.fields.StreamField((('what_we_do_content', wagtail.core.blocks.StreamBlock((('title', wagtail.core.blocks.RichTextBlock()), ('description', wagtail.core.blocks.RichTextBlock())))),))),
+                ('the_process_title', wagtail.core.fields.RichTextField()),
+                ('the_process_content', wagtail.core.fields.StreamField((('process_content', wagtail.core.blocks.StreamBlock((('title', wagtail.core.blocks.RichTextBlock()), ('description', wagtail.core.blocks.RichTextBlock())))),))),
                 ('header_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
                 ('what_we_do_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
@@ -79,7 +79,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
-                ('description', wagtail.wagtailcore.fields.RichTextField()),
+                ('description', wagtail.core.fields.RichTextField()),
                 ('background_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
                 ('logo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
@@ -102,7 +102,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
-                ('description', wagtail.wagtailcore.fields.RichTextField()),
+                ('description', wagtail.core.fields.RichTextField()),
                 ('initial_photo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
                 ('secondary_photo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
@@ -161,7 +161,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('header_text', models.CharField(max_length=255)),
-                ('technologies_intro', wagtail.wagtailcore.fields.RichTextField()),
+                ('technologies_intro', wagtail.core.fields.RichTextField()),
                 ('header_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={
@@ -174,7 +174,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
-                ('description', wagtail.wagtailcore.fields.RichTextField()),
+                ('description', wagtail.core.fields.RichTextField()),
                 ('logo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
         ),

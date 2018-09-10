@@ -2,15 +2,15 @@ from __future__ import unicode_literals
 from django.db import models
 from django.shortcuts import render, get_object_or_404
 
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
-from wagtail.wagtailadmin.edit_handlers import InlinePanel
+from wagtail.core import blocks
+from wagtail.core.models import Page, Orderable
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+from wagtail.admin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 
 from .snippets import Project, Client, Teammate, Category, HackCastEpisode

@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
+import wagtail.core.blocks
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -17,13 +17,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='footer',
             name='popup_text',
-            field=wagtail.wagtailcore.fields.RichTextField(default=''),
+            field=wagtail.core.fields.RichTextField(default=''),
             preserve_default=False,
         ),
         migrations.AlterField(
             model_name='footer',
             name='links',
-            field=wagtail.wagtailcore.fields.StreamField((('link', wagtail.wagtailcore.blocks.StructBlock((('text', wagtail.wagtailcore.blocks.TextBlock()), ('url', wagtail.wagtailcore.blocks.URLBlock())), template='streams/footer_link.html')),)),
+            field=wagtail.core.fields.StreamField((('link', wagtail.core.blocks.StructBlock((('text', wagtail.core.blocks.TextBlock()), ('url', wagtail.core.blocks.URLBlock())), template='streams/footer_link.html')),)),
         ),
         migrations.AlterField(
             model_name='homepage',
