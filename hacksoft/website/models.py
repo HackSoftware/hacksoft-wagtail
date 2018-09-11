@@ -240,7 +240,11 @@ class ProjectPage(RoutablePageMixin, Page):
 
 class TeammatePlacement(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='teammate_placement')
-    teammate = models.ForeignKey('website.Teammate', related_name='+')
+    teammate = models.ForeignKey(
+        'website.Teammate',
+        related_name='+',
+        on_delete=models.CASCADE
+    )
 
     panels = [
         SnippetChooserPanel('teammate'),
@@ -252,7 +256,11 @@ class TeammatePlacement(Orderable, models.Model):
 
 class TeammatePagePlacement(Orderable, models.Model):
     page = ParentalKey('website.OurTeamPage', related_name='teammate_placement')
-    teammate = models.ForeignKey('website.Teammate', related_name='+')
+    teammate = models.ForeignKey(
+        'website.Teammate',
+        related_name='+',
+        on_delete=models.CASCADE
+    )
 
     panels = [
         SnippetChooserPanel('teammate'),
@@ -264,7 +272,11 @@ class TeammatePagePlacement(Orderable, models.Model):
 
 class TechnologiesPlacement(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='technologies_placement')
-    technology = models.ForeignKey('website.Technology', related_name='+')
+    technology = models.ForeignKey(
+        'website.Technology',
+        related_name='+',
+        on_delete=models.CASCADE
+    )
 
     panels = [
         SnippetChooserPanel('technology'),
@@ -276,7 +288,11 @@ class TechnologiesPlacement(Orderable, models.Model):
 
 class TechnologiesPagePlacement(Orderable, models.Model):
     page = ParentalKey('website.TechnologiesWeUsePage', related_name='technologies_placement')
-    technology = models.ForeignKey('website.Technology', related_name='+')
+    technology = models.ForeignKey(
+        'website.Technology',
+        related_name='+',
+        on_delete=models.CASCADE
+    )
 
     panels = [
         SnippetChooserPanel('technology'),
@@ -288,7 +304,11 @@ class TechnologiesPagePlacement(Orderable, models.Model):
 
 class ProjectsPlacement(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='projects_placement')
-    project = models.ForeignKey('website.Project', related_name='+')
+    project = models.ForeignKey(
+        'website.Project',
+        related_name='+',
+        on_delete=models.CASCADE
+    )
 
     panels = [
         SnippetChooserPanel('project'),
@@ -300,7 +320,11 @@ class ProjectsPlacement(Orderable, models.Model):
 
 class ClientPlacement(Orderable, models.Model):
     page = ParentalKey('website.PortfolioPage', related_name='clients_placement')
-    client = models.ForeignKey('website.Client', related_name='+')
+    client = models.ForeignKey(
+        'website.Client',
+        related_name='+',
+        on_delete=models.CASCADE
+    )
 
     panels = [
         SnippetChooserPanel('client'),
