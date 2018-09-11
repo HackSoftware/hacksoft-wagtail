@@ -57,7 +57,7 @@
           {{ page.technologies_we_use_center|richtext }}
         </div>
         <div class="section-content-row align-center technologies-logos">
-          {% for relation in page.technologies_placement.all %}
+          {% for relation in technologies %}
             {% image relation.technology.logo max-100x100 as tech_logo %}
             <img src="{{ tech_logo.url }}" class="filter_image" alt="{{ relation.technology.name }}" title="{{ relation.technology.name }}" />
           {% endfor %}

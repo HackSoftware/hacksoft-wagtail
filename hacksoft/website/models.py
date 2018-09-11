@@ -93,7 +93,10 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['clients'] = Client.objects.all()
+        context['clients'] = Client.objects.prefetch_related('logo').all()
+        context['technologies'] = TechnologiesPlacement.objects.all().prefetch_related(
+            'technology', 'technology__logo'
+        )
         return context
 
 
@@ -186,6 +189,15 @@ class OurTeamPage(Page):
     subpage_types = []
     parent_page_types = ['website.HomePage']
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        teammates = TeammatePagePlacement.objects.prefetch_related(
+            'teammate',
+            'teammate__initial_photo', 'teammate__secondary_photo'
+        ).all()
+        context['teammates'] = teammates
+        return context
+
 
 class PortfolioPage(Page):
     header_text = models.CharField(max_length=255)
@@ -206,6 +218,15 @@ class PortfolioPage(Page):
 
     subpage_types = []
     parent_page_types = ['website.HomePage']
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        context['clients'] = ClientPlacement.objects.all(). prefetch_related(
+            'client__logo',
+            'client__project_set', 'client__project_set__technologies',
+            'client__project_set__technologies__logo'
+        )
+        return context
 
 
 class ContactsPage(Page):
@@ -339,7 +360,9 @@ class BlogPostsPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        ordered_blog_posts = context['page'].get_children().order_by('-id').live()
+        ordered_blog_posts = BlogPost.objects.prefetch_related(
+            'cover_image'
+        ).live().order_by('-id')
         context['categories'] = Category.objects.all()
         context['blog_posts'] = ordered_blog_posts
         return context
