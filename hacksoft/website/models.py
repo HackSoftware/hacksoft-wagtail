@@ -93,8 +93,8 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['clients'] = Client.objects.prefetch_related('logo').all()
-        context['technologies'] = TechnologiesPlacement.objects.all().prefetch_related(
+        context['clients'] = Client.objects.select_related('logo')
+        context['technologies'] = TechnologiesPlacement.objects.select_related(
             'technology', 'technology__logo'
         )
         return context
@@ -191,11 +191,12 @@ class OurTeamPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request)
-        teammates = TeammatePagePlacement.objects.prefetch_related(
-            'teammate',
-            'teammate__initial_photo', 'teammate__secondary_photo'
-        ).all()
-        context['teammates'] = teammates
+
+        select = ['teammate', 'teammate__initial_photo', 'teammate__secondary_photo']
+        prefetch = []
+
+        context['teammates'] = TeammatePagePlacement.objects.select_related(*select).prefetch_related(*prefetch)
+
         return context
 
 
@@ -221,11 +222,15 @@ class PortfolioPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request)
-        context['clients'] = ClientPlacement.objects.all(). prefetch_related(
-            'client__logo',
-            'client__project_set', 'client__project_set__technologies',
+
+        select = ['client', 'client__logo', 'page']
+        prefetch = [
+            'client__project_set',
+            'client__project_set__technologies',
             'client__project_set__technologies__logo'
-        )
+        ]
+
+        context['clients'] = ClientPlacement.objects.select_related(*select).prefetch_related(*prefetch)
         return context
 
 
@@ -360,11 +365,24 @@ class BlogPostsPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        ordered_blog_posts = BlogPost.objects.prefetch_related(
+        ordered_blog_posts = BlogPost.objects.select_related(
             'cover_image'
         ).live().order_by('-id')
+
+        post_to_authors = {}
+
+        authors = Teammate.objects.prefetch_related('blogpost_set')
+
+        for author in authors:
+            for post in author.blogpost_set.all():
+                if ...
+                post_to_authors[post.id].append(author)
+
+
+
         context['categories'] = Category.objects.all()
         context['blog_posts'] = ordered_blog_posts
+
         return context
 
 
