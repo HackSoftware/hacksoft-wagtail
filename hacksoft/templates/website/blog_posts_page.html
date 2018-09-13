@@ -70,34 +70,34 @@
       {{ page.text|richtext }}
     </div>
     <div class="blog-posts-container">
-    {% for page in blog_posts.specific %}
+    {% for post, authors in blog_posts.items %}
       <div class="blog-post-container">
 
-        <a href="{{ page.url }}">
+        <a href="{{ post.url }}">
           <div class="blog-post">
-            {% image page.cover_image width-600 as tmp_photo %}
+            {% image post.cover_image width-600 as tmp_photo %}
             <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
             </div>
-            {% for author in page.authors.all %}
+            {% for author in authors %}
               {% image author.initial_photo width-150 as avatar %}
               <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
             {% endfor %}
             <div class="blog-post-body">
               <div class="title">
-                {{ page.title }}
+                {{ post.title }}
               </div>
               <div class="authors">
-                {% for author in page.authors.all %}
+                {% for author in authors %}
                   <div class="author">
                     {{ author.name }}
                   </div>
                 {% endfor %}
               </div>
               <div class="description">
-                {{ page.index_text }}
+                {{ post.index_text }}
               </div>
               <div class="date">
-                Posted: <span>{{ page.date|date:"SHORT_DATE_FORMAT" }}</span>
+                Posted: <span>{{ post.date|date:"SHORT_DATE_FORMAT" }}</span>
               </div>
             </div>
           </div>

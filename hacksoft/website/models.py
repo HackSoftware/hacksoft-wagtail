@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import operator
 from django.db import models
 from django.shortcuts import render, get_object_or_404
 
@@ -365,23 +366,24 @@ class BlogPostsPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        ordered_blog_posts = BlogPost.objects.select_related(
-            'cover_image'
-        ).live().order_by('-id')
-
+        
         post_to_authors = {}
 
-        authors = Teammate.objects.prefetch_related('blogpost_set')
+        authors = Teammate.objects.select_related('initial_photo').\
+            prefetch_related('blogpost_set')
 
         for author in authors:
             for post in author.blogpost_set.all():
-                if ...
-                post_to_authors[post.id].append(author)
+                if post in post_to_authors.keys():
+                    post_to_authors[post].append(author)
+                else:
+                    post_to_authors[post] = [author]
 
+        sorting_hat = {}
+        for post in sorted(post_to_authors.keys(), key=operator.attrgetter('date'), reverse=True):
+            sorting_hat[post] = post_to_authors[post]
 
-
-        context['categories'] = Category.objects.all()
-        context['blog_posts'] = ordered_blog_posts
+        context['blog_posts'] = sorting_hat
 
         return context
 
