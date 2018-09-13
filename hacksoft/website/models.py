@@ -373,8 +373,8 @@ class BlogPostsPage(Page):
             prefetch_related('blogpost_set')
 
         for author in authors:
-            for post in author.blogpost_set.all():
-                if post in post_to_authors.keys():
+            for post in author.blogpost_set.select_related('cover_image').live():
+                if post in post_to_authors:
                     post_to_authors[post].append(author)
                 else:
                     post_to_authors[post] = [author]
