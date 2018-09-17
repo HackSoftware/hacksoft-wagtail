@@ -366,14 +366,17 @@ class BlogPostsPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        
+
         post_to_authors = {}
 
         authors = Teammate.objects.select_related('initial_photo').\
             prefetch_related('blogpost_set')
 
         for author in authors:
-            for post in author.blogpost_set.select_related('cover_image').live():
+            for post in author.blogpost_set.all():
+                if not post.live:
+                    continue
+
                 if post in post_to_authors:
                     post_to_authors[post].append(author)
                 else:
