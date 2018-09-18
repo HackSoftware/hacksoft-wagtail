@@ -365,7 +365,7 @@ class BlogPostsPage(Page):
     subpage_types = ['website.BlogPost']
     parent_page_types = ['website.HomePage']
 
-    def get_image(self, image_id, width):
+    def get_renditions(self):
         renditions = Rendition.objects.all()
         image_to_renditions = {}
 
@@ -375,9 +375,12 @@ class BlogPostsPage(Page):
                 image_to_renditions[image_id].append(rendition)
             else:
                 image_to_renditions[image_id] = [rendition]
+        return image_to_renditions
 
+    def get_image(self, search_image_id, width):
+        image_to_renditions = self.get_renditions()
         for image, renditions in image_to_renditions.items():
-            if image == image_id:
+            if image == search_image_id:
                 for rendition in renditions:
                     if rendition.width == width:
                         return rendition
