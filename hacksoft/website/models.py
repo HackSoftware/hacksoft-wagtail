@@ -13,6 +13,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.admin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from wagtail.images.models import Rendition
 
 from .snippets import Project, Client, Teammate, Category, HackCastEpisode
 
@@ -364,6 +365,23 @@ class BlogPostsPage(Page):
     subpage_types = ['website.BlogPost']
     parent_page_types = ['website.HomePage']
 
+    def get_image(self, image_id, width):
+        renditions = Rendition.objects.all()
+        image_to_renditions = {}
+
+        for rendition in renditions:
+            image_id = rendition.image_id
+            if image_id in image_to_renditions:
+                image_to_renditions[image_id].append(rendition)
+            else:
+                image_to_renditions[image_id] = [rendition]
+
+        for image, renditions in image_to_renditions.items():
+            if image == image_id:
+                for rendition in renditions:
+                    if rendition.width == width:
+                        return rendition
+
     def get_context(self, request):
         context = super().get_context(request)
 
@@ -380,6 +398,8 @@ class BlogPostsPage(Page):
                 if post in post_to_authors:
                     post_to_authors[post].append(author)
                 else:
+                    post.cover_image_w600 = self.get_image(post.cover_image_id, 600)
+                    author.initial_photo_w150 = self.get_image(author.initial_photo_id, 150)
                     post_to_authors[post] = [author]
 
         sorting_hat = {}

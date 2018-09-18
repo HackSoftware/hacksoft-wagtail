@@ -75,12 +75,13 @@
 
         <a href="{{ post.url }}">
           <div class="blog-post">
-            {% image post.cover_image width-600 as tmp_photo %}
-            <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
+{#            {% image post.cover_image width-600 as tmp_photo %}#}
+            <div class="head-image" style="background-image:url({{ post.cover_image_w600.url }})">
             </div>
             {% for author in authors %}
-              {% image author.initial_photo width-150 as avatar %}
-              <div class="avatar" style="background-image:url({{ avatar.url }})"></div>
+{#              <img src="{{ author.initial_photo_w150.url }}">#}
+{#              {% image author.initial_photo width-150 as avatar %}#}
+              <div class="avatar" style="background-image:url({{ author.initial_photo_w150.url }})"></div>
             {% endfor %}
             <div class="blog-post-body">
               <div class="title">
