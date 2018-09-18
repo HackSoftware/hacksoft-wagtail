@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import operator
 from django.db import models
 from django.shortcuts import render, get_object_or_404
 
@@ -12,6 +13,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.admin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from wagtail.images.models import Rendition
 
 from .snippets import Project, Client, Teammate, Category, HackCastEpisode
 
@@ -93,7 +95,10 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['clients'] = Client.objects.all()
+        context['clients'] = Client.objects.select_related('logo')
+        context['technologies'] = TechnologiesPlacement.objects.select_related(
+            'technology', 'technology__logo'
+        )
         return context
 
 
@@ -186,6 +191,16 @@ class OurTeamPage(Page):
     subpage_types = []
     parent_page_types = ['website.HomePage']
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+
+        select = ['teammate', 'teammate__initial_photo', 'teammate__secondary_photo']
+        prefetch = []
+
+        context['teammates'] = TeammatePagePlacement.objects.select_related(*select).prefetch_related(*prefetch)
+
+        return context
+
 
 class PortfolioPage(Page):
     header_text = models.CharField(max_length=255)
@@ -206,6 +221,19 @@ class PortfolioPage(Page):
 
     subpage_types = []
     parent_page_types = ['website.HomePage']
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+
+        select = ['client', 'client__logo', 'page']
+        prefetch = [
+            'client__project_set',
+            'client__project_set__technologies',
+            'client__project_set__technologies__logo'
+        ]
+
+        context['clients'] = ClientPlacement.objects.select_related(*select).prefetch_related(*prefetch)
+        return context
 
 
 class ContactsPage(Page):
@@ -337,11 +365,52 @@ class BlogPostsPage(Page):
     subpage_types = ['website.BlogPost']
     parent_page_types = ['website.HomePage']
 
+    def get_renditions(self):
+        renditions = Rendition.objects.all()
+        image_to_renditions = {}
+
+        for rendition in renditions:
+            image_id = rendition.image_id
+            if image_id in image_to_renditions:
+                image_to_renditions[image_id].append(rendition)
+            else:
+                image_to_renditions[image_id] = [rendition]
+        return image_to_renditions
+
+    def get_image(self, search_image_id, width):
+        image_to_renditions = self.get_renditions()
+        for image, renditions in image_to_renditions.items():
+            if image == search_image_id:
+                for rendition in renditions:
+                    if rendition.width == width:
+                        return rendition
+
     def get_context(self, request):
         context = super().get_context(request)
-        ordered_blog_posts = context['page'].get_children().order_by('-id').live()
-        context['categories'] = Category.objects.all()
-        context['blog_posts'] = ordered_blog_posts
+
+        post_to_authors = {}
+
+        authors = Teammate.objects.select_related('initial_photo').\
+            prefetch_related('blogpost_set')
+
+        for author in authors:
+            for post in author.blogpost_set.all():
+                if not post.live:
+                    continue
+
+                if post in post_to_authors:
+                    post_to_authors[post].append(author)
+                else:
+                    post.cover_image_w600 = self.get_image(post.cover_image_id, 600)
+                    author.initial_photo_w150 = self.get_image(author.initial_photo_id, 150)
+                    post_to_authors[post] = [author]
+
+        sorting_hat = {}
+        for post in sorted(post_to_authors.keys(), key=operator.attrgetter('date'), reverse=True):
+            sorting_hat[post] = post_to_authors[post]
+
+        context['blog_posts'] = sorting_hat
+
         return context
 
 
