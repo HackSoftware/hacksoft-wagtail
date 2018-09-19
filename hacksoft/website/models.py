@@ -15,7 +15,7 @@ from wagtail.admin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.images.models import Rendition
 
-from .snippets import Project, Client, Teammate, Category, HackCastEpisode
+from .snippets import Project, Client, Teammate, Category, HackCastEpisode, BlogPostSnippet
 
 
 class HomePage(Page):
@@ -349,7 +349,7 @@ class BlogPostsPage(Page):
     )
     text = RichTextField()
     featured_article = models.OneToOneField(
-        'BlogPost',
+        'BlogPostSnippet',
         blank=True,
         null=True,
         related_name='+',
@@ -366,7 +366,7 @@ class BlogPostsPage(Page):
     parent_page_types = ['website.HomePage']
 
     def get_renditions(self):
-        renditions = Rendition.objects.all()
+        renditions = Rendition.objects.select_related('image')
         image_to_renditions = {}
 
         for rendition in renditions:
@@ -379,38 +379,31 @@ class BlogPostsPage(Page):
 
     def get_image(self, search_image_id, width):
         image_to_renditions = self.get_renditions()
-        for image, renditions in image_to_renditions.items():
-            if image == search_image_id:
-                for rendition in renditions:
-                    if rendition.width == width:
-                        return rendition
+        if search_image_id in image_to_renditions:
+            for rendition in image_to_renditions[search_image_id]:
+                if rendition.width == width:
+                    return rendition
 
     def get_context(self, request):
         context = super().get_context(request)
+        posts = BlogPostSnippet.objects.\
+            select_related('cover_image').\
+            prefetch_related('authors')
 
-        post_to_authors = {}
+        post_to_author = {}
 
-        authors = Teammate.objects.select_related('initial_photo').\
-            prefetch_related('blogpost_set')
+        for post in posts:
+            for author in post.authors.all():
 
-        for author in authors:
-            for post in author.blogpost_set.all():
-                if not post.live:
-                    continue
+                if post in post_to_author:
+                    post_to_author[post].append(author)
 
-                if post in post_to_authors:
-                    post_to_authors[post].append(author)
                 else:
-                    post.cover_image_w600 = self.get_image(post.cover_image_id, 600)
-                    author.initial_photo_w150 = self.get_image(author.initial_photo_id, 150)
-                    post_to_authors[post] = [author]
+                    post.cover_image_rend = self.get_image(post.cover_image_id, width=600)
+                    author.initial_photo_rend = self.get_image(author.initial_photo_id, width=150)
+                    post_to_author[post] = [author]
 
-        sorting_hat = {}
-        for post in sorted(post_to_authors.keys(), key=operator.attrgetter('date'), reverse=True):
-            sorting_hat[post] = post_to_authors[post]
-
-        context['blog_posts'] = sorting_hat
-
+        context['blogposts'] = post_to_author
         return context
 
 

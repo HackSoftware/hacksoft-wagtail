@@ -169,3 +169,32 @@ class HackCastEpisode(models.Model):
 
     def __str__(self):
         return self.title
+
+@register_snippet
+class BlogPostSnippet(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
+    cover_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = models.TextField()
+    index_text = models.CharField(max_length=255)
+    authors = models.ManyToManyField('Teammate')
+    categories = models.ManyToManyField('Category')
+    date = models.DateTimeField("Post date")
+
+    content_panels =  [
+        ImageChooserPanel('cover_image'),
+        FieldPanel('text'),
+        FieldPanel('index_text'),
+        FieldPanel('date'),
+        FieldPanel('categories'),
+        FieldPanel('authors')
+    ]
+
+    def __str__(self):
+        return self.title
