@@ -360,6 +360,7 @@ class BlogPostsPage(Page):
         ImageChooserPanel('header_image'),
         FieldPanel('text'),
         FieldPanel('featured_article'),
+        InlinePanel('blogpost_placement', label='Blog Posts')
     ]
 
     subpage_types = ['website.BlogPost']
@@ -386,18 +387,20 @@ class BlogPostsPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        posts = BlogPostSnippet.objects.\
-            select_related('cover_image').\
-            prefetch_related('authors')
+        select = ['post', 'post__cover_image']
+        prefetch = ['post__authors', 'post__authors__initial_photo']
+
+        placements = BlogPostPlacement.objects.\
+            select_related(*select).\
+            prefetch_related(*prefetch)
 
         post_to_author = {}
 
-        for post in posts:
+        for placement in placements:
+            post = placement.post
             for author in post.authors.all():
-
                 if post in post_to_author:
                     post_to_author[post].append(author)
-
                 else:
                     post.cover_image_rend = self.get_image(post.cover_image_id, width=600)
                     author.initial_photo_rend = self.get_image(author.initial_photo_id, width=150)
@@ -405,6 +408,18 @@ class BlogPostsPage(Page):
 
         context['blogposts'] = post_to_author
         return context
+
+
+class BlogPostPlacement(Orderable, models.Model):
+    page = ParentalKey('website.BlogPostsPage', related_name='blogpost_placement')
+    post = models.ForeignKey('website.BlogPostSnippet', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('post')
+    ]
+
+    def __str__(self):
+        return self.post.title
 
 
 class BlogPost(Page):
