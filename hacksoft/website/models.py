@@ -15,7 +15,7 @@ from wagtail.admin.edit_handlers import InlinePanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.images.models import Rendition
 
-from .snippets import Project, Client, Teammate, Category, HackCastEpisode
+from .snippets import Project, Client, Teammate, Category, HackCastEpisode, BlogPostSnippet
 
 
 class HomePage(Page):
@@ -349,7 +349,7 @@ class BlogPostsPage(Page):
     )
     text = RichTextField()
     featured_article = models.OneToOneField(
-        'BlogPost',
+        'BlogPostSnippet',
         blank=True,
         null=True,
         related_name='+',
@@ -360,58 +360,58 @@ class BlogPostsPage(Page):
         ImageChooserPanel('header_image'),
         FieldPanel('text'),
         FieldPanel('featured_article'),
+        InlinePanel('blogpost_placement', label='Blog Posts')
     ]
 
     subpage_types = ['website.BlogPost']
     parent_page_types = ['website.HomePage']
 
-    def get_renditions(self):
-        renditions = Rendition.objects.all()
-        image_to_renditions = {}
-
-        for rendition in renditions:
-            image_id = rendition.image_id
-            if image_id in image_to_renditions:
-                image_to_renditions[image_id].append(rendition)
-            else:
-                image_to_renditions[image_id] = [rendition]
-        return image_to_renditions
+    def get_renditions(self, filter_image_id):
+        renditions = Rendition.objects.select_related('image').\
+            filter(image_id=filter_image_id)
+        return renditions
 
     def get_image(self, search_image_id, width):
-        image_to_renditions = self.get_renditions()
-        for image, renditions in image_to_renditions.items():
-            if image == search_image_id:
-                for rendition in renditions:
-                    if rendition.width == width:
-                        return rendition
+        image_renditions = self.get_renditions(search_image_id)
+        for rendition in image_renditions:
+            if rendition.width == width:
+                return rendition
 
     def get_context(self, request):
         context = super().get_context(request)
+        select = ['post', 'post__cover_image']
+        prefetch = ['post__authors', 'post__authors__initial_photo']
 
-        post_to_authors = {}
+        placements = BlogPostPlacement.objects.\
+            select_related(*select).\
+            prefetch_related(*prefetch)
 
-        authors = Teammate.objects.select_related('initial_photo').\
-            prefetch_related('blogpost_set')
+        post_to_author = {}
 
-        for author in authors:
-            for post in author.blogpost_set.all():
-                if not post.live:
-                    continue
-
-                if post in post_to_authors:
-                    post_to_authors[post].append(author)
+        for placement in placements:
+            post = placement.post
+            for author in post.authors.all():
+                if post in post_to_author:
+                    post_to_author[post].append(author)
                 else:
-                    post.cover_image_w600 = self.get_image(post.cover_image_id, 600)
-                    author.initial_photo_w150 = self.get_image(author.initial_photo_id, 150)
-                    post_to_authors[post] = [author]
+                    post.cover_image_rend = self.get_image(post.cover_image_id, width=600)
+                    author.initial_photo_rend = self.get_image(author.initial_photo_id, width=150)
+                    post_to_author[post] = [author]
 
-        sorting_hat = {}
-        for post in sorted(post_to_authors.keys(), key=operator.attrgetter('date'), reverse=True):
-            sorting_hat[post] = post_to_authors[post]
-
-        context['blog_posts'] = sorting_hat
-
+        context['blogposts'] = post_to_author
         return context
+
+
+class BlogPostPlacement(Orderable, models.Model):
+    page = ParentalKey('website.BlogPostsPage', related_name='blogpost_placement')
+    post = models.ForeignKey('website.BlogPostSnippet', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('post')
+    ]
+
+    def __str__(self):
+        return self.post.title
 
 
 class BlogPost(Page):
@@ -424,8 +424,8 @@ class BlogPost(Page):
     )
     text = models.TextField()
     index_text = models.CharField(max_length=255)
-    authors = ParentalManyToManyField(Teammate)
-    categories = ParentalManyToManyField(Category)
+    authors = models.ManyToManyField(Teammate)
+    categories = models.ManyToManyField(Category)
     date = models.DateTimeField("Post date")
 
     content_panels = Page.content_panels + [

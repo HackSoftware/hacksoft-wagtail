@@ -9,6 +9,8 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from . import models as website_models
+
 
 @register_snippet
 class Teammate(models.Model):
@@ -156,7 +158,6 @@ class Category(models.Model):
 class HackCastEpisode(models.Model):
     title = models.CharField(unique=True, max_length=255)
     description = models.TextField(blank=True)
-
     mp3_url = models.URLField()
     youtube_url = models.URLField()
 
@@ -169,3 +170,43 @@ class HackCastEpisode(models.Model):
 
     def __str__(self):
         return self.title
+
+@register_snippet
+class BlogPostSnippet(models.Model):
+    seo_title = models.CharField(
+        verbose_name="page title",
+        max_length=255,
+        blank=True,
+    )
+    search_description = models.TextField(verbose_name='search description', blank=True)
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
+    cover_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    text = models.TextField()
+    index_text = models.CharField(max_length=255)
+    authors = models.ManyToManyField('Teammate')
+    categories = models.ManyToManyField('Category')
+    date = models.DateTimeField("Post date")
+
+    content_panels =  [
+        ImageChooserPanel('cover_image'),
+        FieldPanel('text'),
+        FieldPanel('index_text'),
+        FieldPanel('date'),
+        FieldPanel('categories'),
+        FieldPanel('authors')
+    ]
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def full_url(self):
+        page = website_models.BlogPostsPage.objects.first()
+        return f'{page.full_url}{str(self.slug)}'

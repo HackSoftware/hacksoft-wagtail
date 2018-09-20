@@ -28,7 +28,7 @@
     <h1 class="blog-post-section-heading">Featured</h1>
     <div class="blog-post-container featured-blog-post">
 
-      <a href="{{ self.featured_article.url }}">
+      <a href="{% url 'website:blog_page' self.featured_article.slug %}">
         <div class="blog-post">
           {% image self.featured_article.cover_image width-600 as tmp_photo %}
           <div class="head-image" style="background-image:url({{ tmp_photo.url }})">
@@ -70,15 +70,15 @@
       {{ page.text|richtext }}
     </div>
     <div class="blog-posts-container">
-    {% for post, authors in blog_posts.items %}
+    {% for post, authors in blogposts.items %}
       <div class="blog-post-container">
 
-        <a href="{{ post.url }}">
+        <a href="{% url 'website:blog_page' post.slug %}">
           <div class="blog-post">
-            <div class="head-image" style="background-image:url({{ post.cover_image_w600.url }})">
+            <div class="head-image" style="background-image:url({{ post.cover_image_rend.url }})">
             </div>
             {% for author in authors %}
-              <div class="avatar" style="background-image:url({{ author.initial_photo_w150.url }})"></div>
+              <div class="avatar" style="background-image:url({{ author.initial_photo_rend.url }})"></div>
             {% endfor %}
             <div class="blog-post-body">
               <div class="title">

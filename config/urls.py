@@ -25,7 +25,9 @@ urlpatterns = [
     url(r'^hackcast/atom/$', HackCastAtomFeed()),
     url(r'^blog/rss/$', BlogRssFeed()),
     url(r'^blog/atom/$', BlogAtomFeed()),
+    url(r'^blog/', include('hacksoft.website.urls')),
     url(r'', include(wagtail_urls)),
+
 
 
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
