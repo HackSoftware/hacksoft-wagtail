@@ -366,24 +366,16 @@ class BlogPostsPage(Page):
     subpage_types = ['website.BlogPost']
     parent_page_types = ['website.HomePage']
 
-    def get_renditions(self):
-        renditions = Rendition.objects.select_related('image')
-        image_to_renditions = {}
-
-        for rendition in renditions:
-            image_id = rendition.image_id
-            if image_id in image_to_renditions:
-                image_to_renditions[image_id].append(rendition)
-            else:
-                image_to_renditions[image_id] = [rendition]
-        return image_to_renditions
+    def get_renditions(self, filter_image_id):
+        renditions = Rendition.objects.select_related('image').\
+            filter(image_id=filter_image_id)
+        return renditions
 
     def get_image(self, search_image_id, width):
-        image_to_renditions = self.get_renditions()
-        if search_image_id in image_to_renditions:
-            for rendition in image_to_renditions[search_image_id]:
-                if rendition.width == width:
-                    return rendition
+        image_renditions = self.get_renditions(search_image_id)
+        for rendition in image_renditions:
+            if rendition.width == width:
+                return rendition
 
     def get_context(self, request):
         context = super().get_context(request)

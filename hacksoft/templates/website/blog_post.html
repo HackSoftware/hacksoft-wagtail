@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load utils i18n wagtailimages_tags wagtailcore_tags markdown %}
-{##}
-{#{% block meta %}#}
-{#  {% image page.cover_image width-1200 as cover_image %}#}
-{#  {% full_url cover_image.url as image_url %}#}
-{#  {% include 'website/og_tags.html' with og_title=page.title og_url=page.full_url og_description=page.index_text og_type='article' og_image=image_url %}#}
-{#{% endblock meta %}#}
-{##}
+
+{% block meta %}
+  {% image page.cover_image width-1200 as cover_image %}
+  {% full_url post.cover_image_rend.url as image_url %}
+  {% include 'website/og_tags.html' with og_title=post.title og_url=post.full_url og_description=post.index_text og_type='article' og_image=image_url %}
+{% endblock meta %}
+
 {% block content %}
 
 <div class="content-wrapper blog-post-page">

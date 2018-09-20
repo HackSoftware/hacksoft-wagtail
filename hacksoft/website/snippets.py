@@ -172,6 +172,12 @@ class HackCastEpisode(models.Model):
 
 @register_snippet
 class BlogPostSnippet(models.Model):
+    seo_title = models.CharField(
+        verbose_name="page title",
+        max_length=255,
+        blank=True,
+    )
+    search_description = models.TextField(verbose_name='search description', blank=True)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     cover_image = models.ForeignKey(
