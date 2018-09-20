@@ -3,7 +3,7 @@
 
 {% block meta %}
   {% image page.cover_image width-1200 as cover_image %}
-  {% full_url post.cover_image_rend.url as image_url %}
+  {% full_url cover_image.url as image_url %}
   {% include 'website/og_tags.html' with og_title=post.title og_url=post.full_url og_description=post.index_text og_type='article' og_image=image_url %}
 {% endblock meta %}
 

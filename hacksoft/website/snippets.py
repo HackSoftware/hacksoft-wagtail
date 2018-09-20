@@ -9,6 +9,8 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from . import models as website_models
+
 
 @register_snippet
 class Teammate(models.Model):
@@ -156,7 +158,6 @@ class Category(models.Model):
 class HackCastEpisode(models.Model):
     title = models.CharField(unique=True, max_length=255)
     description = models.TextField(blank=True)
-
     mp3_url = models.URLField()
     youtube_url = models.URLField()
 
@@ -204,3 +205,8 @@ class BlogPostSnippet(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def full_url(self):
+        page = website_models.BlogPostsPage.objects.first()
+        return f'{page.full_url}{str(self.slug)}'
