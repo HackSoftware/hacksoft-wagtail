@@ -432,8 +432,8 @@ class BlogPost(Page):
     )
     text = models.TextField()
     index_text = models.CharField(max_length=255)
-    authors = ParentalManyToManyField(Teammate)
-    categories = ParentalManyToManyField(Category)
+    authors = models.ManyToManyField(Teammate)
+    categories = models.ManyToManyField(Category)
     date = models.DateTimeField("Post date")
 
     content_panels = Page.content_panels + [
