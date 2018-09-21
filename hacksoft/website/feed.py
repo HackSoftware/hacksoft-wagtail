@@ -1,8 +1,8 @@
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Atom1Feed, Rss201rev2Feed
 
-from hacksoft.website.snippets import HackCastEpisode
-from hacksoft.website.models import BlogPost
+from hacksoft.website.snippets import HackCastEpisode, BlogPostSnippet
+from .models import BlogPostPlacement
 
 
 class FeedGenerator(Rss201rev2Feed):
@@ -90,7 +90,9 @@ class BlogRssFeed(Feed):
     feed_type = FeedGenerator
 
     def items(self):
-        return BlogPost.objects.live().order_by('-date')
+        return BlogPostSnippet.objects.\
+            filter(blogpostsnippet_placement__isnull=False).\
+            order_by('-date')
 
     def item_title(self, item):
         return item.title
