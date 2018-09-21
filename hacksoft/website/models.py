@@ -404,7 +404,7 @@ class BlogPostsPage(Page):
 
 class BlogPostPlacement(Orderable, models.Model):
     page = ParentalKey('website.BlogPostsPage', related_name='blogpost_placement')
-    post = models.ForeignKey('website.BlogPostSnippet', related_name='+')
+    post = models.ForeignKey('website.BlogPostSnippet', related_name='blogpostsnippet_placement')
 
     panels = [
         SnippetChooserPanel('post')
