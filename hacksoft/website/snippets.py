@@ -183,9 +183,9 @@ class BlogPostSnippet(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     cover_image = models.ForeignKey(
         'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE,
         related_name='+'
     )
     text = models.TextField()

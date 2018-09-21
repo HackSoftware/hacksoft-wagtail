@@ -371,11 +371,12 @@ class BlogPostsPage(Page):
             filter(image_id=filter_image_id)
         return renditions
 
-    def get_image(self, search_image_id, width):
-        image_renditions = self.get_renditions(search_image_id)
+    def get_image(self, search_image, width):
+        image_renditions = self.get_renditions(search_image.id)
         for rendition in image_renditions:
             if rendition.width == width:
                 return rendition
+        return search_image.get_rendition(f'width-{width}')
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -384,7 +385,7 @@ class BlogPostsPage(Page):
 
         placements = BlogPostPlacement.objects.\
             select_related(*select).\
-            prefetch_related(*prefetch)
+            prefetch_related(*prefetch).order_by('-post__date')
 
         post_to_author = {}
 
@@ -394,15 +395,15 @@ class BlogPostsPage(Page):
                 if post in post_to_author:
                     post_to_author[post].append(author)
                 else:
-                    post.cover_image_rend = self.get_image(post.cover_image_id, width=600)
-                    author.initial_photo_rend = self.get_image(author.initial_photo_id, width=150)
+                    post.cover_image_rend = self.get_image(post.cover_image, width=600)
+                    author.initial_photo_rend = self.get_image(author.initial_photo, width=150)
                     post_to_author[post] = [author]
 
         context['blogposts'] = post_to_author
         return context
 
 
-class BlogPostPlacement(Orderable, models.Model):
+class BlogPostPlacement(models.Model):
     page = ParentalKey('website.BlogPostsPage', related_name='blogpost_placement')
     post = models.ForeignKey('website.BlogPostSnippet', related_name='blogpostsnippet_placement')
 
