@@ -1934,3 +1934,16 @@ h1.top-heading {
     }
   }
 }
+
+.testimonial-page {
+  h1 {
+    padding-left: 2rem;
+  }
+
+  h1 > a {
+    color: #f79824;
+    &:hover {
+        border-bottom: 2px solid #f79824;
+    }
+  }
+}

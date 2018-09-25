@@ -1463,4 +1463,11 @@ h1.top-heading {
   .hack-cast-page a:hover {
     border-bottom: 2px solid #f79824; }
 
+.testimonial-page h1 {
+  padding-left: 2rem; }
+.testimonial-page h1 > a {
+  color: #f79824; }
+  .testimonial-page h1 > a:hover {
+    border-bottom: 2px solid #f79824; }
+
 /*# sourceMappingURL=main.css.map */
