@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+
 {% block content %}
 <div class="new technologies-we-use-heading">
   {% image page.header_image max-1366x1366 as header_image %}
@@ -24,7 +25,7 @@
   <div class="content-wrapper">
     <div class="row box-container">
       {% for placement in clients %}
-      <div class="client-box" data-client-number="{{ forloop.counter }}">
+      <div class="client-box">
         {% image placement.client.logo original as client_logo %}
         <img
           src="{{client_logo.url}}"
@@ -39,7 +40,7 @@
 
   <div class="page-content">
     <div
-      class="clutch-widget"
+      class="clutch-widget clutch-reviews"
       data-url="https://clutch.co"
       data-widget-type="5"
       data-expandifr="true"
@@ -47,6 +48,5 @@
       data-snippets="true"
       data-clutchcompany-id="534443"
     ></div>
-  </div>
-  {% endblock content %}
 </div>
+{% endblock content %}
