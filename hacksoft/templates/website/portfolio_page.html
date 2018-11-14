@@ -4,60 +4,49 @@
 {% block content %}
 <div class="new technologies-we-use-heading">
   {% image page.header_image max-1366x1366 as header_image %}
-  <div class="new static-header dimmed-image" style="background-image: url({{ header_image.url }})">
+  <div
+    class="new static-header dimmed-image"
+    style="background-image: url({{ header_image.url }})"
+  >
     <div class="new heading">
-      <p>{{page.header_text}}</p>
+      <p>{{ page.header_text }}</p>
     </div>
     <div class="new scroll-down-arrow">
-      <img class="filer_image " alt="scroll_down_arrow.png" src="{% static  'images/header/scroll_down_arrow.png'%}" />
+      <img
+        class="filer_image "
+        alt="scroll_down_arrow.png"
+        src="{% static  'images/header/scroll_down_arrow.png'%}"
+      />
     </div>
   </div>
 </div>
 
-<div class="page-content">
-
-  <div class="section how-we-work">
-    <div class="content-wrapper" >
-      <div class="row box-container">
-        {% for placement in clients %}
-          <div class="client-box" data-client-number="{{ forloop.counter }}">
-            {% image placement.client.logo original as client_logo %}
-            <img src="{{client_logo.url}}" alt="{{ placement.client.name }}" title="{{ placement.client.name }}"class="filter_image wow flipInX box-logo"/>
-          </div>
-        {% endfor %}
+<div class="section how-we-work">
+  <div class="content-wrapper">
+    <div class="row box-container">
+      {% for placement in clients %}
+      <div class="client-box">
+        {% image placement.client.logo original as client_logo %}
+        <img
+          src="{{client_logo.url}}"
+          alt="{{ placement.client.name }}"
+          title="{{ placement.client.name }}"
+          class="filter_image wow flipInX box-logo"
+        />
       </div>
+      {% endfor %}
     </div>
-
-    {% for placement in clients %}
-      <div class="section-heading" id="clinet-number-{{ forloop.counter }}">
-        <div><strong>{{ placement.client.name }}</strong></div>
-      </div>
-      <div class="content-wrapper" >
-        <div class="client-description">
-          {{ placement.client.description|richtext }}
-        </div>
-
-        {% for project in placement.client.project_set.all %}
-        <div class="section-content-row  float-container  portfolio-landing wow row {% cycle 'fadeInLeftBig' 'fadeInRightBig' %} ">
-          <div class="col-md-10">
-            <h3>{{ project }}</h3>
-            <div>
-              {{ project.description|richtext }}
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="portfolio-technologies">
-              {% for technology in project.technologies.all %}
-                {% image technology.logo max-100x100 as tech_logo %}
-                <img src="{{tech_logo.url}}" alt="{{ technology.name }}" title="{{ technology.name }}" class="filter_image wow flipInX" />
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    {% endfor %}
   </div>
-</div>
 
+  <div class="page-content">
+    <div
+      class="clutch-widget clutch-reviews"
+      data-url="https://clutch.co"
+      data-widget-type="5"
+      data-expandifr="true"
+      data-height="auto"
+      data-snippets="true"
+      data-clutchcompany-id="534443"
+    ></div>
+</div>
 {% endblock content %}

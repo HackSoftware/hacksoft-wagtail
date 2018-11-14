@@ -1584,7 +1584,6 @@ h1.top-heading {
     .client-box {
         position: relative;
         width: 33%;
-        cursor: pointer;
         text-align: center;
 
         &:before {
@@ -1738,9 +1737,6 @@ h1.top-heading {
                 font-size: 24px;
                 font-weight: bold;
             }
-            .description {
-            }
-
             .date {
                 color: silver;
                 text-align: right;
@@ -1756,7 +1752,6 @@ h1.top-heading {
         .avatar {
             width: 70px;
             height: 70px;
-            background-position: center;
             background-size: cover;
             border-radius: 50%;
             float: right;
@@ -1933,4 +1928,11 @@ h1.top-heading {
         border-bottom: 2px solid #f79824;
     }
   }
+}
+
+.clutch-reviews {
+  margin: auto;
+  max-width: 1000px;
+  padding-top: 20px;
+  min-height: 1000px;
 }
