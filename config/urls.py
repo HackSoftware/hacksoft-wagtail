@@ -7,13 +7,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from django.views.generic.base import RedirectView
 
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
 
-from hacksoft.website.feed import HackCastRssFeed, HackCastAtomFeed, BlogRssFeed, BlogAtomFeed
+from hacksoft.website.feed import HackCastRssFeed, HackCastAtomFeed
 
 urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
@@ -23,12 +24,8 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^hackcast/rss/$', HackCastRssFeed()),
     url(r'^hackcast/atom/$', HackCastAtomFeed()),
-    url(r'^blog/rss/$', BlogRssFeed()),
-    url(r'^blog/atom/$', BlogAtomFeed()),
-    url(r'^blog/', include('hacksoft.website.urls')),
-    url(r'', include(wagtail_urls)),
-
-
+    url(r'^blog/$', RedirectView.as_view(permanent=True, url='https://hacksoft.blog/')),
+    url(r'^blog/(?P<slug>[-\w]+)/$', RedirectView.as_view(permanent=True, url='https://hacksoft.blog/%(slug)s')),
 
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
