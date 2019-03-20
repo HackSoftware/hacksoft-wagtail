@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^hackcast/atom/$', HackCastAtomFeed()),
     url(r'^blog/$', RedirectView.as_view(permanent=True, url='https://hacksoft.blog/')),
     url(r'^blog/(?P<slug>[-\w]+)/$', RedirectView.as_view(permanent=True, url='https://hacksoft.blog/%(slug)s')),
+    url(r'', include(wagtail_urls)),
 
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
