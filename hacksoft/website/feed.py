@@ -14,6 +14,7 @@ class FeedGenerator(Rss201rev2Feed):
 
         if 'author_email' in self.feed:
             handler.addQuickElement('author_email', self.feed['author_email'])
+            handler.addQuickElement('itunes:email', self.feed['author_email'])
 
         if 'image' in self.feed:
             image = self.feed['image']
