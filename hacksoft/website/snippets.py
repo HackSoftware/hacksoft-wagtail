@@ -89,7 +89,12 @@ class Client(models.Model):
 @register_snippet
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    client = models.ForeignKey(Client, null=True, blank=True)
+    client = models.ForeignKey(
+        Client,
+        null=True,
+        blank=True, 
+        on_delete=models.CASCADE
+    )
 
     description = RichTextField()
 
